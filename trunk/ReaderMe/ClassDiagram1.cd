@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
+  <Class Name="ReaderMe.Common.Command" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAQChgAAAAAAGAACAAYghAEAAQIAQACBAAQFAI=</HashCode>
+      <FileName>Common\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Common.Configurations" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBAEQAgBABEAAoAEAAAgsAABABKAAABDACEAICAgBA=</HashCode>
+      <FileName>Common\Configurations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Common.ConstValues" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKAAABQAcAgEEAABAACAAgAABQAggAAAAgIAQAEAAAQ=</HashCode>
+      <FileName>Common\ConstValues.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Common.FileInformation" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAoEAAAAAgAAgAAABAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Common\FileInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Forms.FormConfig" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAAABAAAASAAAADMAEAQAAAAIAAAAgAAAA=</HashCode>
+      <FileName>Forms\FormConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Forms.FormConfigOpenHistory" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAIAAgACgAAwQAAACBBADyCwAAQAABAIAAAAgAAUQ=</HashCode>
+      <FileName>Forms\FormConfigOpenHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Forms.FormFind" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAAAAAAACAAgFGCAACAAAACBAAA7AAEAIABAgRAAAA=</HashCode>
+      <FileName>Forms\FormFind.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Forms.FormHelp" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAwAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Forms\FormHelp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Forms.FormInputDialog" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAAAAAAAACAEAAEAAAiAAEACAAEAAAIAAAAAAAEAAAA=</HashCode>
+      <FileName>Forms\FormInputDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Forms.FormMain" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>B3dAQBCEgCABjAEuIMiBfFQalAQIJMgWlwAgAAAIGwE=</HashCode>
+      <FileName>Forms\FormMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GYP.Helper.FileHelper.FileHelper" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAAIAAQAAIAAIBEEAABAAUAgAABIAEECAAkAAwAQA=</HashCode>
+      <FileName>Helper\FileHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GYP.Helper.FileHelper.XMLHelper" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAAAAAAAAAAAFgAgEAAA4gAAAAAUAAAAIAABAAAAA=</HashCode>
+      <FileName>Helper\XMLHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GYP.Helper.HotKey.Hotkey" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAIAAAAAAICAAAAAAAAAAAQAECAQACAA=</HashCode>
+      <FileName>Helper\HotKey.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GYP.Helper.LogHelper.LogHelper" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAIAAAAAAAAAAAAEAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\LogHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GYP.Helper.LogHelper.TxtLogHelper" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\LogHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GYP.Helper.LogHelper.EventLogHelper" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\LogHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.238" Collapsed="true" />
+  </Class>
+  <Class Name="ReaderMe.Model.FindStatus" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAACAAAAAAAAEAIAAACCAAACCAAQIAAAAgCAAAAEAQ=</HashCode>
+      <FileName>Model\FindStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Program" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Properties.Resources" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReaderMe.Properties.Settings" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GYP.Helper.LogHelper.ILogHelper" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\LogHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="GYP.Helper.LogHelper.LogInstance" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Helper\LogHelper.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GYP.Helper.LogHelper.LogType" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAQAAAAAAAAAAAAABAAAAAAABAAAABAA=</HashCode>
+      <FileName>Helper\LogHelper.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="GYP.Helper.HotKey.HotkeyEventHandler" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\HotKey.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="MS UI Gothic" Size="9" />
+</ClassDiagram>
