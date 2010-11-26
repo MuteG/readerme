@@ -116,7 +116,6 @@
             this.mnuItemPopCopy,
             this.mnuItemPopPaste});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.contextMenuStrip1.Size = new System.Drawing.Size(123, 170);
             // 
             // mnuItemPopBookMark
