@@ -198,6 +198,20 @@ namespace ReaderMe.Forms
                             CommonFunc.Timer.Enabled = CommonFunc.AutoScroll;
                             break;
                         }
+                    case Keys.Up:
+                        {
+                            e.Handled = true;
+                            CommonFunc.config.Opacity += 5;
+                            this.Opacity = (double)CommonFunc.config.Opacity / 100;
+                            break;
+                        }
+                    case Keys.Down:
+                        {
+                            e.Handled = true;
+                            CommonFunc.config.Opacity -= 5;
+                            this.Opacity = (double)CommonFunc.config.Opacity / 100;
+                            break;
+                        }
                 }
             }
         }
