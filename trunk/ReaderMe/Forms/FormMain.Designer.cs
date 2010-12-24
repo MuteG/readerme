@@ -80,6 +80,8 @@
             this.mnuItemIntroduction = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuItemSmartClearSpaceLine = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -327,7 +329,9 @@
             this.mnuItemWordWrap,
             this.toolStripSeparator1,
             this.mnuItemBookMark,
-            this.mnuItemJumpToBookMark});
+            this.mnuItemJumpToBookMark,
+            this.toolStripMenuItem3,
+            this.mnuItemSmartClearSpaceLine});
             this.mnuItemEdit.Name = "mnuItemEdit";
             this.mnuItemEdit.Size = new System.Drawing.Size(43, 20);
             this.mnuItemEdit.Text = "编辑";
@@ -335,73 +339,73 @@
             // mnuItemCut
             // 
             this.mnuItemCut.Name = "mnuItemCut";
-            this.mnuItemCut.Size = new System.Drawing.Size(122, 22);
+            this.mnuItemCut.Size = new System.Drawing.Size(152, 22);
             this.mnuItemCut.Text = "剪切";
             this.mnuItemCut.Click += new System.EventHandler(this.mnuItemCut_Click);
             // 
             // mnuItemCopy
             // 
             this.mnuItemCopy.Name = "mnuItemCopy";
-            this.mnuItemCopy.Size = new System.Drawing.Size(122, 22);
+            this.mnuItemCopy.Size = new System.Drawing.Size(152, 22);
             this.mnuItemCopy.Text = "拷贝";
             this.mnuItemCopy.Click += new System.EventHandler(this.mnuItemCopy_Click);
             // 
             // mnuItemPaste
             // 
             this.mnuItemPaste.Name = "mnuItemPaste";
-            this.mnuItemPaste.Size = new System.Drawing.Size(122, 22);
+            this.mnuItemPaste.Size = new System.Drawing.Size(152, 22);
             this.mnuItemPaste.Text = "粘贴";
             this.mnuItemPaste.Click += new System.EventHandler(this.mnuItemPaste_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(119, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuItemFind
             // 
             this.mnuItemFind.Name = "mnuItemFind";
-            this.mnuItemFind.Size = new System.Drawing.Size(122, 22);
+            this.mnuItemFind.Size = new System.Drawing.Size(152, 22);
             this.mnuItemFind.Text = "查找";
             this.mnuItemFind.Click += new System.EventHandler(this.mnuItemFind_Click);
             // 
             // mnuItemFont
             // 
             this.mnuItemFont.Name = "mnuItemFont";
-            this.mnuItemFont.Size = new System.Drawing.Size(122, 22);
+            this.mnuItemFont.Size = new System.Drawing.Size(152, 22);
             this.mnuItemFont.Text = "字体";
             this.mnuItemFont.Click += new System.EventHandler(this.mnuItemFont_Click);
             // 
             // mnuItemEncoding
             // 
             this.mnuItemEncoding.Name = "mnuItemEncoding";
-            this.mnuItemEncoding.Size = new System.Drawing.Size(122, 22);
+            this.mnuItemEncoding.Size = new System.Drawing.Size(152, 22);
             this.mnuItemEncoding.Text = "编码";
             // 
             // mnuItemWordWrap
             // 
             this.mnuItemWordWrap.CheckOnClick = true;
             this.mnuItemWordWrap.Name = "mnuItemWordWrap";
-            this.mnuItemWordWrap.Size = new System.Drawing.Size(122, 22);
+            this.mnuItemWordWrap.Size = new System.Drawing.Size(152, 22);
             this.mnuItemWordWrap.Text = "自动换行";
             this.mnuItemWordWrap.Click += new System.EventHandler(this.mnuItemWordWrap_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuItemBookMark
             // 
             this.mnuItemBookMark.Name = "mnuItemBookMark";
-            this.mnuItemBookMark.Size = new System.Drawing.Size(122, 22);
+            this.mnuItemBookMark.Size = new System.Drawing.Size(152, 22);
             this.mnuItemBookMark.Text = "做书签";
             this.mnuItemBookMark.Click += new System.EventHandler(this.mnuItemBookMark_Click);
             // 
             // mnuItemJumpToBookMark
             // 
             this.mnuItemJumpToBookMark.Name = "mnuItemJumpToBookMark";
-            this.mnuItemJumpToBookMark.Size = new System.Drawing.Size(122, 22);
+            this.mnuItemJumpToBookMark.Size = new System.Drawing.Size(152, 22);
             this.mnuItemJumpToBookMark.Text = "移至书签";
             this.mnuItemJumpToBookMark.Click += new System.EventHandler(this.mnuItemJumpToBookMark_Click);
             // 
@@ -474,6 +478,18 @@
             this.mnuItemInfo.Size = new System.Drawing.Size(98, 22);
             this.mnuItemInfo.Text = "关于";
             this.mnuItemInfo.Click += new System.EventHandler(this.mnuItemInfo_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // mnuItemSmartClearSpaceLine
+            // 
+            this.mnuItemSmartClearSpaceLine.Name = "mnuItemSmartClearSpaceLine";
+            this.mnuItemSmartClearSpaceLine.Size = new System.Drawing.Size(152, 22);
+            this.mnuItemSmartClearSpaceLine.Text = "智能去空行";
+            this.mnuItemSmartClearSpaceLine.Click += new System.EventHandler(this.mnuItemSmartClearSpaceLine_Click);
             // 
             // FormMain
             // 
@@ -560,6 +576,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuItemInfo;
         private System.Windows.Forms.ToolStripMenuItem mnuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem mnuItemIntroduction;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnuItemSmartClearSpaceLine;
     }
 }
 

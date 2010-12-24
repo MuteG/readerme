@@ -14,6 +14,7 @@
  * 2009-11-27   高云鹏  1.0.0.30    修改    修正软件运行后立刻关闭发生Error的错误
  * 2010-01-14   高云鹏  1.0.0.31    修改    精简模式时，不在任务栏上显示
  * 2010-03-09   高云鹏  1.0.0.32    修改    加入做书签的快捷键“Ctrl + M”
+ * 2010-12-24   高云鹏  1.1.0.3     新规    加入智能去除空行功能
  *********************************************************************
  */
 using System;
@@ -777,6 +778,50 @@ namespace ReaderMe.Forms
         
         #endregion
 
-        
+        private void mnuItemSmartClearSpaceLine_Click(object sender, EventArgs e)
+        {
+            if (CommonFunc.ActiveFile != null)
+            {
+                try
+                {
+                    //SaveFile();
+                    StringBuilder fileText = new StringBuilder();
+                    Encoding encoding = Encoding.GetEncoding(CommonFunc.ActiveFile.Encode);
+                    StreamReader reader = new StreamReader(CommonFunc.ActiveFile.Path, encoding);
+                    encoding = reader.CurrentEncoding;
+                    while (!reader.EndOfStream)
+                    {
+                        string line = reader.ReadLine();
+                        if (line.Trim().Length > 0)
+                        {
+                            fileText.AppendLine(line);
+                        }
+                    }
+                    reader.Close();
+
+                    StreamWriter writer = new StreamWriter(CommonFunc.ActiveFile.Path, false, encoding);
+                    writer.Write(fileText.ToString().TrimEnd());
+                    writer.Close();
+
+                    FileInformation newFile = new FileInformation(CommonFunc.ActiveFile.Path);
+                    // 获得历史记录中所有与当前文件路径相同的记录集
+                    List<FileInformation> existFiles = CommonFunc.config.GetFileOnlyWithPath(newFile);
+                    for (int i = 0; i < existFiles.Count; i++)
+                    {
+                        existFiles[i].MD5 = newFile.MD5;
+                    }
+                    CommonFunc.ActiveFile = existFiles[0];
+                    CommonFunc.ActiveFile.UpdateTime = newFile.UpdateTime;
+                    CommonFunc.config.AddFile(CommonFunc.ActiveFile);
+
+                    //OpenFile(CommonFunc.ActiveFile.Path);
+                    ShowFileText();
+                }
+                catch (Exception ex)
+                {
+                    //
+                }
+            }
+        }
     }
 }
