@@ -7,20 +7,22 @@
  * 作成日期 : 2008-10-27
  * 修改履历 :
  * 日期         修改者  程序版本    类型    理由
- * 2008-10-27   高云鹏  1.0.0.0     新规    首次记录
+ * 2008-10-27   高云鹏  1.0.0.0     添加    首次记录
  * 2009-11-16   高云鹏  1.0.0.29    修改    空白窗口的情况下，不提示是否保存当前进度
  *                                          根据当前显示行做书签
  *                                          右键菜单做书签时，会根据鼠标位置做书签
  * 2009-11-27   高云鹏  1.0.0.30    修改    修正软件运行后立刻关闭发生Error的错误
  * 2010-01-14   高云鹏  1.0.0.31    修改    精简模式时，不在任务栏上显示
  * 2010-03-09   高云鹏  1.0.0.32    修改    加入做书签的快捷键“Ctrl + M”
- * 2010-12-24   高云鹏  1.1.0.3     新规    加入智能去除空行功能
+ * 2010-12-24   高云鹏  1.1.0.3     添加    加入智能去除空行功能
+ * 2011-02-28   高云鹏  1.1.0.4     添加    加入调试时用来计算程序运行时间的代码
  *********************************************************************
  */
 using System;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using ReaderMe.Common;
@@ -29,6 +31,27 @@ namespace ReaderMe.Forms
 {
     public partial class FormMain : Form
     {
+#if DEBUG
+        private Stopwatch timeWatcher = new Stopwatch();
+#endif
+        private void TimeWatchStart()
+        {
+#if DEBUG
+            timeWatcher.Reset();
+            timeWatcher.Start();
+#endif
+        }
+
+        private void TimeWatchStop()
+        {
+#if DEBUG
+            timeWatcher.Stop();
+            Console.WriteLine(string.Format("{0}:{1}ms",
+                new StackFrame(1).GetMethod().Name,
+                timeWatcher.ElapsedMilliseconds));
+#endif
+        }
+
         public FormMain()
         {
             InitializeComponent();
@@ -41,6 +64,7 @@ namespace ReaderMe.Forms
         // 窗体初始化
         private void FormMain_Load(object sender, EventArgs e)
         {
+            TimeWatchStart();
             CommonFunc.RichTextBox = rtbText;
             CommonFunc.Init();
             tsslInfo.Text = string.Empty;
@@ -64,6 +88,35 @@ namespace ReaderMe.Forms
 
             SetMenuOpenHistory();
             SetMenuEncoding();
+            TimeWatchStop();
+        }
+
+        /// <summary>
+        /// 动态生成“打开历史”菜单
+        /// </summary>
+        private void SetMenuOpenHistory()
+        {
+            TimeWatchStart();
+            mnuItemOpenHistory.DropDownItems.Clear();
+            for (int i = 0; i < CommonFunc.config.FileInfoList.Count; i++)
+            {
+                ToolStripItem item = mnuItemOpenHistory.DropDownItems.Add(Path.GetFileNameWithoutExtension(CommonFunc.config.FileInfoList[i].Path));
+                item.Click += new EventHandler(item_Click);
+            }
+            TimeWatchStop();
+        }
+
+        // 动态生成“编码”菜单
+        private void SetMenuEncoding()
+        {
+            TimeWatchStart();
+            mnuItemEncoding.DropDownItems.Clear();
+            foreach (string encode in CommonFunc.DictEncodingToMenu.Values)
+            {
+                ToolStripItem item = mnuItemEncoding.DropDownItems.Add(encode);
+                item.Click += new EventHandler(MenuEncoding_Click);
+            }
+            TimeWatchStop();
         }
 
         // 窗体关闭
@@ -240,19 +293,6 @@ namespace ReaderMe.Forms
             this.Close();
         }
 
-        /// <summary>
-        /// 动态生成“打开历史”菜单
-        /// </summary>
-        private void SetMenuOpenHistory()
-        {
-            mnuItemOpenHistory.DropDownItems.Clear();
-            for (int i = 0; i < CommonFunc.config.FileInfoList.Count; i++)
-            {
-                ToolStripItem item = mnuItemOpenHistory.DropDownItems.Add(Path.GetFileNameWithoutExtension(CommonFunc.config.FileInfoList[i].Path));
-                item.Click += new EventHandler(item_Click);
-            }
-        }
-
         // “打开历史”菜单下的文件列表中的项的点击事件
         private void item_Click(object sender, EventArgs e)
         {
@@ -336,17 +376,6 @@ namespace ReaderMe.Forms
         private void mnuItemJumpToBookMark_Click(object sender, EventArgs e)
         {
             JumpToBookMark();
-        }
-
-        // 动态生成“编码”菜单
-        private void SetMenuEncoding()
-        {
-            mnuItemEncoding.DropDownItems.Clear();
-            foreach (string encode in CommonFunc.DictEncodingToMenu.Values)
-            {
-                ToolStripItem item = mnuItemEncoding.DropDownItems.Add(encode);
-                item.Click += new EventHandler(MenuEncoding_Click);
-            }
         }
 
         // “编码”菜单下的文件列表中的项的点击事件

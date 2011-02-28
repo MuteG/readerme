@@ -11,14 +11,14 @@
     <deploymentProvider codebase="file:///C:/GYP/Tools/ReaderMe/ReaderMe.application" />
   </deployment>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ReaderMe.exe.manifest" size="4273">
+    <dependentAssembly dependencyType="install" codebase="ReaderMe.exe.manifest" size="4274">
       <assemblyIdentity name="ReaderMe.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>YvRo5FYF/HJBW46mMYT4fZFW9h4=</dsig:DigestValue>
+        <dsig:DigestValue>YtlGzCXZbSMFJ3GWD+sDvZd+mgQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

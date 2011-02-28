@@ -21,3 +21,4 @@ E:\Work\wordspace\CSharp\ReaderMe\ReaderMe\obj\Release\ReaderMe.exe.manifest
 E:\Work\wordspace\CSharp\ReaderMe\ReaderMe\obj\Release\ReaderMe.application
 E:\Work\wordspace\CSharp\ReaderMe\ReaderMe\obj\Release\ReaderMe.exe
 E:\Work\wordspace\CSharp\ReaderMe\ReaderMe\obj\Release\ReaderMe.pdb
+D:\WORK\WorkSpace\CSharp\DEMO\readerme\ReaderMe\bin\Release\ReaderMe.exe.config
