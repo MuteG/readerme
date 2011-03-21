@@ -22,16 +22,6 @@ namespace ReaderMe.Forms
             Close();
         }
 
-        private void btnSelectAll_Click(object sender, EventArgs e)
-        {
-            SetAllRecordCheck(true);
-        }
-
-        private void btnSelectNone_Click(object sender, EventArgs e)
-        {
-            SetAllRecordCheck(false);
-        }
-
         private void SetAllRecordCheck(bool isChecked)
         {
             for (int i = 0; i < lsvOpenHistory.Items.Count; i++)
@@ -54,11 +44,10 @@ namespace ReaderMe.Forms
                 ListViewItem item = lsvOpenHistory.Items.Add("");
                 item.SubItems.Add(Path.GetFileNameWithoutExtension(fileInfo.Path));
                 item.SubItems.Add(File.Exists(fileInfo.Path) ? "存在" : "不存在");
-                item.SubItems.Add(fileInfo.Path);
-                item.SubItems.Add(fileInfo.MD5);
-                item.SubItems.Add(CommonFunc.DictEncodingToMenu[fileInfo.Encode]);
-                item.SubItems.Add(fileInfo.UpdateTime);
+                item.ToolTipText = string.Format("MD5 ：{0}\n编码：{1}\n日期：{2}\n路径：{3}",
+                    fileInfo.MD5, CommonFunc.DictEncodingToMenu[fileInfo.Encode], fileInfo.UpdateTime, fileInfo.Path);
             }
+            lsvOpenHistory.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -119,6 +108,11 @@ namespace ReaderMe.Forms
                     item.Checked = true;
                 }
             }
+        }
+
+        private void cbxCheckAll_CheckedChanged(object sender, EventArgs e)
+        {
+            SetAllRecordCheck(cbxCheckAll.Checked);
         }
     }
 }

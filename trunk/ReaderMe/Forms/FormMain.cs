@@ -82,6 +82,9 @@ namespace ReaderMe.Forms
             rtbText.AllowDrop = true;
             rtbText.DragDrop += new DragEventHandler(FormMain_DragDrop);
             rtbText.DragEnter += new DragEventHandler(FormMain_DragEnter);
+            //rtbText.VScroll += new EventHandler(rtbText_VScroll);
+            //rtbText.HScroll += new EventHandler(rtbText_VScroll);
+            rtbText.SelectionChanged += new EventHandler(rtbText_VScroll);
 
             // 自动换行
             mnuItemWordWrap.Checked = 1 == CommonFunc.config.WordWrap ? true : false;
@@ -89,6 +92,19 @@ namespace ReaderMe.Forms
             SetMenuOpenHistory();
             SetMenuEncoding();
             TimeWatchStop();
+        }
+
+        private void rtbText_VScroll(object sender, EventArgs e)
+        {
+            SetWordCountText();
+        }
+
+        private void SetWordCountText()
+        {
+            int currentIndex = rtbText.GetCharIndexFromPosition(new Point(0, 0));
+            currentIndex = Math.Max(currentIndex, rtbText.SelectionStart);
+            tsslWordCount.Text = string.Format("{0}/{1}({2}%)",
+                currentIndex, rtbText.TextLength, (int)currentIndex * 100 / rtbText.TextLength);
         }
 
         /// <summary>
@@ -600,7 +616,7 @@ namespace ReaderMe.Forms
                 tsslEncoding.Text = CommonFunc.ActiveFile.Encode;
                 tsslInfo.Text = Path.GetFileNameWithoutExtension(CommonFunc.ActiveFile.Path);
                 this.Text = tsslInfo.Text + " - ReaderMe";
-                tsslWordCount.Text = rtbText.Text.Length.ToString();
+                SetWordCountText();
                 CheckedMenuItemByName(CommonFunc.ActiveFile.Encode);
             }
             else
