@@ -1,28 +1,13 @@
-﻿/*
- *********************************************************************
- * 程序名称 : ReaderMe
- * 类名称   : CommonFunc
- * 说明     : 公共函数
- * 作者     : 高云鹏
- * 作成日期 : 2008-10-27
- * 修改履历 :
- * 日期         修改者  程序版本    类型    理由
- * 2008-10-27   高云鹏  1.0.0.0     新规    首次记录
- * 2010-01-14   高云鹏  1.0.0.31    修改    精简模式时，不在任务栏上显示
- *********************************************************************
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using GYP.Helper.HotKey;
-using GYP.Helper.LogHelper;
-using ReaderMe.Model;
+using GP.Tools.ReaderMe.Helper;
+using GP.Tools.ReaderMe.Model;
 
-namespace ReaderMe.Common
+namespace GP.Tools.ReaderMe.Common
 {
     public class CommonFunc
     {
@@ -165,22 +150,56 @@ namespace ReaderMe.Common
 
         public static void ScrollDown(IntPtr richTextBoxHandle)
         {
-            SendMessage(richTextBoxHandle, Consts.WIN_MESSAGE_WS_VSCROLL, Consts.WIN_PARAM_SB_LINEDOWN, 0x0);
+            //if (IsMiniStatus)
+            //{
+            //    SendMessage(richTextBoxHandle, Constants.WIN_MESSAGE_WS_VSCROLL, Constants.WIN_PARAM_SB_LINEDOWN, 0x0);
+            //}
+            //else
+            //{
+            //    int currentLine = RichTextBox.GetLineFromCharIndex(RichTextBox.GetCharIndexFromPosition(new System.Drawing.Point(0, 0)));
+            //    int autoScrollRows = IsMiniStatus ? config.MiniAutoScrollRows : config.NormalAutoScrollRows;
+            //    int targetIndex = Math.Min(RichTextBox.GetFirstCharIndexFromLine(currentLine + autoScrollRows),
+            //                               RichTextBox.GetFirstCharIndexFromLine(RichTextBox.Lines.Length - 1));
+            //    RichTextBox.SelectionStart = targetIndex;
+            //    RichTextBox.ScrollToCaret();
+            //}
+            int currentLine = RichTextBox.GetLineFromCharIndex(RichTextBox.GetCharIndexFromPosition(new System.Drawing.Point(0, 0)));
+            int autoScrollRows = IsMiniStatus ? config.MiniAutoScrollRows : config.NormalAutoScrollRows;
+            int targetIndex = Math.Min(RichTextBox.GetFirstCharIndexFromLine(currentLine + autoScrollRows),
+                                       RichTextBox.GetFirstCharIndexFromLine(RichTextBox.Lines.Length - 1));
+            RichTextBox.SelectionStart = targetIndex;
+            RichTextBox.SelectionLength = 1;
+            RichTextBox.ScrollToCaret();
+            RichTextBox.SelectionLength = 0;
         }
 
         public static void ScrollUp(IntPtr richTextBoxHandle)
         {
-            SendMessage(richTextBoxHandle, Consts.WIN_MESSAGE_WS_VSCROLL, Consts.WIN_PARAM_SB_LINEUP, 0x0);
+            if (IsMiniStatus)
+            {
+                SendMessage(richTextBoxHandle, Constants.WIN_MESSAGE_WS_VSCROLL, Constants.WIN_PARAM_SB_LINEUP, 0x0);
+            }
+            else
+            {
+                int currentLine = RichTextBox.GetLineFromCharIndex(RichTextBox.GetCharIndexFromPosition(new System.Drawing.Point(0, 0)));
+                int autoScrollRows = IsMiniStatus ? config.MiniAutoScrollRows : config.NormalAutoScrollRows;
+                int targetIndex = Math.Max(RichTextBox.GetFirstCharIndexFromLine(currentLine - autoScrollRows),
+                                           0);
+                RichTextBox.SelectionStart = targetIndex;
+                RichTextBox.SelectionLength = 1;
+                RichTextBox.ScrollToCaret();
+                RichTextBox.SelectionLength = 0;
+            }
         }
 
         public static void ScrollLeft(IntPtr richTextBoxHandle)
         {
-            SendMessage(richTextBoxHandle, Consts.WIN_MESSAGE_WS_VSCROLL, Consts.WIN_PARAM_SB_LINELEFT, 0x0);
+            SendMessage(richTextBoxHandle, Constants.WIN_MESSAGE_WS_VSCROLL, Constants.WIN_PARAM_SB_LINELEFT, 0x0);
         }
 
         public static void ScrollRight(IntPtr richTextBoxHandle)
         {
-            SendMessage(richTextBoxHandle, Consts.WIN_MESSAGE_WS_VSCROLL, Consts.WIN_PARAM_SB_LINERIGHT, 0x0);
+            SendMessage(richTextBoxHandle, Constants.WIN_MESSAGE_WS_VSCROLL, Constants.WIN_PARAM_SB_LINERIGHT, 0x0);
         }
 
         /// <summary>
@@ -191,8 +210,8 @@ namespace ReaderMe.Common
         {
             ReleaseCapture();
             SendMessage(formHandle, 
-                Consts.WIN_MESSAGE_WM_SYSCOMMAND,
-                Consts.WIN_PARAM_HTCAPTION + Consts.WIN_PARAM_SC_MOVE,
+                Constants.WIN_MESSAGE_WM_SYSCOMMAND,
+                Constants.WIN_PARAM_HTCAPTION + Constants.WIN_PARAM_SC_MOVE,
                 0x0);
         }
 
@@ -204,7 +223,7 @@ namespace ReaderMe.Common
         {
             ReleaseCapture();
             SendMessage(formHandle,
-                Consts.WIN_MESSAGE_WM_SYSCOMMAND,
+                Constants.WIN_MESSAGE_WM_SYSCOMMAND,
                 //Consts.WIN_PARAM_HTCAPTION | Consts.WIN_PARAM_SC_SIZE,
                 0xF002,
                 0x0);
@@ -217,17 +236,17 @@ namespace ReaderMe.Common
         /// </summary>
         public static void Init()
         {
-            _DictEncodingToMenu.Add(Consts.ENCODE_BIG_UNICODE, Consts.ENCODE_MENU_BIG_UNICODE);
-            _DictEncodingToMenu.Add(Consts.ENCODE_UNICODE, Consts.ENCODE_MENU_UNICODE);
-            _DictEncodingToMenu.Add(Consts.ENCODE_UTF8, Consts.ENCODE_MENU_UTF8);
-            _DictEncodingToMenu.Add(Consts.ENCODE_GB2312, Consts.ENCODE_MENU_GB2312);
-            _DictEncodingToMenu.Add(Consts.ENCODE_SHIFT_JIS, Consts.ENCODE_MENU_SHIFT_JIS);
+            _DictEncodingToMenu.Add(Constants.ENCODE_BIG_UNICODE, Constants.ENCODE_MENU_BIG_UNICODE);
+            _DictEncodingToMenu.Add(Constants.ENCODE_UNICODE, Constants.ENCODE_MENU_UNICODE);
+            _DictEncodingToMenu.Add(Constants.ENCODE_UTF8, Constants.ENCODE_MENU_UTF8);
+            _DictEncodingToMenu.Add(Constants.ENCODE_GB2312, Constants.ENCODE_MENU_GB2312);
+            _DictEncodingToMenu.Add(Constants.ENCODE_SHIFT_JIS, Constants.ENCODE_MENU_SHIFT_JIS);
 
-            _DictMenuToEncoding.Add(Consts.ENCODE_MENU_BIG_UNICODE, Consts.ENCODE_BIG_UNICODE);
-            _DictMenuToEncoding.Add(Consts.ENCODE_MENU_UNICODE, Consts.ENCODE_UNICODE);
-            _DictMenuToEncoding.Add(Consts.ENCODE_MENU_UTF8, Consts.ENCODE_UTF8);
-            _DictMenuToEncoding.Add(Consts.ENCODE_MENU_GB2312, Consts.ENCODE_GB2312);
-            _DictMenuToEncoding.Add(Consts.ENCODE_MENU_SHIFT_JIS, Consts.ENCODE_SHIFT_JIS);
+            _DictMenuToEncoding.Add(Constants.ENCODE_MENU_BIG_UNICODE, Constants.ENCODE_BIG_UNICODE);
+            _DictMenuToEncoding.Add(Constants.ENCODE_MENU_UNICODE, Constants.ENCODE_UNICODE);
+            _DictMenuToEncoding.Add(Constants.ENCODE_MENU_UTF8, Constants.ENCODE_UTF8);
+            _DictMenuToEncoding.Add(Constants.ENCODE_MENU_GB2312, Constants.ENCODE_GB2312);
+            _DictMenuToEncoding.Add(Constants.ENCODE_MENU_SHIFT_JIS, Constants.ENCODE_SHIFT_JIS);
 
             // 系统热键
             //hotKey.HWnd = _RichTextBox.FindForm().Handle;
@@ -241,7 +260,7 @@ namespace ReaderMe.Common
             hotKey.OnHotkey += new HotkeyEventHandler(hotKey_OnHotkey);
 
             // 自动滚动
-            timer.Interval = config.AutoScrollInterval * 1000;
+            timer.Interval = config.NormalAutoScrollInterval * 1000;
             timer.Tick += new System.EventHandler(timer1_Tick);
 
             _IsMiniStatus = false;
@@ -251,12 +270,12 @@ namespace ReaderMe.Common
         {
             _DictHotKey.Clear();
             hotKey.HWnd = _RichTextBox.FindForm().Handle;
-            _DictHotKey.Add(Consts.HASH_KEY_HOT_KEY_HIDE, hotKey.RegisterHotKey(Keys.D1, Hotkey.KeyFlags.MOD_ALT));
-            _DictHotKey.Add(Consts.HASH_KEY_HOT_KEY_SHOW, hotKey.RegisterHotKey(Keys.D2, Hotkey.KeyFlags.MOD_ALT));
-            _DictHotKey.Add(Consts.HASH_KEY_HOT_KEY_UP, hotKey.RegisterHotKey(Keys.Up, Hotkey.KeyFlags.MOD_ALT));
-            _DictHotKey.Add(Consts.HASH_KEY_HOT_KEY_DOWN, hotKey.RegisterHotKey(Keys.Down, Hotkey.KeyFlags.MOD_ALT));
-            _DictHotKey.Add(Consts.HASH_KEY_HOT_KEY_LEFT, hotKey.RegisterHotKey(Keys.Left, Hotkey.KeyFlags.MOD_ALT));
-            _DictHotKey.Add(Consts.HASH_KEY_HOT_KEY_RIGHT, hotKey.RegisterHotKey(Keys.Right, Hotkey.KeyFlags.MOD_ALT));
+            _DictHotKey.Add(Constants.HASH_KEY_HOT_KEY_HIDE, hotKey.RegisterHotKey(Keys.D1, Hotkey.KeyFlags.MOD_ALT));
+            _DictHotKey.Add(Constants.HASH_KEY_HOT_KEY_SHOW, hotKey.RegisterHotKey(Keys.D2, Hotkey.KeyFlags.MOD_ALT));
+            _DictHotKey.Add(Constants.HASH_KEY_HOT_KEY_UP, hotKey.RegisterHotKey(Keys.Up, Hotkey.KeyFlags.MOD_ALT));
+            _DictHotKey.Add(Constants.HASH_KEY_HOT_KEY_DOWN, hotKey.RegisterHotKey(Keys.Down, Hotkey.KeyFlags.MOD_ALT));
+            _DictHotKey.Add(Constants.HASH_KEY_HOT_KEY_LEFT, hotKey.RegisterHotKey(Keys.Left, Hotkey.KeyFlags.MOD_ALT));
+            _DictHotKey.Add(Constants.HASH_KEY_HOT_KEY_RIGHT, hotKey.RegisterHotKey(Keys.Right, Hotkey.KeyFlags.MOD_ALT));
         }
 
         private static void timer1_Tick(object sender, EventArgs e)
@@ -267,7 +286,7 @@ namespace ReaderMe.Common
         // 系统热键响应
         private static void hotKey_OnHotkey(int HotKeyID)
         {
-            if (HotKeyID == _DictHotKey[Consts.HASH_KEY_HOT_KEY_HIDE])
+            if (HotKeyID == _DictHotKey[Constants.HASH_KEY_HOT_KEY_HIDE])
             {
                 if (!_IsMiniStatus)
                 {
@@ -282,7 +301,7 @@ namespace ReaderMe.Common
                     _RichTextBox.FindForm().Opacity = 0;
                 }
             }
-            else if (HotKeyID == _DictHotKey[Consts.HASH_KEY_HOT_KEY_SHOW])
+            else if (HotKeyID == _DictHotKey[Constants.HASH_KEY_HOT_KEY_SHOW])
             {
                 if (!_IsMiniStatus)
                 {
@@ -298,19 +317,19 @@ namespace ReaderMe.Common
                     _RichTextBox.FindForm().Activate();
                 }
             }
-            else if (HotKeyID == _DictHotKey[Consts.HASH_KEY_HOT_KEY_UP])
+            else if (HotKeyID == _DictHotKey[Constants.HASH_KEY_HOT_KEY_UP])
             {
                 CommonFunc.ScrollUp(_RichTextBox.Handle);
             }
-            else if (HotKeyID == _DictHotKey[Consts.HASH_KEY_HOT_KEY_DOWN])
+            else if (HotKeyID == _DictHotKey[Constants.HASH_KEY_HOT_KEY_DOWN])
             {
                 CommonFunc.ScrollDown(_RichTextBox.Handle);
             }
-            else if (HotKeyID == _DictHotKey[Consts.HASH_KEY_HOT_KEY_LEFT])
+            else if (HotKeyID == _DictHotKey[Constants.HASH_KEY_HOT_KEY_LEFT])
             {
                 CommonFunc.ScrollLeft(_RichTextBox.Handle);
             }
-            else if (HotKeyID == _DictHotKey[Consts.HASH_KEY_HOT_KEY_RIGHT])
+            else if (HotKeyID == _DictHotKey[Constants.HASH_KEY_HOT_KEY_RIGHT])
             {
                 CommonFunc.ScrollRight(_RichTextBox.Handle);
             }

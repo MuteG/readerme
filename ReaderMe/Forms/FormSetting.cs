@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using ReaderMe.Common;
+using GP.Tools.ReaderMe.Common;
 
-namespace ReaderMe.Forms
+namespace GP.Tools.ReaderMe.Forms
 {
-    public partial class FormConfig : Form
+    public partial class FormSetting : Form
     {
-        public FormConfig()
+        public FormSetting()
         {
             InitializeComponent();
         }
@@ -19,7 +15,10 @@ namespace ReaderMe.Forms
         private void btnEnter_Click(object sender, EventArgs e)
         {
             CommonFunc.config.Opacity = int.Parse(numOpacity.Value.ToString("##"));
-            CommonFunc.config.AutoScrollInterval = int.Parse(tbxAutoScrollInterval.Text.Trim());
+            CommonFunc.config.NormalAutoScrollInterval = int.Parse(tbxNormalScrollInterval.Text.Trim());
+            CommonFunc.config.NormalAutoScrollRows = int.Parse(tbxNormalScrollRows.Text.Trim());
+            CommonFunc.config.MiniAutoScrollInterval = int.Parse(tbxMiniScrollInterval.Text.Trim());
+            CommonFunc.config.MiniAutoScrollRows = int.Parse(tbxMiniScrollRows.Text.Trim());
             this.Opacity = (double)CommonFunc.config.Opacity / 100;
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -29,7 +28,10 @@ namespace ReaderMe.Forms
         {
             this.Opacity = (double)CommonFunc.config.Opacity / 100;
             numOpacity.Value = CommonFunc.config.Opacity;
-            tbxAutoScrollInterval.Text = CommonFunc.config.AutoScrollInterval.ToString();
+            tbxNormalScrollInterval.Text = CommonFunc.config.NormalAutoScrollInterval.ToString();
+            tbxNormalScrollRows.Text = CommonFunc.config.NormalAutoScrollRows.ToString();
+            tbxMiniScrollInterval.Text = CommonFunc.config.MiniAutoScrollInterval.ToString();
+            tbxMiniScrollRows.Text = CommonFunc.config.MiniAutoScrollRows.ToString();
             pbxBackColor.BackColor = Color.FromArgb(CommonFunc.config.BackColor);
         }
 

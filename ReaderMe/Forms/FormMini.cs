@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using ReaderMe.Common;
+using GP.Tools.ReaderMe.Common;
+using GP.Tools.ReaderMe.Helper;
 
-namespace ReaderMe.Forms
+namespace GP.Tools.ReaderMe.Forms
 {
     public partial class FormMini : Form
     {
@@ -22,19 +19,9 @@ namespace ReaderMe.Forms
             set
             {
                 _BookMark = value;
-                if (CommonFunc.ActiveFile != null && richTextBox1.TextLength > 0)
+                if (CommonFunc.ActiveFile != null && richTextBox1.TextLength > 0 && richTextBox1.SelectionStart != _BookMark)
                 {
                     richTextBox1.SelectionStart = _BookMark;
-
-                    int endIndex = richTextBox1.TextLength - 1;
-                    int maxLineIndex = richTextBox1.GetLineFromCharIndex(endIndex);
-                    int activeLineIndex = richTextBox1.GetLineFromCharIndex(_BookMark);
-                    int activeLineFirstCharIndex = richTextBox1.GetFirstCharIndexFromLine(activeLineIndex);
-                    if (activeLineIndex < maxLineIndex)
-                    {
-                        endIndex = richTextBox1.GetFirstCharIndexFromLine(activeLineIndex + 1);
-                    }
-                    lblText.Text = richTextBox1.Text.Substring(activeLineFirstCharIndex, endIndex - activeLineFirstCharIndex);
                 }
             }
         }
@@ -80,27 +67,27 @@ namespace ReaderMe.Forms
             CommonFunc.RichTextBox = richTextBox1;
             richTextBox1.Font = new Font(CommonFunc.config.FontName, CommonFunc.config.FontSize);
             lblText.Font = new Font(CommonFunc.config.FontName, CommonFunc.config.FontSize);
-            this.Height = CommonFunc.config.FontSize + 6;
+            this.Height = (int)this.CreateGraphics().MeasureString("例", richTextBox1.Font).Height;// CommonFunc.config.FontSize + 6;
             //richTextBox1.Height = CommonFunc.config.FontSize;
 
             richTextBox1.MouseWheel += new MouseEventHandler(richTextBox1_MouseWheel);
-            CommonFunc.HotKey.OnHotkey += new GYP.Helper.HotKey.HotkeyEventHandler(HotKey_OnHotkey);
+            CommonFunc.HotKey.OnHotkey += new HotkeyEventHandler(HotKey_OnHotkey);
         }
 
         private void HotKey_OnHotkey(int HotKeyID)
         {
             int lineIndex = richTextBox1.GetLineFromCharIndex(_BookMark);
-            if (HotKeyID == CommonFunc.DictHotKey[Consts.HASH_KEY_HOT_KEY_UP] ||
-                (HotKeyID == CommonFunc.DictHotKey[Consts.HASH_KEY_HOT_KEY_LEFT]))
+            if (HotKeyID == CommonFunc.DictHotKey[Constants.HASH_KEY_HOT_KEY_UP] ||
+                (HotKeyID == CommonFunc.DictHotKey[Constants.HASH_KEY_HOT_KEY_LEFT]))
             {
                 ScrollRichText(true);
             }
-            else if ((HotKeyID == CommonFunc.DictHotKey[Consts.HASH_KEY_HOT_KEY_DOWN]) ||
-                (HotKeyID == CommonFunc.DictHotKey[Consts.HASH_KEY_HOT_KEY_RIGHT]))
+            else if ((HotKeyID == CommonFunc.DictHotKey[Constants.HASH_KEY_HOT_KEY_DOWN]) ||
+                (HotKeyID == CommonFunc.DictHotKey[Constants.HASH_KEY_HOT_KEY_RIGHT]))
             {
                 ScrollRichText(false);
             }
-            else if (HotKeyID == CommonFunc.DictHotKey[Consts.HASH_KEY_HOT_KEY_SHOW])
+            else if (HotKeyID == CommonFunc.DictHotKey[Constants.HASH_KEY_HOT_KEY_SHOW])
             {
                 lblText.BackColor = System.Drawing.Color.Black;
                 lblText.ForeColor = System.Drawing.Color.White;
@@ -162,7 +149,17 @@ namespace ReaderMe.Forms
 
         private void richTextBox1_SelectionChanged(object sender, EventArgs e)
         {
-            this._BookMark = richTextBox1.SelectionStart;
+            this.BookMark = richTextBox1.SelectionStart;
+
+            int endIndex = richTextBox1.TextLength - 1;
+            int maxLineIndex = richTextBox1.GetLineFromCharIndex(endIndex);
+            int activeLineIndex = richTextBox1.GetLineFromCharIndex(_BookMark);
+            int activeLineFirstCharIndex = richTextBox1.GetFirstCharIndexFromLine(activeLineIndex);
+            if (activeLineIndex < maxLineIndex)
+            {
+                endIndex = richTextBox1.GetFirstCharIndexFromLine(activeLineIndex + 1);
+            }
+            lblText.Text = richTextBox1.Text.Substring(activeLineFirstCharIndex, endIndex - activeLineFirstCharIndex);
         }
 
         private void mnuItemShowInTask_CheckedChanged(object sender, EventArgs e)
@@ -195,6 +192,7 @@ namespace ReaderMe.Forms
                     case Keys.B:
                         {
                             CommonFunc.AutoScroll = !CommonFunc.AutoScroll;
+                            CommonFunc.Timer.Interval = CommonFunc.config.MiniAutoScrollInterval * 1000;
                             CommonFunc.Timer.Enabled = CommonFunc.AutoScroll;
                             break;
                         }

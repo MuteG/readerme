@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.IO;
-using ReaderMe.Common;
+using System.Windows.Forms;
+using GP.Tools.ReaderMe.Common;
+using GP.Tools.ReaderMe.Helper;
+using GP.Tools.ReaderMe.Model;
 
-namespace ReaderMe.Forms
+namespace GP.Tools.ReaderMe.Forms
 {
-    public partial class FormConfigOpenHistory : Form
+    public partial class FormOpenHistory : Form
     {
-        public FormConfigOpenHistory()
+        public FormOpenHistory()
         {
             InitializeComponent();
         }
@@ -89,7 +87,7 @@ namespace ReaderMe.Forms
                     FileInformation file = new FileInformation(CommonFunc.config.FileInfoList[lsvOpenHistory.SelectedIndices[0]]);
                     newFileName = Path.Combine(Path.GetDirectoryName(file.Path),
                                         Path.GetFileNameWithoutExtension(newFileName) + Path.GetExtension(file.Path));
-                    GYP.Helper.FileHelper.FileHelper.RenameFileSafely(file.Path, newFileName);
+                    FileHelper.RenameFileSafely(file.Path, newFileName);
                     file.Path = newFileName;
                     CommonFunc.config.RemoveFile(lsvOpenHistory.SelectedIndices[0]);
                     CommonFunc.config.AddFile(file);

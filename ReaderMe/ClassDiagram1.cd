@@ -1,44 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
-  <Class Name="ReaderMe.Common.Command" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AABCAAAQChgAAAAAAGAACAAYghAEAAQIAQACBAAQFAI=</HashCode>
-      <FileName>Common\Command.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="ReaderMe.Common.Configurations" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgBAEQAgBABEAAoAEAAAgsAABABKAAABDACEAICAgBA=</HashCode>
+      <HashCode>AghAEYBgBEBAQAMTEAAgAlQQDABIAICBCABEAACBqQI=</HashCode>
       <FileName>Common\Configurations.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ReaderMe.Common.ConstValues" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AKAAABQAcAgEEAABAACAAgAABQAggAAAAgIAQAEAAAQ=</HashCode>
-      <FileName>Common\ConstValues.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReaderMe.Common.FileInformation" Collapsed="true">
     <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAAAoEAAAAAgAAgAAABAAAAAAAAAIAAAA=</HashCode>
-      <FileName>Common\FileInformation.cs</FileName>
+      <HashCode>AAAAAAAAAABAAQoEAAAAAgAAgAAABAAAAAAAAAIEAAA=</HashCode>
+      <FileName>Model\FileInformation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReaderMe.Forms.FormConfig" Collapsed="true">
     <Position X="4" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAACAAABAAAASAAAADMAEAQAAAAIAAAAgAAAA=</HashCode>
+      <HashCode>gAAAAAAAACAAABAAAASAAAQDMAEAQAAAAIAACAgAAEE=</HashCode>
       <FileName>Forms\FormConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ReaderMe.Forms.FormConfigOpenHistory" Collapsed="true">
     <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAIAAgACgAAwQAAACBBADyCwAAQAABAIAAAAgAAUQ=</HashCode>
+      <HashCode>CBAAIAAAACgAAQAAQACBBADCCAAAUAABAJAAAAgAAUQ=</HashCode>
       <FileName>Forms\FormConfigOpenHistory.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -66,28 +52,28 @@
   <Class Name="ReaderMe.Forms.FormMain" Collapsed="true">
     <Position X="4" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>B3dAQBCEgCABjAEuIMiBfFQalAQIJMgWlwAgAAAIGwE=</HashCode>
+      <HashCode>B2FQQhmEgLEBjIGuIPyBdEYahAQcBMg2lwQggAAIGQM=</HashCode>
       <FileName>Forms\FormMain.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GYP.Helper.FileHelper.FileHelper" Collapsed="true">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AhAAAIAAQAAIAAIBEEAABAAUAgAABIAEECAAkAAwAQA=</HashCode>
+      <HashCode>AhAAAIAAQAAAAAIBgAAABAAUAgAABAAEECAAkAAwAQA=</HashCode>
       <FileName>Helper\FileHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GYP.Helper.FileHelper.XMLHelper" Collapsed="true">
     <Position X="7.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AoAAAAAAAAAAAAFgAgEAAA4gAAAAAUAAAAIAABAAAAA=</HashCode>
+      <HashCode>EoAAAAABAABAoAFgAgEAAA4gAAAAAUAAAAIABBgAAAA=</HashCode>
       <FileName>Helper\XMLHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GYP.Helper.HotKey.Hotkey" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="5.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAIAAAAAAICAAAAAAAAAAAQAECAQACAA=</HashCode>
+      <HashCode>AgAAAAAAAAAAAIAAAAAAICAAACAAAAAAAQAECAQACAA=</HashCode>
       <FileName>Helper\HotKey.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -132,7 +118,7 @@
   <Class Name="ReaderMe.Properties.Resources" Collapsed="true">
     <Position X="2.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAEAQAAAAAAAAAAAAAEAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="ReaderMe.Properties.Settings" Collapsed="true">
@@ -163,7 +149,7 @@
     </TypeIdentifier>
   </Enum>
   <Delegate Name="GYP.Helper.HotKey.HotkeyEventHandler" Collapsed="true">
-    <Position X="0.5" Y="6.75" Width="1.5" />
+    <Position X="2.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Helper\HotKey.cs</FileName>

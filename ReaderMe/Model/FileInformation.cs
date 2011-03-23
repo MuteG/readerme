@@ -1,9 +1,9 @@
-﻿using System.Text;
-using System;
-using GYP.Helper.FileHelper;
-using ReaderMe.Common;
+﻿using System;
+using System.Text;
+using GP.Tools.ReaderMe.Common;
+using GP.Tools.ReaderMe.Helper;
 
-namespace ReaderMe.Common
+namespace GP.Tools.ReaderMe.Model
 {
     public class FileInformation
     {
@@ -84,7 +84,7 @@ namespace ReaderMe.Common
             {
                 if (string.IsNullOrEmpty(_UpdateTime))
                 {
-                    _UpdateTime = DateTime.Now.ToString(Consts.FORMAT_FILEINFO_UPDATETIME);
+                    _UpdateTime = DateTime.Now.ToString(Constants.FORMAT_FILEINFO_UPDATETIME);
                 }
                 return _UpdateTime;
             }
@@ -112,7 +112,7 @@ namespace ReaderMe.Common
             this.BookMark = 0;
             this.MD5 = FileHelper.CalcFileMD5(filePath);
             this.Encode = CommonFunc.GetEncoding(filePath).WebName;
-            this.UpdateTime = DateTime.Now.ToString(Consts.FORMAT_FILEINFO_UPDATETIME);
+            this.UpdateTime = DateTime.Now.ToString(Constants.FORMAT_FILEINFO_UPDATETIME);
         }
     }
         

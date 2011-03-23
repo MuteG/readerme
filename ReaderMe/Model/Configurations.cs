@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Drawing;
-using GYP.Helper.FileHelper;
+using System.IO;
+using GP.Tools.ReaderMe.Common;
+using GP.Tools.ReaderMe.Helper;
 
-namespace ReaderMe.Common
+namespace GP.Tools.ReaderMe.Model
 {
     public class Configurations
     {
@@ -38,7 +39,7 @@ namespace ReaderMe.Common
         private int m_IsDebug;
         private int m_FontSize;
         private int m_WordWrap;
-        private int m_AutoScrollInterval;
+        private int m_NormalAutoScrollInterval;
         private int m_BackColor;
 
         #endregion
@@ -54,7 +55,7 @@ namespace ReaderMe.Common
             set
             {
                 m_FileInfoList = value;
-                m_Xml.SetAllNodeValues(Consts.XPATH, value, "MD5");
+                m_Xml.SetAllNodeValues(Constants.XPATH, value, "MD5");
             }
         }
 
@@ -199,15 +200,57 @@ namespace ReaderMe.Common
         }
 
         /// <summary>
-        /// 获取或者设置自动滚动的时间间隔
+        /// 获取或者设置通常模式下自动滚动的时间间隔（秒）
         /// </summary>
-        public int AutoScrollInterval
+        public int NormalAutoScrollInterval
         {
-            get { return m_AutoScrollInterval; }
+            get { return m_NormalAutoScrollInterval; }
             set
             {
-                m_AutoScrollInterval = value;
-                m_Xml.WriteInteger("AutoScrollInterval", m_AutoScrollInterval);
+                m_NormalAutoScrollInterval = value;
+                m_Xml.WriteInteger("NormalAutoScrollInterval", m_NormalAutoScrollInterval);
+            }
+        }
+
+        private int m_NormalAutoScrollRows;
+        /// <summary>
+        /// 获取或者设置通常模式下自动滚动的距离（行数）
+        /// </summary>
+        public int NormalAutoScrollRows
+        {
+            get { return m_NormalAutoScrollRows; }
+            set
+            {
+                m_NormalAutoScrollRows = value;
+                m_Xml.WriteInteger("NormalAutoScrollRows", m_NormalAutoScrollRows);
+            }
+        }
+
+        private int m_MiniAutoScrollInterval;
+        /// <summary>
+        /// 获取或者设置迷你模式下自动滚动的时间间隔（秒）
+        /// </summary>
+        public int MiniAutoScrollInterval
+        {
+            get { return m_MiniAutoScrollInterval; }
+            set
+            {
+                m_MiniAutoScrollInterval = value;
+                m_Xml.WriteInteger("MiniAutoScrollInterval", m_MiniAutoScrollInterval);
+            }
+        }
+
+        private int m_MiniAutoScrollRows = 1;
+        /// <summary>
+        /// 获取或者设置迷你模式下自动滚动的距离（行数）
+        /// </summary>
+        public int MiniAutoScrollRows
+        {
+            get { return m_MiniAutoScrollRows; }
+            set
+            {
+                m_MiniAutoScrollRows = value;
+                m_Xml.WriteInteger("MiniAutoScrollRows", m_MiniAutoScrollRows);
             }
         }
 
@@ -313,11 +356,14 @@ namespace ReaderMe.Common
                 m_WordWrap = 0;
                 m_Xml.WriteInteger("WordWrap", m_WordWrap);
             }
-            m_AutoScrollInterval = m_Xml.ReadInteger("AutoScrollInterval", Consts.DEFAULT_TIMER_INTERVAL);
+            m_NormalAutoScrollInterval = m_Xml.ReadInteger("NormalAutoScrollInterval", Constants.DEFAULT_AUTOSCROLL_INTERVAL);
+            m_NormalAutoScrollRows = m_Xml.ReadInteger("NormalAutoScrollRows", Constants.DEFAULT_AUTOSCROLL_ROWS);
+            m_MiniAutoScrollInterval = m_Xml.ReadInteger("MiniAutoScrollInterval", Constants.DEFAULT_AUTOSCROLL_INTERVAL);
+            m_MiniAutoScrollRows = m_Xml.ReadInteger("MiniAutoScrollRows", Constants.DEFAULT_AUTOSCROLL_ROWS);
             m_FontName = m_Xml.ReadString("FontName", "NSimSun");
             m_FontSize = m_Xml.ReadInteger("FontSize", 12);
             m_BackColor = m_Xml.ReadInteger("BackColor", Color.White.ToArgb());
-            m_FileInfoList =  m_Xml.GetAllNodeValues<FileInformation>(Consts.XPATH);
+            m_FileInfoList =  m_Xml.GetAllNodeValues<FileInformation>(Constants.XPATH);
         }
 
         /// <summary>
@@ -405,7 +451,7 @@ namespace ReaderMe.Common
             {
                 this.m_FileInfoList.Add(file);
             }
-            m_Xml.SetAllNodeValues(Consts.XPATH, m_FileInfoList, "MD5");
+            m_Xml.SetAllNodeValues(Constants.XPATH, m_FileInfoList, "MD5");
         }
 
         /// <summary>
@@ -415,7 +461,7 @@ namespace ReaderMe.Common
         public void RemoveFile(FileInformation file)
         {
             this.m_FileInfoList.Remove(file);
-            m_Xml.RemoveNode(Consts.XPATH, file, "MD5");
+            m_Xml.RemoveNode(Constants.XPATH, file, "MD5");
         }
         
         /// <summary>
@@ -426,7 +472,7 @@ namespace ReaderMe.Common
         {
             FileInformation file = new FileInformation(m_FileInfoList[index]);
             this.m_FileInfoList.RemoveAt(index);
-            m_Xml.RemoveNode(Consts.XPATH, file, "MD5");
+            m_Xml.RemoveNode(Constants.XPATH, file, "MD5");
         }
 
  

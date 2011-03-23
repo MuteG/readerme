@@ -1,24 +1,8 @@
-﻿/*
- *********************************************************************
- * 程序名称 : ReaderMe
- * 类名称   : FormMain
- * 说明     : 主窗口
- * 作者     : 高云鹏
- * 作成日期 : 2008-10-27
- * 修改履历 :
- * 日期         修改者  程序版本    类型    理由
- * 2008-10-27   高云鹏  1.0.0.0     新规    首次记录
- * 2010-03-09   高云鹏  1.0.0.32    修改    更改作者主页链接
- *********************************************************************
- */
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
+﻿using System;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace ReaderMe.Forms
+namespace GP.Tools.ReaderMe.Forms
 {
     partial class AboutBox : Form
     {

@@ -1,6 +1,6 @@
-﻿namespace ReaderMe.Forms
+﻿namespace GP.Tools.ReaderMe.Forms
 {
-    partial class FormConfigOpenHistory
+    partial class FormOpenHistory
     {
         /// <summary>
         /// Required designer variable.

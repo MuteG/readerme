@@ -1,12 +1,7 @@
-﻿
-namespace ReaderMe.Common
+﻿namespace GP.Tools.ReaderMe.Common
 {
-    using System;
-
-    class Consts
+    public static class Constants
     {
-        private Consts() { }
-
         public const string XPATH = "Files/File";
 
         public const string FORMAT_FILEINFO_UPDATETIME = "yyyy/MM/dd HH:mm:ss";
@@ -49,7 +44,8 @@ namespace ReaderMe.Common
         public const int CODEPAGE_GB2312 = 936;
         public const int CODEPAGE_SHIFT_JIS = 932;
 
-        public const int DEFAULT_TIMER_INTERVAL = 2;
+        public const int DEFAULT_AUTOSCROLL_INTERVAL = 2;
+        public const int DEFAULT_AUTOSCROLL_ROWS = 1;
 
         public const int WIN_MESSAGE_WS_HSCROLL = 0x0114;
         public const int WIN_MESSAGE_WS_VSCROLL = 0x0115;

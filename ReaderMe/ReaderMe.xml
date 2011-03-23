@@ -63,5 +63,5 @@
   <MiniWidth>150</MiniWidth>
   <MiniTop>852</MiniTop>
   <MiniLeft>416</MiniLeft>
-  <AutoScrollInterval>2</AutoScrollInterval>
+  <NormalAutoScrollInterval>2</NormalAutoScrollInterval>
 </Root>

@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using ReaderMe.Common;
-using ReaderMe.Model;
+using GP.Tools.ReaderMe.Common;
 
-namespace ReaderMe.Forms
+namespace GP.Tools.ReaderMe.Forms
 {
     public partial class FormFind : Form
     {

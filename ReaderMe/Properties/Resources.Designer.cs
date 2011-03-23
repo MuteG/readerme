@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReaderMe.Properties {
+namespace GP.Tools.ReaderMe.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ReaderMe.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ReaderMe.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GP.Tools.ReaderMe.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -64,10 +64,10 @@ namespace ReaderMe.Properties {
         ///   查找类似 本软件是一款电子书阅读软件，是工作之余开发的小玩意儿。
         ///支持格式：TXT
         ///特色功能：老板键、窗口透明度调整、书签、无边框模式、迷你模式
-        ///本软件的初衷是功能至上，因此界面并不美观，力求使用而已。
+        ///本软件的初衷是功能至上，因此界面并不美观，力求实用而已。
         ///功能方面也都是一些初级的、最常用的功能，致力于满足基本的阅读需要，同时不断加入一些方便的新特性。
         ///由于使用C#开发，因此体积很小，只不过需要.Net FrameWork 2.0的支持。
-        ///纯绿色，除了软件自身的配置文件外，不会向系统内写入任何垃圾数据，也不会记录任何系统数据。 的本地化字符串。
+        ///纯绿色，除了软件自身的配置文件外，不会向系统内写入任何数据，也不会记录任何系统数据。 的本地化字符串。
         /// </summary>
         internal static string Introduction {
             get {
@@ -76,22 +76,45 @@ namespace ReaderMe.Properties {
         }
         
         /// <summary>
-        ///   查找类似 日期：2010-11-25
+        ///   查找类似 日期：2011-03-21
+        ///版本：1.1.0.5
+        ///更新：
+        ///修改 修改阅读历史管理窗口布局
+        ///修改 修改当前阅读文本的状态数据，使阅读者了解当前阅读进度
+        ///
+        ///日期：2011-02-28
+        ///版本：1.1.0.4
+        ///更新：
+        ///添加 加入调试时用来计算程序运行时间的代码
+        ///
+        ///日期：2010-12-24
+        ///版本：1.1.0.3
+        ///更新：
+        ///添加 智能去除空行功能。
+        ///
+        ///日期：2010-11-26
+        ///版本：1.1.0.2
+        ///更新：
+        ///修改 改变右键菜单颜色。
+        ///添加 迷你窗口也可以通过快捷键改变窗口透明度。
+        ///
+        ///日期：2010-11-25
         ///版本：1.1.0.1
         ///更新：
-        ///1、修改。改变菜单栏和状态栏的颜色。
-        ///2、添加。可以设置阅读窗口背景色。
+        ///修改 改变菜单栏和状态栏的颜色。
+        ///添加 可以设置阅读窗口背景色。
+        ///添加 添加软件简介以及发布履历窗口。
         ///
         ///日期：2010-11-11
         ///版本：1.1.0.0
         ///更新：
-        ///1、修改。改变菜单栏和状态栏的颜色。
+        ///修改 改变菜单栏和状态栏的颜色。
         ///
         ///日期：2010-03-09
         ///版本：1.0.0.32
         ///更新：
-        ///1、添加。“Ctrl + M”快捷键，在当前光标位置做书签。
-        ///2、修改。更新软件内的主页链接，由原来的谷歌站点，改为博客园。 的本地化字符串。
+        ///添加 “Ctrl + M”快捷键，在当前光标位置做书签。
+        ///修改 更新软件内的主页链接，由原来的谷歌站点，改为博客园。 的本地化字符串。
         /// </summary>
         internal static string ReleaseHistory {
             get {

@@ -1,57 +1,16 @@
-﻿/*
- *********************************************************************
- * 程序名称 : ReaderMe
- * 类名称   : FormMain
- * 说明     : 主窗口
- * 作者     : 高云鹏
- * 作成日期 : 2008-10-27
- * 修改履历 :
- * 日期         修改者  程序版本    类型    理由
- * 2008-10-27   高云鹏  1.0.0.0     添加    首次记录
- * 2009-11-16   高云鹏  1.0.0.29    修改    空白窗口的情况下，不提示是否保存当前进度
- *                                          根据当前显示行做书签
- *                                          右键菜单做书签时，会根据鼠标位置做书签
- * 2009-11-27   高云鹏  1.0.0.30    修改    修正软件运行后立刻关闭发生Error的错误
- * 2010-01-14   高云鹏  1.0.0.31    修改    精简模式时，不在任务栏上显示
- * 2010-03-09   高云鹏  1.0.0.32    修改    加入做书签的快捷键“Ctrl + M”
- * 2010-12-24   高云鹏  1.1.0.3     添加    加入智能去除空行功能
- * 2011-02-28   高云鹏  1.1.0.4     添加    加入调试时用来计算程序运行时间的代码
- *********************************************************************
- */
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
-using System.Diagnostics;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using ReaderMe.Common;
+using GP.Tools.ReaderMe.Common;
+using GP.Tools.ReaderMe.Model;
 
-namespace ReaderMe.Forms
+namespace GP.Tools.ReaderMe.Forms
 {
     public partial class FormMain : Form
     {
-#if DEBUG
-        private Stopwatch timeWatcher = new Stopwatch();
-#endif
-        private void TimeWatchStart()
-        {
-#if DEBUG
-            timeWatcher.Reset();
-            timeWatcher.Start();
-#endif
-        }
-
-        private void TimeWatchStop()
-        {
-#if DEBUG
-            timeWatcher.Stop();
-            Console.WriteLine(string.Format("{0}:{1}ms",
-                new StackFrame(1).GetMethod().Name,
-                timeWatcher.ElapsedMilliseconds));
-#endif
-        }
-
         public FormMain()
         {
             InitializeComponent();
@@ -64,7 +23,8 @@ namespace ReaderMe.Forms
         // 窗体初始化
         private void FormMain_Load(object sender, EventArgs e)
         {
-            TimeWatchStart();
+            TimeWatcher watcher = new TimeWatcher();
+            watcher.Start();
             CommonFunc.RichTextBox = rtbText;
             CommonFunc.Init();
             tsslInfo.Text = string.Empty;
@@ -91,7 +51,7 @@ namespace ReaderMe.Forms
 
             SetMenuOpenHistory();
             SetMenuEncoding();
-            TimeWatchStop();
+            watcher.Stop();
         }
 
         private void rtbText_VScroll(object sender, EventArgs e)
@@ -112,27 +72,29 @@ namespace ReaderMe.Forms
         /// </summary>
         private void SetMenuOpenHistory()
         {
-            TimeWatchStart();
+            TimeWatcher watcher = new TimeWatcher();
+            watcher.Start();
             mnuItemOpenHistory.DropDownItems.Clear();
             for (int i = 0; i < CommonFunc.config.FileInfoList.Count; i++)
             {
                 ToolStripItem item = mnuItemOpenHistory.DropDownItems.Add(Path.GetFileNameWithoutExtension(CommonFunc.config.FileInfoList[i].Path));
                 item.Click += new EventHandler(item_Click);
             }
-            TimeWatchStop();
+            watcher.Stop();
         }
 
         // 动态生成“编码”菜单
         private void SetMenuEncoding()
         {
-            TimeWatchStart();
+            TimeWatcher watcher = new TimeWatcher();
+            watcher.Start();
             mnuItemEncoding.DropDownItems.Clear();
             foreach (string encode in CommonFunc.DictEncodingToMenu.Values)
             {
                 ToolStripItem item = mnuItemEncoding.DropDownItems.Add(encode);
                 item.Click += new EventHandler(MenuEncoding_Click);
             }
-            TimeWatchStop();
+            watcher.Stop();
         }
 
         // 窗体关闭
@@ -154,7 +116,7 @@ namespace ReaderMe.Forms
         {
             string filePath = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
             string fileExt = Path.GetExtension(filePath).ToUpper();
-            if (!fileExt.Equals(Consts.EXT_TEXT_TXT))
+            if (!fileExt.Equals(Constants.EXT_TEXT_TXT))
             {
                 if (MessageBox.Show("您正在打开的文件可能不是文本文件，是否打开？", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
                 {
@@ -228,6 +190,7 @@ namespace ReaderMe.Forms
                     case Keys.B:
                         {
                             CommonFunc.AutoScroll = !CommonFunc.AutoScroll;
+                            CommonFunc.Timer.Interval = CommonFunc.config.NormalAutoScrollInterval * 1000;
                             CommonFunc.Timer.Enabled = CommonFunc.AutoScroll;
                             break;
                         }
@@ -467,17 +430,17 @@ namespace ReaderMe.Forms
         // 主菜单“管理打开历史”
         private void mnuItemConfigOpenHistory_Click(object sender, EventArgs e)
         {
-            new FormConfigOpenHistory().ShowDialog();
+            new FormOpenHistory().ShowDialog();
             SetMenuOpenHistory();
         }
 
         // 主菜单“设置”
         private void mnuItemConfig_Click(object sender, EventArgs e)
         {
-            if (new FormConfig().ShowDialog() == DialogResult.OK)
+            if (new FormSetting().ShowDialog() == DialogResult.OK)
             {
                 this.Opacity = (double)CommonFunc.config.Opacity / 100;
-                CommonFunc.Timer.Interval = CommonFunc.config.AutoScrollInterval * 1000;
+                CommonFunc.Timer.Interval = CommonFunc.config.NormalAutoScrollInterval * 1000;
                 this.rtbText.BackColor = Color.FromArgb(CommonFunc.config.BackColor);
             }
         }
@@ -554,39 +517,6 @@ namespace ReaderMe.Forms
 
         #endregion
 
-        #endregion
-
-        #region 添加全局热键的另一个方法
-        //protected override void WndProc(ref Message m)
-        //{
-        //    const int WM_HOTKEY = 0x0312;
-        //    if (hotKey == null)
-        //    {
-        //        hotKey = new Hotkey(this.Handle);
-        //        hotKeyHide = hotKey.RegisterHotKey(Keys.D1, Hotkey.KeyFlags.MOD_ALT);
-        //        hotKeyShow = hotKey.RegisterHotKey(Keys.D2, Hotkey.KeyFlags.MOD_ALT);
-        //    }
-
-        //    switch (m.Msg)
-        //    {
-        //        case WM_HOTKEY:
-        //            if (m.WParam.ToInt32() == hotKeyHide)
-        //            {
-        //                //this.ShowInTaskbar = false;
-        //                this.Hide();
-        //            }
-        //            else if (m.WParam.ToInt32() == hotKeyShow)
-        //            {
-        //                //this.ShowInTaskbar = true;
-        //                this.Show();
-        //            }
-        //            base.WndProc(ref m);
-        //            break;
-        //        default:
-        //            base.WndProc(ref m);
-        //            break;
-        //    }
-        //}
         #endregion
 
         #region 功能函数
@@ -773,7 +703,7 @@ namespace ReaderMe.Forms
         {
             if (CommonFunc.ActiveFile != null)
             {
-                CommonFunc.ActiveFile.UpdateTime = DateTime.Now.ToString(Consts.FORMAT_FILEINFO_UPDATETIME);
+                CommonFunc.ActiveFile.UpdateTime = DateTime.Now.ToString(Constants.FORMAT_FILEINFO_UPDATETIME);
                 //CommonFunc.ActiveFile.BookMark = rtbText.SelectionStart;
                 CommonFunc.config.AddFile(CommonFunc.ActiveFile);
             }
