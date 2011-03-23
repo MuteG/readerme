@@ -1,4 +1,4 @@
-﻿namespace ReaderMe.Forms
+﻿namespace GP.Tools.ReaderMe.Forms
 {
     partial class FormReleaseHistory
     {

@@ -1,19 +1,10 @@
-﻿
-//------------------------------------------------------------------
-// 说明：提供对文件系统的基本操作方法
-// 修改：2008-10-27 高云鹏 首次记录
-//        2008-11-11 高云鹏 修改了拷贝、移动文件的函数，添加强制拷贝、强制移动函数
-//        2008-11-21 高云鹏 添加了针对字符串、文件、流的MD5生成函数
-//        2008-12-05 高云鹏 添加了删除文件夹的函数、添加重命名文件的函数
-//        2009-01-05 高云鹏 添加强制删除文件夹的函数，整理代码、注释
-//------------------------------------------------------------------
-using System;
+﻿using System;
 using System.Data;
 using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 
-namespace GYP.Helper.FileHelper
+namespace GP.Tools.ReaderMe.Helper
 {
     class FileHelper
     {

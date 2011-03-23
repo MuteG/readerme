@@ -1,4 +1,4 @@
-﻿namespace ReaderMe.Forms
+﻿namespace GP.Tools.ReaderMe.Forms
 {
     partial class FormInputDialog
     {
@@ -59,7 +59,7 @@
             this.lblInfoMessage.AutoSize = true;
             this.lblInfoMessage.Location = new System.Drawing.Point(13, 9);
             this.lblInfoMessage.Name = "lblInfoMessage";
-            this.lblInfoMessage.Size = new System.Drawing.Size(41, 12);
+            this.lblInfoMessage.Size = new System.Drawing.Size(35, 12);
             this.lblInfoMessage.TabIndex = 2;
             this.lblInfoMessage.Text = "label1";
             // 
@@ -67,7 +67,7 @@
             // 
             this.tbxInput.Location = new System.Drawing.Point(13, 31);
             this.tbxInput.Name = "tbxInput";
-            this.tbxInput.Size = new System.Drawing.Size(268, 21);
+            this.tbxInput.Size = new System.Drawing.Size(268, 19);
             this.tbxInput.TabIndex = 3;
             // 
             // FormInputDialog

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
-namespace ReaderMe.Forms
+namespace GP.Tools.ReaderMe.Forms
 {
     public partial class FormInputDialog : Form
     {

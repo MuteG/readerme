@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Text;
+﻿using System.Windows.Forms;
 
-namespace ReaderMe.Model
+namespace GP.Tools.ReaderMe.Model
 {
     public class FindStatus
     {

@@ -1,15 +1,8 @@
-﻿//------------------------------------------------------------------
-// 说明：提供对日志记录（文件日志/系统日志）的基本操作方法
-// 修改：2008-10-27 高云鹏 首次记录
-//        2008-12-18 高云鹏 写日志函数加入异常处理，防止日志文件被占用时抛出异常
-//------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 
-namespace GYP.Helper.LogHelper
+namespace GP.Tools.ReaderMe.Helper
 {
     public enum LogInstance
     {

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using ReaderMe.Common;
-using ReaderMe.Forms;
+using GP.Tools.ReaderMe.Forms;
 
-namespace ReaderMe
+namespace GP.Tools.ReaderMe
 {
     static class Program
     {

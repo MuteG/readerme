@@ -1,18 +1,4 @@
-﻿/*
- *********************************************************************
- * 程序名称 : Helper（辅助功能类）
- * 类名称   : XMLHelper
- * 说明     : 提供对XML文档的基本操作方法
- * 作者     : 高云鹏
- * 作成日期 : 2009-03-18
- * 修改履历 :
- * 修改日期     修改者  修改原因
- * 2008-10-27   高云鹏  提供将一对象的属性写入到XML文档中/从XML文档中读取指定对象的属性值的功能
- * 2009-04-20   高云鹏  添加写入指定一集子节点属性值的函数
- * 2009-04-21   高云鹏  修改SetNodeValue（设置一级子节点），如果没有指定节点，则新建节点
- *********************************************************************
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -20,7 +6,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-namespace GYP.Helper.FileHelper
+namespace GP.Tools.ReaderMe.Helper
 {
     /// <summary>
     /// XML文档操作类
