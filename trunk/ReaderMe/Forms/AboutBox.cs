@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace GP.Tools.ReaderMe.Forms
+namespace GPSoft.Tools.ReaderMe.Forms
 {
     partial class AboutBox : Form
     {

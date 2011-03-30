@@ -1,4 +1,4 @@
-﻿namespace GP.Tools.ReaderMe.Common
+﻿namespace GPSoft.Tools.ReaderMe.Common
 {
     public static class Constants
     {

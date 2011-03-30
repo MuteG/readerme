@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
-using GP.Tools.ReaderMe.Forms;
+using GPSoft.Tools.ReaderMe.Forms;
 
-namespace GP.Tools.ReaderMe
+namespace GPSoft.Tools.ReaderMe
 {
     static class Program
     {

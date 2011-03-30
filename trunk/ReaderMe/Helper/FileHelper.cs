@@ -4,7 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 
-namespace GP.Tools.ReaderMe.Helper
+namespace GPSoft.Tools.ReaderMe.Helper
 {
     class FileHelper
     {

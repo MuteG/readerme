@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using GP.Tools.ReaderMe.Common;
-using GP.Tools.ReaderMe.Helper;
-using GP.Tools.ReaderMe.Model;
+using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.Helper;
+using GPSoft.Tools.ReaderMe.Model;
 
-namespace GP.Tools.ReaderMe.Forms
+namespace GPSoft.Tools.ReaderMe.Forms
 {
     public partial class FormOpenHistory : Form
     {

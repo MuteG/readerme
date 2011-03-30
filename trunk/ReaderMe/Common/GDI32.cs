@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace GP.Tools.ReaderMe.Common
+namespace GPSoft.Tools.ReaderMe.Common
 {
     class GDI32
     {

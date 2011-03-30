@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace GP.Tools.ReaderMe.Helper
+namespace GPSoft.Tools.ReaderMe.Helper
 {
     public enum LogInstance
     {

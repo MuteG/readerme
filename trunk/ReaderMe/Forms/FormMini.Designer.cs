@@ -1,4 +1,4 @@
-﻿namespace GP.Tools.ReaderMe.Forms
+﻿namespace GPSoft.Tools.ReaderMe.Forms
 {
     partial class FormMini
     {

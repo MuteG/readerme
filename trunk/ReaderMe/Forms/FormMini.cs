@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using GP.Tools.ReaderMe.Common;
-using GP.Tools.ReaderMe.Helper;
+using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.Helper;
 
-namespace GP.Tools.ReaderMe.Forms
+namespace GPSoft.Tools.ReaderMe.Forms
 {
     public partial class FormMini : Form
     {

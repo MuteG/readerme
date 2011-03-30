@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using GP.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.Common;
 
-namespace GP.Tools.ReaderMe.Forms
+namespace GPSoft.Tools.ReaderMe.Forms
 {
     public partial class FormSetting : Form
     {
