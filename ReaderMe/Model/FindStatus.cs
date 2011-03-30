@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GP.Tools.ReaderMe.Model
+namespace GPSoft.Tools.ReaderMe.Model
 {
     public class FindStatus
     {

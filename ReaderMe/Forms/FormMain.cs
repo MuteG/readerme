@@ -4,10 +4,10 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using GP.Tools.ReaderMe.Common;
-using GP.Tools.ReaderMe.Model;
+using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.Model;
 
-namespace GP.Tools.ReaderMe.Forms
+namespace GPSoft.Tools.ReaderMe.Forms
 {
     public partial class FormMain : Form
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using GP.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.Common;
 
-namespace GP.Tools.ReaderMe.Forms
+namespace GPSoft.Tools.ReaderMe.Forms
 {
     public partial class FormFind : Form
     {

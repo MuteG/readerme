@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using GP.Tools.ReaderMe.Common;
-using GP.Tools.ReaderMe.Helper;
+using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.Helper;
 
-namespace GP.Tools.ReaderMe.Model
+namespace GPSoft.Tools.ReaderMe.Model
 {
     public class Configurations
     {

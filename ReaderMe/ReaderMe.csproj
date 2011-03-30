@@ -8,7 +8,7 @@
     <ProjectGuid>{7D32BA14-F39E-4218-8B4D-9806E56B557D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GP.Tools.ReaderMe</RootNamespace>
+    <RootNamespace>GPSoft.Tools.ReaderMe</RootNamespace>
     <AssemblyName>ReaderMe</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
