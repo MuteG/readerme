@@ -136,7 +136,7 @@ namespace GPSoft.Tools.ReaderMe.Common
         #region WinAPI引用
 
         [DllImport("User32.dll", EntryPoint = "SendMessage")]
-        private static extern int SendMessage(
+        public static extern int SendMessage(
             IntPtr hWnd,    // handle to destination window
             int Msg,        // message
             int wParam,     // first message parameter

@@ -48,6 +48,10 @@ namespace GPSoft.Tools.ReaderMe.Forms
 
             // 自动换行
             mnuItemWordWrap.Checked = 1 == CommonFunc.config.WordWrap ? true : false;
+            rtbText.WordWrap = mnuItemWordWrap.Checked;
+
+            mnuItemReadOnly.Checked = CommonFunc.config.ReadOnly;
+            rtbText.ReadOnly = CommonFunc.config.ReadOnly;
 
             SetMenuOpenHistory();
             SetMenuEncoding();
@@ -224,6 +228,14 @@ namespace GPSoft.Tools.ReaderMe.Forms
                             }
                             break;
                         }
+                    case Keys.Space:
+                        if (mnuItemReadOnly.Checked)
+                        {
+                            CommonFunc.SendMessage(rtbText.Handle, Constants.WIN_MESSAGE_WS_VSCROLL, Constants.WIN_PARAM_SB_PAGEDOWN, 0x0);
+                            e.Handled = true;
+                            e.SuppressKeyPress = false;
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -339,6 +351,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
         private void mnuItemWordWrap_Click(object sender, EventArgs e)
         {
             rtbText.WordWrap = mnuItemWordWrap.Checked;
+            CommonFunc.config.WordWrap = mnuItemWordWrap.Checked ? 1 : 0;
         }
 
         // 主菜单"做书签"
@@ -368,18 +381,19 @@ namespace GPSoft.Tools.ReaderMe.Forms
                 {
                     if (item.Text.Equals(mnuItemEncoding.DropDownItems[i].Text))
                     {
-                        item.Checked = true;
                         if (null != CommonFunc.ActiveFile)
                         {
-                            CommonFunc.ActiveFile.Encode = CommonFunc.DictMenuToEncoding[item.Text];
+                            if (CommonFunc.GetEncoding(CommonFunc.ActiveFile.Path) == Encoding.Default &&
+                                (item.Text.Equals(Constants.ENCODE_MENU_GB2312) ||
+                                item.Text.Equals(Constants.ENCODE_MENU_SHIFT_JIS)))
+                            {
+                                CommonFunc.ActiveFile.Encode = CommonFunc.DictMenuToEncoding[item.Text];
+                                ShowFileText();
+                            }
                         }
                     }
-                    else
-                    {
-                        ((ToolStripMenuItem)mnuItemEncoding.DropDownItems[i]).Checked = false;
-                    }
                 }
-                ShowFileText();
+                CheckedMenuItemByName(CommonFunc.ActiveFile.Encode);
             }
         }
 
@@ -780,14 +794,17 @@ namespace GPSoft.Tools.ReaderMe.Forms
                     writer.Close();
 
                     FileInformation newFile = new FileInformation(CommonFunc.ActiveFile.Path);
+                    newFile.Encode = CommonFunc.ActiveFile.Encode;
                     // 获得历史记录中所有与当前文件路径相同的记录集
                     List<FileInformation> existFiles = CommonFunc.config.GetFileOnlyWithPath(newFile);
                     for (int i = 0; i < existFiles.Count; i++)
                     {
-                        existFiles[i].MD5 = newFile.MD5;
+                        CommonFunc.config.RemoveFile(existFiles[i]);
+                        //existFiles[i].MD5 = newFile.MD5;
                     }
-                    CommonFunc.ActiveFile = existFiles[0];
-                    CommonFunc.ActiveFile.UpdateTime = newFile.UpdateTime;
+                    //CommonFunc.ActiveFile = existFiles[0];
+                    //CommonFunc.ActiveFile.UpdateTime = newFile.UpdateTime;
+                    CommonFunc.ActiveFile = newFile;
                     CommonFunc.config.AddFile(CommonFunc.ActiveFile);
 
                     //OpenFile(CommonFunc.ActiveFile.Path);
@@ -798,6 +815,12 @@ namespace GPSoft.Tools.ReaderMe.Forms
                     //
                 }
             }
+        }
+
+        private void mnuItemReadOnly_Click(object sender, EventArgs e)
+        {
+            rtbText.ReadOnly = mnuItemReadOnly.Checked;
+            CommonFunc.config.ReadOnly = mnuItemReadOnly.Checked;
         }
     }
 }

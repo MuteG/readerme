@@ -71,6 +71,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuItemBookMark = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemJumpToBookMark = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuItemSmartClearSpaceLine = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemOperation = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemMini = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemSimpleMode = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,8 +82,7 @@
             this.mnuItemIntroduction = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuItemSmartClearSpaceLine = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuItemReadOnly = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -89,9 +90,9 @@
             // 
             // rtbText
             // 
-            this.rtbText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbText.ContextMenuStrip = this.contextMenuStrip1;
             this.rtbText.DetectUrls = false;
@@ -331,7 +332,8 @@
             this.mnuItemBookMark,
             this.mnuItemJumpToBookMark,
             this.toolStripMenuItem3,
-            this.mnuItemSmartClearSpaceLine});
+            this.mnuItemSmartClearSpaceLine,
+            this.mnuItemReadOnly});
             this.mnuItemEdit.Name = "mnuItemEdit";
             this.mnuItemEdit.Size = new System.Drawing.Size(43, 20);
             this.mnuItemEdit.Text = "编辑";
@@ -409,6 +411,18 @@
             this.mnuItemJumpToBookMark.Text = "移至书签";
             this.mnuItemJumpToBookMark.Click += new System.EventHandler(this.mnuItemJumpToBookMark_Click);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // mnuItemSmartClearSpaceLine
+            // 
+            this.mnuItemSmartClearSpaceLine.Name = "mnuItemSmartClearSpaceLine";
+            this.mnuItemSmartClearSpaceLine.Size = new System.Drawing.Size(152, 22);
+            this.mnuItemSmartClearSpaceLine.Text = "智能去空行";
+            this.mnuItemSmartClearSpaceLine.Click += new System.EventHandler(this.mnuItemSmartClearSpaceLine_Click);
+            // 
             // mnuItemOperation
             // 
             this.mnuItemOperation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -479,17 +493,13 @@
             this.mnuItemInfo.Text = "关于";
             this.mnuItemInfo.Click += new System.EventHandler(this.mnuItemInfo_Click);
             // 
-            // toolStripMenuItem3
+            // mnuItemReadOnly
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
-            // 
-            // mnuItemSmartClearSpaceLine
-            // 
-            this.mnuItemSmartClearSpaceLine.Name = "mnuItemSmartClearSpaceLine";
-            this.mnuItemSmartClearSpaceLine.Size = new System.Drawing.Size(152, 22);
-            this.mnuItemSmartClearSpaceLine.Text = "智能去空行";
-            this.mnuItemSmartClearSpaceLine.Click += new System.EventHandler(this.mnuItemSmartClearSpaceLine_Click);
+            this.mnuItemReadOnly.CheckOnClick = true;
+            this.mnuItemReadOnly.Name = "mnuItemReadOnly";
+            this.mnuItemReadOnly.Size = new System.Drawing.Size(152, 22);
+            this.mnuItemReadOnly.Text = "只读模式";
+            this.mnuItemReadOnly.Click += new System.EventHandler(this.mnuItemReadOnly_Click);
             // 
             // FormMain
             // 
@@ -509,10 +519,10 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ReaderMe";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormMain_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormMain_DragEnter);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
             this.contextMenuStrip1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
@@ -578,6 +588,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuItemIntroduction;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuItemSmartClearSpaceLine;
+        private System.Windows.Forms.ToolStripMenuItem mnuItemReadOnly;
     }
 }
 
