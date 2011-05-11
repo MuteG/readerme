@@ -59,6 +59,20 @@ namespace GPSoft.Tools.ReaderMe.Model
             }
         }
 
+        private int m_ReadOnly = 1;
+        /// <summary>
+        /// 获取或者设置文件是否只读
+        /// </summary>
+        public bool ReadOnly
+        {
+            get { return m_ReadOnly == 1; }
+            set
+            {
+                m_ReadOnly = value ? 1 : 0;
+                m_Xml.WriteInteger("ReadOnly", m_ReadOnly);
+            }
+        }
+
         /// <summary>
         /// 获取日志路径
         /// </summary>
@@ -362,6 +376,7 @@ namespace GPSoft.Tools.ReaderMe.Model
             m_MiniAutoScrollRows = m_Xml.ReadInteger("MiniAutoScrollRows", Constants.DEFAULT_AUTOSCROLL_ROWS);
             m_FontName = m_Xml.ReadString("FontName", "NSimSun");
             m_FontSize = m_Xml.ReadInteger("FontSize", 12);
+            m_ReadOnly = m_Xml.ReadInteger("ReadOnly", 1);
             m_BackColor = m_Xml.ReadInteger("BackColor", Color.White.ToArgb());
             m_FileInfoList =  m_Xml.GetAllNodeValues<FileInformation>(Constants.XPATH);
         }

@@ -57,6 +57,8 @@
         public const int WIN_PARAM_SB_LINELEFT = 0;
         public const int WIN_PARAM_SB_LINERIGHT = 1;
         public const int WIN_PARAM_SB_LINEUP = 0;
+        public const int WIN_PARAM_SB_PAGEUP = 2;
+        public const int WIN_PARAM_SB_PAGEDOWN = 3;
 
         public const int WIN_PARAM_SC_MOVE = 0xF010;
         public const int WIN_PARAM_SC_SIZE = 0xF000;
