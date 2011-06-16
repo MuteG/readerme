@@ -69,7 +69,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
             currentIndex = Math.Max(currentIndex, rtbText.SelectionStart);
             tsslWordCount.Text = string.Format("{0}/{1}({2:##.##}%)",
                 currentIndex, rtbText.TextLength,
-                rtbText.TextLength == 0 ? 0 : currentIndex * 100 / rtbText.TextLength);
+                rtbText.TextLength == 0 ? 0d : currentIndex * 100d / rtbText.TextLength);
         }
 
         /// <summary>
