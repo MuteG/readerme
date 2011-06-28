@@ -67,7 +67,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
         {
             int currentIndex = rtbText.GetCharIndexFromPosition(new Point(0, 0));
             currentIndex = Math.Max(currentIndex, rtbText.SelectionStart);
-            tsslWordCount.Text = string.Format("{0}/{1}({2:##.##}%)",
+            tsslWordCount.Text = string.Format("{0}/{1}({2:##.00}%)",
                 currentIndex, rtbText.TextLength,
                 rtbText.TextLength == 0 ? 0d : currentIndex * 100d / rtbText.TextLength);
         }
@@ -165,7 +165,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
                         {
                             if (Clipboard.ContainsText())
                             {
-                                rtbText.Paste();
+                               //rtbText.Paste();
                             }
                             else
                             {
