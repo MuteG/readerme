@@ -76,7 +76,6 @@ namespace GPSoft.Tools.ReaderMe.Helper
             return (int)hotkeyid;
         }
 
-        /**/
         /// <summary>
         /// 释放全部热键
         /// </summary>

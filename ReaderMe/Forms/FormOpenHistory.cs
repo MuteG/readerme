@@ -36,9 +36,9 @@ namespace GPSoft.Tools.ReaderMe.Forms
         private void SetListView()
         {
             lsvOpenHistory.Items.Clear();
-            for (int i = 0; i < CommonFunc.config.FileInfoList.Count; i++)
+            for (int i = 0; i < CommonFunc.Config.FileInfoList.Count; i++)
             {
-                FileInformation fileInfo = CommonFunc.config.FileInfoList[i];
+                FileInformation fileInfo = CommonFunc.Config.FileInfoList[i];
                 ListViewItem item = lsvOpenHistory.Items.Add("");
                 item.SubItems.Add(Path.GetFileNameWithoutExtension(fileInfo.Path));
                 item.SubItems.Add(File.Exists(fileInfo.Path) ? "存在" : "不存在");
@@ -57,11 +57,11 @@ namespace GPSoft.Tools.ReaderMe.Forms
             List<FileInformation> list = new List<FileInformation>();
             for (int i = 0; i < lsvOpenHistory.CheckedIndices.Count; i++)
             {
-                list.Add(CommonFunc.config.FileInfoList[lsvOpenHistory.CheckedIndices[i]]);
+                list.Add(CommonFunc.Config.FileInfoList[lsvOpenHistory.CheckedIndices[i]]);
             }
             for (int i = 0; i < list.Count; i++)
             {
-                CommonFunc.config.RemoveFile(list[i]);
+                CommonFunc.Config.RemoveFile(list[i]);
             }
             SetListView();
             list.Clear();
@@ -71,7 +71,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
         {
             if (lsvOpenHistory.SelectedIndices.Count > 0)
             {
-                FileInformation file = CommonFunc.config.FileInfoList[lsvOpenHistory.SelectedIndices[0]];
+                FileInformation file = CommonFunc.Config.FileInfoList[lsvOpenHistory.SelectedIndices[0]];
                 System.Diagnostics.Process.Start("explorer.exe", Path.GetDirectoryName(file.Path));
                 System.Diagnostics.Process.Start("explorer.exe", "/select," + file.Path);
             }
@@ -84,13 +84,13 @@ namespace GPSoft.Tools.ReaderMe.Forms
                 string newFileName = new FormInputDialog().MyShowDialog("请输入文件名");
                 if (!string.IsNullOrEmpty(newFileName))
                 {
-                    FileInformation file = new FileInformation(CommonFunc.config.FileInfoList[lsvOpenHistory.SelectedIndices[0]]);
+                    FileInformation file = new FileInformation(CommonFunc.Config.FileInfoList[lsvOpenHistory.SelectedIndices[0]]);
                     newFileName = Path.Combine(Path.GetDirectoryName(file.Path),
                                         Path.GetFileNameWithoutExtension(newFileName) + Path.GetExtension(file.Path));
                     FileHelper.RenameFileSafely(file.Path, newFileName);
                     file.Path = newFileName;
-                    CommonFunc.config.RemoveFile(lsvOpenHistory.SelectedIndices[0]);
-                    CommonFunc.config.AddFile(file);
+                    CommonFunc.Config.RemoveFile(lsvOpenHistory.SelectedIndices[0]);
+                    CommonFunc.Config.AddFile(file);
                     SetListView();
                 }
             }

@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lsvOpenHistory = new System.Windows.Forms.ListView();
-            this.colHeaderCheckBox = new System.Windows.Forms.ColumnHeader();
-            this.colHeaderFileName = new System.Windows.Forms.ColumnHeader();
-            this.colHeaderFileStatus = new System.Windows.Forms.ColumnHeader();
+            this.colHeaderCheckBox = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHeaderFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHeaderFileStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuItemOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemFileRename = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,14 +40,15 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.cbxCheckAll = new System.Windows.Forms.CheckBox();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lsvOpenHistory
             // 
-            this.lsvOpenHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsvOpenHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lsvOpenHistory.CheckBoxes = true;
             this.lsvOpenHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colHeaderCheckBox,
@@ -85,9 +86,10 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuItemOpenFolder,
             this.mnuItemFileRename,
+            this.toolStripMenuItem1,
             this.mnuItemSelectAllNotExistFile});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 76);
             // 
             // mnuItemOpenFolder
             // 
@@ -113,11 +115,11 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(76, 246);
+            this.btnDelete.Location = new System.Drawing.Point(116, 246);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(112, 23);
+            this.btnDelete.Size = new System.Drawing.Size(72, 23);
             this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "删除选择的记录";
+            this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -144,7 +146,12 @@
             this.cbxCheckAll.UseVisualStyleBackColor = true;
             this.cbxCheckAll.CheckedChanged += new System.EventHandler(this.cbxCheckAll_CheckedChanged);
             // 
-            // FormConfigOpenHistory
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(187, 6);
+            // 
+            // FormOpenHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,7 +162,7 @@
             this.Controls.Add(this.btnDelete);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(280, 150);
-            this.Name = "FormConfigOpenHistory";
+            this.Name = "FormOpenHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "管理打开历史";
             this.Load += new System.EventHandler(this.FormConfigOpenHistory_Load);
@@ -178,5 +185,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuItemFileRename;
         private System.Windows.Forms.ToolStripMenuItem mnuItemSelectAllNotExistFile;
         private System.Windows.Forms.CheckBox cbxCheckAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }

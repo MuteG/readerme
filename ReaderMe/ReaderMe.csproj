@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GPSoft.Tools.ReaderMe</RootNamespace>
     <AssemblyName>ReaderMe</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ManifestCertificateThumbprint>C3C7DD35357D2FE84899091EDB0BB87C533735EE</ManifestCertificateThumbprint>
     <ManifestKeyFile>ReaderMe_TemporaryKey.pfx</ManifestKeyFile>
@@ -46,6 +46,7 @@
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,7 +68,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -75,7 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CommonFunc.cs" />
+    <Compile Include="Controller\FormStateController.cs" />
     <Compile Include="Common\TimeWatcher.cs" />
+    <Compile Include="Controller\RichTextBoxController.cs" />
     <Compile Include="Model\Configurations.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\GDI32.cs" />
@@ -137,7 +139,6 @@
     </Compile>
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\HotKey.cs" />
-    <Compile Include="Helper\LogHelper.cs" />
     <Compile Include="Helper\XMLHelper.cs" />
     <Compile Include="Model\FindStatus.cs" />
     <Compile Include="Program.cs" />

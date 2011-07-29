@@ -29,11 +29,11 @@ namespace GPSoft.Tools.ReaderMe.Forms
         public FormMini()
         {
             InitializeComponent();
-            this.Width = CommonFunc.config.MiniWidth;
-            this.Top = CommonFunc.config.MiniTop;
-            this.Left = CommonFunc.config.MiniLeft;
-            this.Opacity = (double)CommonFunc.config.Opacity / 100;
-            this.BackColor = Color.FromArgb(CommonFunc.config.BackColor);
+            this.Width = CommonFunc.Config.MiniWidth;
+            this.Top = CommonFunc.Config.MiniTop;
+            this.Left = CommonFunc.Config.MiniLeft;
+            this.Opacity = (double)CommonFunc.Config.Opacity / 100;
+            this.BackColor = Color.FromArgb(CommonFunc.Config.BackColor);
         }
 
         public string RichText
@@ -65,8 +65,8 @@ namespace GPSoft.Tools.ReaderMe.Forms
         {
             CommonFunc.HotKey.HWnd = this.Handle;
             CommonFunc.RichTextBox = richTextBox1;
-            richTextBox1.Font = new Font(CommonFunc.config.FontName, CommonFunc.config.FontSize);
-            lblText.Font = new Font(CommonFunc.config.FontName, CommonFunc.config.FontSize);
+            richTextBox1.Font = new Font(CommonFunc.Config.FontName, CommonFunc.Config.FontSize);
+            lblText.Font = new Font(CommonFunc.Config.FontName, CommonFunc.Config.FontSize);
             this.Height = (int)this.CreateGraphics().MeasureString("例", richTextBox1.Font).Height;// CommonFunc.config.FontSize + 6;
             //richTextBox1.Height = CommonFunc.config.FontSize;
 
@@ -140,9 +140,9 @@ namespace GPSoft.Tools.ReaderMe.Forms
             int result = 0;
             this.ShowDialog();
             // 保存状态
-            CommonFunc.config.MiniLeft = this.Left;
-            CommonFunc.config.MiniTop = this.Top;
-            CommonFunc.config.MiniWidth = this.Width;
+            CommonFunc.Config.MiniLeft = this.Left;
+            CommonFunc.Config.MiniTop = this.Top;
+            CommonFunc.Config.MiniWidth = this.Width;
             result = _BookMark;
             return result;
         }
@@ -179,7 +179,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
             if (CommonFunc.ActiveFile != null)
             {
                 CommonFunc.ActiveFile.BookMark = richTextBox1.SelectionStart;
-                CommonFunc.config.AddFile(CommonFunc.ActiveFile);
+                CommonFunc.Config.AddFile(CommonFunc.ActiveFile);
             }
         }
 
@@ -192,22 +192,22 @@ namespace GPSoft.Tools.ReaderMe.Forms
                     case Keys.B:
                         {
                             CommonFunc.AutoScroll = !CommonFunc.AutoScroll;
-                            CommonFunc.Timer.Interval = CommonFunc.config.MiniAutoScrollInterval * 1000;
+                            CommonFunc.Timer.Interval = CommonFunc.Config.MiniAutoScrollInterval * 1000;
                             CommonFunc.Timer.Enabled = CommonFunc.AutoScroll;
                             break;
                         }
                     case Keys.Up:
                         {
                             e.Handled = true;
-                            CommonFunc.config.Opacity += 5;
-                            this.Opacity = (double)CommonFunc.config.Opacity / 100;
+                            CommonFunc.Config.Opacity += 5;
+                            this.Opacity = (double)CommonFunc.Config.Opacity / 100;
                             break;
                         }
                     case Keys.Down:
                         {
                             e.Handled = true;
-                            CommonFunc.config.Opacity -= 5;
-                            this.Opacity = (double)CommonFunc.config.Opacity / 100;
+                            CommonFunc.Config.Opacity -= 5;
+                            this.Opacity = (double)CommonFunc.Config.Opacity / 100;
                             break;
                         }
                 }

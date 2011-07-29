@@ -13,7 +13,7 @@ namespace GPSoft.Tools.ReaderMe.Common
     {
         #region 公有变量
 
-        public static Configurations config = Configurations.GetInstance();
+        public static Configurations Config = Configurations.GetInstance();
 
         #endregion
 
@@ -24,7 +24,6 @@ namespace GPSoft.Tools.ReaderMe.Common
         private static FindStatus _FindStatus;
         private static Timer timer = new Timer();
         private static Hotkey hotKey = new Hotkey();
-        private static LogHelper log = new LogHelper(LogInstance.LITxtLog);  //日志文件对象
 
         private static bool _AutoScroll;
         private static bool _IsMiniStatus;
@@ -164,7 +163,7 @@ namespace GPSoft.Tools.ReaderMe.Common
             //    RichTextBox.ScrollToCaret();
             //}
             int currentLine = RichTextBox.GetLineFromCharIndex(RichTextBox.GetCharIndexFromPosition(new System.Drawing.Point(0, 0)));
-            int autoScrollRows = IsMiniStatus ? config.MiniAutoScrollRows : config.NormalAutoScrollRows;
+            int autoScrollRows = IsMiniStatus ? Config.MiniAutoScrollRows : Config.NormalAutoScrollRows;
             int targetIndex = Math.Min(RichTextBox.GetFirstCharIndexFromLine(currentLine + autoScrollRows),
                                        RichTextBox.GetFirstCharIndexFromLine(RichTextBox.Lines.Length - 1));
             RichTextBox.SelectionStart = targetIndex;
@@ -182,7 +181,7 @@ namespace GPSoft.Tools.ReaderMe.Common
             else
             {
                 int currentLine = RichTextBox.GetLineFromCharIndex(RichTextBox.GetCharIndexFromPosition(new System.Drawing.Point(0, 0)));
-                int autoScrollRows = IsMiniStatus ? config.MiniAutoScrollRows : config.NormalAutoScrollRows;
+                int autoScrollRows = IsMiniStatus ? Config.MiniAutoScrollRows : Config.NormalAutoScrollRows;
                 int targetIndex = Math.Max(RichTextBox.GetFirstCharIndexFromLine(currentLine - autoScrollRows),
                                            0);
                 RichTextBox.SelectionStart = targetIndex;
@@ -260,7 +259,7 @@ namespace GPSoft.Tools.ReaderMe.Common
             hotKey.OnHotkey += new HotkeyEventHandler(hotKey_OnHotkey);
 
             // 自动滚动
-            timer.Interval = config.NormalAutoScrollInterval * 1000;
+            timer.Interval = Config.NormalAutoScrollInterval * 1000;
             timer.Tick += new System.EventHandler(timer1_Tick);
 
             _IsMiniStatus = false;
@@ -313,7 +312,7 @@ namespace GPSoft.Tools.ReaderMe.Common
                 }
                 else
                 {
-                    _RichTextBox.FindForm().Opacity = (double)CommonFunc.config.Opacity / 100;
+                    _RichTextBox.FindForm().Opacity = (double)CommonFunc.Config.Opacity / 100;
                     _RichTextBox.FindForm().Activate();
                 }
             }
@@ -507,42 +506,6 @@ namespace GPSoft.Tools.ReaderMe.Common
             return result;
         } 
 
-        #endregion
-
-        #region  写日志
-
-        /// <summary>
-        /// 写日志（只有Debug状态或者发生异常的时候才写日志）
-        /// </summary>
-        /// <param name="logType">日志类型，LogType参照</param>
-        /// <param name="message">日志内容</param>
-        public static void WriteLog(LogType logType, string message)
-        {
-            bool isDebug = (LogType.LTError == logType) || ((null != config) && (1 == config.IsDebug));
-            if (isDebug)
-            {
-                switch (log.InstanceType)
-                {
-                    case LogInstance.LITxtLog:
-                        {
-                            if ((null != config) && (config.LogPath.Equals("")))
-                            {
-                                log.WriteLog(logType, message);
-                            }
-                            else
-                            {
-                                log.WriteLog(logType, message, CommonFunc.config.LogPath);
-                            }
-                            break;
-                        }
-                    case LogInstance.LIEventLog:
-                        {
-                            log.WriteLog(logType, message);
-                            break;
-                        }
-                }
-            }
-        }
         #endregion
     }
 }
