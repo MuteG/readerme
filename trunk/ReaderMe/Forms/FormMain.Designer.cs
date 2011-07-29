@@ -45,10 +45,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsslInfo = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsslEncoding = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslWordCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -73,6 +69,7 @@
             this.mnuItemJumpToBookMark = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuItemSmartClearSpaceLine = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuItemReadOnly = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemOperation = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemMini = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemSimpleMode = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +79,7 @@
             this.mnuItemIntroduction = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuItemReadOnly = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -199,10 +196,6 @@
             this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.statusStrip1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.tsslInfo,
-            this.toolStripStatusLabel2,
-            this.tsslEncoding,
             this.toolStripStatusLabel3,
             this.tsslWordCount});
             this.statusStrip1.Location = new System.Drawing.Point(0, 224);
@@ -211,36 +204,11 @@
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(49, 17);
-            this.toolStripStatusLabel1.Text = "文件名：";
-            // 
-            // tsslInfo
-            // 
-            this.tsslInfo.Name = "tsslInfo";
-            this.tsslInfo.Size = new System.Drawing.Size(19, 17);
-            this.tsslInfo.Text = "无";
-            this.tsslInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(74, 17);
-            this.toolStripStatusLabel2.Text = " | 文件编码：";
-            // 
-            // tsslEncoding
-            // 
-            this.tsslEncoding.Name = "tsslEncoding";
-            this.tsslEncoding.Size = new System.Drawing.Size(31, 17);
-            this.tsslEncoding.Text = "未知";
-            // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(74, 17);
-            this.toolStripStatusLabel3.Text = " | 文章字数：";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(61, 17);
+            this.toolStripStatusLabel3.Text = "文章字数：";
             // 
             // tsslWordCount
             // 
@@ -327,13 +295,14 @@
             this.mnuItemFind,
             this.mnuItemFont,
             this.mnuItemEncoding,
+            this.toolStripMenuItem4,
             this.mnuItemWordWrap,
+            this.mnuItemReadOnly,
             this.toolStripSeparator1,
             this.mnuItemBookMark,
             this.mnuItemJumpToBookMark,
             this.toolStripMenuItem3,
-            this.mnuItemSmartClearSpaceLine,
-            this.mnuItemReadOnly});
+            this.mnuItemSmartClearSpaceLine});
             this.mnuItemEdit.Name = "mnuItemEdit";
             this.mnuItemEdit.Size = new System.Drawing.Size(43, 20);
             this.mnuItemEdit.Text = "编辑";
@@ -423,6 +392,14 @@
             this.mnuItemSmartClearSpaceLine.Text = "智能去空行";
             this.mnuItemSmartClearSpaceLine.Click += new System.EventHandler(this.mnuItemSmartClearSpaceLine_Click);
             // 
+            // mnuItemReadOnly
+            // 
+            this.mnuItemReadOnly.CheckOnClick = true;
+            this.mnuItemReadOnly.Name = "mnuItemReadOnly";
+            this.mnuItemReadOnly.Size = new System.Drawing.Size(152, 22);
+            this.mnuItemReadOnly.Text = "只读模式";
+            this.mnuItemReadOnly.Click += new System.EventHandler(this.mnuItemReadOnly_Click);
+            // 
             // mnuItemOperation
             // 
             this.mnuItemOperation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -493,13 +470,10 @@
             this.mnuItemInfo.Text = "关于";
             this.mnuItemInfo.Click += new System.EventHandler(this.mnuItemInfo_Click);
             // 
-            // mnuItemReadOnly
+            // toolStripMenuItem4
             // 
-            this.mnuItemReadOnly.CheckOnClick = true;
-            this.mnuItemReadOnly.Name = "mnuItemReadOnly";
-            this.mnuItemReadOnly.Size = new System.Drawing.Size(152, 22);
-            this.mnuItemReadOnly.Text = "只读模式";
-            this.mnuItemReadOnly.Click += new System.EventHandler(this.mnuItemReadOnly_Click);
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // FormMain
             // 
@@ -543,7 +517,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuItemPopBookMark;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel tsslInfo;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuItemFile;
         private System.Windows.Forms.ToolStripMenuItem mnuItemOpen;
@@ -556,9 +529,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuItemEncoding;
         private System.Windows.Forms.ToolStripMenuItem mnuItemOperation;
         private System.Windows.Forms.ToolStripMenuItem mnuItemConfig;
-        private System.Windows.Forms.ToolStripStatusLabel tsslEncoding;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripMenuItem mnuItemWordWrap;
         private System.Windows.Forms.ToolStripMenuItem mnuItemConfigOpenHistory;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
@@ -589,6 +559,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuItemSmartClearSpaceLine;
         private System.Windows.Forms.ToolStripMenuItem mnuItemReadOnly;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
     }
 }
 

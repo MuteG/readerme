@@ -14,25 +14,25 @@ namespace GPSoft.Tools.ReaderMe.Forms
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            CommonFunc.config.Opacity = int.Parse(numOpacity.Value.ToString("##"));
-            CommonFunc.config.NormalAutoScrollInterval = int.Parse(tbxNormalScrollInterval.Text.Trim());
-            CommonFunc.config.NormalAutoScrollRows = int.Parse(tbxNormalScrollRows.Text.Trim());
-            CommonFunc.config.MiniAutoScrollInterval = int.Parse(tbxMiniScrollInterval.Text.Trim());
-            CommonFunc.config.MiniAutoScrollRows = int.Parse(tbxMiniScrollRows.Text.Trim());
-            this.Opacity = (double)CommonFunc.config.Opacity / 100;
+            CommonFunc.Config.Opacity = int.Parse(numOpacity.Value.ToString("##"));
+            CommonFunc.Config.NormalAutoScrollInterval = int.Parse(tbxNormalScrollInterval.Text.Trim());
+            CommonFunc.Config.NormalAutoScrollRows = int.Parse(tbxNormalScrollRows.Text.Trim());
+            CommonFunc.Config.MiniAutoScrollInterval = int.Parse(tbxMiniScrollInterval.Text.Trim());
+            CommonFunc.Config.MiniAutoScrollRows = int.Parse(tbxMiniScrollRows.Text.Trim());
+            this.Opacity = (double)CommonFunc.Config.Opacity / 100;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
         private void FormConfig_Load(object sender, EventArgs e)
         {
-            this.Opacity = (double)CommonFunc.config.Opacity / 100;
-            numOpacity.Value = CommonFunc.config.Opacity;
-            tbxNormalScrollInterval.Text = CommonFunc.config.NormalAutoScrollInterval.ToString();
-            tbxNormalScrollRows.Text = CommonFunc.config.NormalAutoScrollRows.ToString();
-            tbxMiniScrollInterval.Text = CommonFunc.config.MiniAutoScrollInterval.ToString();
-            tbxMiniScrollRows.Text = CommonFunc.config.MiniAutoScrollRows.ToString();
-            pbxBackColor.BackColor = Color.FromArgb(CommonFunc.config.BackColor);
+            this.Opacity = (double)CommonFunc.Config.Opacity / 100;
+            numOpacity.Value = CommonFunc.Config.Opacity;
+            tbxNormalScrollInterval.Text = CommonFunc.Config.NormalAutoScrollInterval.ToString();
+            tbxNormalScrollRows.Text = CommonFunc.Config.NormalAutoScrollRows.ToString();
+            tbxMiniScrollInterval.Text = CommonFunc.Config.MiniAutoScrollInterval.ToString();
+            tbxMiniScrollRows.Text = CommonFunc.Config.MiniAutoScrollRows.ToString();
+            pbxBackColor.BackColor = Color.FromArgb(CommonFunc.Config.BackColor);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -47,8 +47,8 @@ namespace GPSoft.Tools.ReaderMe.Forms
             {
                 case Keys.Enter:
                     {
-                        CommonFunc.config.Opacity = int.Parse(numOpacity.Value.ToString("##"));
-                        this.Opacity = (double)CommonFunc.config.Opacity / 100;
+                        CommonFunc.Config.Opacity = int.Parse(numOpacity.Value.ToString("##"));
+                        this.Opacity = (double)CommonFunc.Config.Opacity / 100;
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                         break;
@@ -69,7 +69,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pbxBackColor.BackColor = colorDialog1.Color;
-                CommonFunc.config.BackColor = colorDialog1.Color.ToArgb();
+                CommonFunc.Config.BackColor = colorDialog1.Color.ToArgb();
             }
         }
     }

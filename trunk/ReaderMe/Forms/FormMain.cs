@@ -5,15 +5,21 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.Controller;
 using GPSoft.Tools.ReaderMe.Model;
 
 namespace GPSoft.Tools.ReaderMe.Forms
 {
     public partial class FormMain : Form
     {
+        private FormStateController formStateController;
+        private RichTextBoxController richTextBoxController;
+
         public FormMain()
         {
             InitializeComponent();
+            formStateController = new FormStateController(this);
+            richTextBoxController = new RichTextBoxController(rtbText);
         }
 
         #region 系统函数
@@ -23,53 +29,28 @@ namespace GPSoft.Tools.ReaderMe.Forms
         // 窗体初始化
         private void FormMain_Load(object sender, EventArgs e)
         {
-            TimeWatcher watcher = new TimeWatcher();
-            watcher.Start();
             CommonFunc.RichTextBox = rtbText;
             CommonFunc.Init();
-            tsslInfo.Text = string.Empty;
             // 窗体属性设置
-            this.Width = CommonFunc.config.Width;
-            this.Height = CommonFunc.config.Height;
-            this.Top = CommonFunc.config.Top;
-            this.Left = CommonFunc.config.Left;
-            this.Opacity = (double)CommonFunc.config.Opacity / 100;
-            // 文本区域设置
-            this.rtbText.BackColor = Color.FromArgb(CommonFunc.config.BackColor);
-            // 字体
-            rtbText.Font = new Font(CommonFunc.config.FontName, CommonFunc.config.FontSize);
-            // 支持拖放打开文件
-            rtbText.AllowDrop = true;
+            formStateController.LoadState();
+            // 富文本框属性设置
+            richTextBoxController.LoadState();
+
             rtbText.DragDrop += new DragEventHandler(FormMain_DragDrop);
             rtbText.DragEnter += new DragEventHandler(FormMain_DragEnter);
-            //rtbText.VScroll += new EventHandler(rtbText_VScroll);
-            //rtbText.HScroll += new EventHandler(rtbText_VScroll);
-            rtbText.SelectionChanged += new EventHandler(rtbText_VScroll);
+            rtbText.SelectionChanged += new EventHandler(rtbText_SelectionChanged);
 
             // 自动换行
-            mnuItemWordWrap.Checked = 1 == CommonFunc.config.WordWrap ? true : false;
-            rtbText.WordWrap = mnuItemWordWrap.Checked;
-
-            mnuItemReadOnly.Checked = CommonFunc.config.ReadOnly;
-            rtbText.ReadOnly = CommonFunc.config.ReadOnly;
+            mnuItemWordWrap.Checked = rtbText.WordWrap;
+            mnuItemReadOnly.Checked = rtbText.ReadOnly;
 
             SetMenuOpenHistory();
             SetMenuEncoding();
-            watcher.Stop();
         }
 
-        private void rtbText_VScroll(object sender, EventArgs e)
+        private void rtbText_SelectionChanged(object sender, EventArgs e)
         {
-            SetWordCountText();
-        }
-
-        private void SetWordCountText()
-        {
-            int currentIndex = rtbText.GetCharIndexFromPosition(new Point(0, 0));
-            currentIndex = Math.Max(currentIndex, rtbText.SelectionStart);
-            tsslWordCount.Text = string.Format("{0}/{1}({2:##.00}%)",
-                currentIndex, rtbText.TextLength,
-                rtbText.TextLength == 0 ? 0d : currentIndex * 100d / rtbText.TextLength);
+            tsslWordCount.Text = this.richTextBoxController.WordCountText;
         }
 
         /// <summary>
@@ -80,12 +61,30 @@ namespace GPSoft.Tools.ReaderMe.Forms
             TimeWatcher watcher = new TimeWatcher();
             watcher.Start();
             mnuItemOpenHistory.DropDownItems.Clear();
-            for (int i = 0; i < CommonFunc.config.FileInfoList.Count; i++)
+            for (int i = 0; i < CommonFunc.Config.FileInfoList.Count; i++)
             {
-                ToolStripItem item = mnuItemOpenHistory.DropDownItems.Add(Path.GetFileNameWithoutExtension(CommonFunc.config.FileInfoList[i].Path));
+                ToolStripItem item = mnuItemOpenHistory.DropDownItems.Add(Path.GetFileNameWithoutExtension(CommonFunc.Config.FileInfoList[i].Path));
                 item.Click += new EventHandler(item_Click);
             }
             watcher.Stop();
+        }
+
+        // “打开历史”菜单下的文件列表中的项的点击事件
+        private void item_Click(object sender, EventArgs e)
+        {
+            int index = mnuItemOpenHistory.DropDownItems.IndexOf((ToolStripItem)sender);
+            FileInformation file = CommonFunc.Config.FileInfoList[index];
+            if (File.Exists(file.Path))
+            {
+                CommonFunc.ActiveFile = file;
+                ShowFileText();
+            }
+            else
+            {
+                CommonFunc.Config.RemoveFile(file);
+                mnuItemOpenHistory.DropDownItems.Remove((ToolStripItem)sender);
+                MessageBox.Show("此文件不存在", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         // 动态生成“编码”菜单
@@ -108,12 +107,25 @@ namespace GPSoft.Tools.ReaderMe.Forms
             // 保存状态
             if (null != CommonFunc.ActiveFile)
             {
-                // 1.0.0.30
                 CommonFunc.ActiveFile.BookMark = rtbText.SelectionStart;
             }
             SaveStatus();
             // 注销热键
             CommonFunc.HotKey.UnregisterHotKeys();
+        }
+
+        /// <summary>
+        /// 保存当前状态
+        /// </summary>
+        private void SaveStatus()
+        {
+            if (CommonFunc.ActiveFile != null)
+            {
+                CommonFunc.ActiveFile.UpdateTime = DateTime.Now.ToString(Constants.FORMAT_FILEINFO_UPDATETIME);
+                CommonFunc.Config.AddFile(CommonFunc.ActiveFile);
+            }
+            this.formStateController.SaveState();
+            this.richTextBoxController.SaveState();
         }
 
         // 窗体拖放事件
@@ -123,7 +135,8 @@ namespace GPSoft.Tools.ReaderMe.Forms
             string fileExt = Path.GetExtension(filePath).ToUpper();
             if (!fileExt.Equals(Constants.EXT_TEXT_TXT))
             {
-                if (MessageBox.Show("您正在打开的文件可能不是文本文件，是否打开？", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+                if (MessageBox.Show("您正在打开的文件可能不是文本文件，是否打开？", "警告",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
                 {
                     return;
                 }
@@ -181,21 +194,21 @@ namespace GPSoft.Tools.ReaderMe.Forms
                     case Keys.Up:
                         {
                             e.Handled = true;
-                            CommonFunc.config.Opacity += 5;
-                            this.Opacity = (double)CommonFunc.config.Opacity / 100;
+                            CommonFunc.Config.Opacity += 5;
+                            this.Opacity = (double)CommonFunc.Config.Opacity / 100;
                             break;
                         }
                     case Keys.Down:
                         {
                             e.Handled = true;
-                            CommonFunc.config.Opacity -= 5;
-                            this.Opacity = (double)CommonFunc.config.Opacity / 100;
+                            CommonFunc.Config.Opacity -= 5;
+                            this.Opacity = (double)CommonFunc.Config.Opacity / 100;
                             break;
                         }
                     case Keys.B:
                         {
                             CommonFunc.AutoScroll = !CommonFunc.AutoScroll;
-                            CommonFunc.Timer.Interval = CommonFunc.config.NormalAutoScrollInterval * 1000;
+                            CommonFunc.Timer.Interval = CommonFunc.Config.NormalAutoScrollInterval * 1000;
                             CommonFunc.Timer.Enabled = CommonFunc.AutoScroll;
                             break;
                         }
@@ -276,31 +289,13 @@ namespace GPSoft.Tools.ReaderMe.Forms
             SaveFile();
             CommonFunc.ActiveFile = null;
             rtbText.Clear();
-            ShowStatusText();
+            ShowStatusBarText();
         }
 
         // 主菜单“退出”
         private void mnuItemExit_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        // “打开历史”菜单下的文件列表中的项的点击事件
-        private void item_Click(object sender, EventArgs e)
-        {
-            int index = mnuItemOpenHistory.DropDownItems.IndexOf((ToolStripItem)sender);
-            FileInformation file = CommonFunc.config.FileInfoList[index];
-            if (File.Exists(file.Path))
-            {
-                CommonFunc.ActiveFile = file;
-                ShowFileText();
-            }
-            else
-            {
-                CommonFunc.config.RemoveFile(file);
-                mnuItemOpenHistory.DropDownItems.Remove((ToolStripItem)sender);
-                MessageBox.Show("此文件不存在", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         #endregion
@@ -342,8 +337,8 @@ namespace GPSoft.Tools.ReaderMe.Forms
             {
                 rtbText.Font = fontDialog1.Font;
                 rtbText.Refresh();
-                CommonFunc.config.FontName = fontDialog1.Font.Name;
-                CommonFunc.config.FontSize = (int)fontDialog1.Font.Size;
+                CommonFunc.Config.FontName = fontDialog1.Font.Name;
+                CommonFunc.Config.FontSize = (int)fontDialog1.Font.Size;
             }
         }
 
@@ -351,7 +346,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
         private void mnuItemWordWrap_Click(object sender, EventArgs e)
         {
             rtbText.WordWrap = mnuItemWordWrap.Checked;
-            CommonFunc.config.WordWrap = mnuItemWordWrap.Checked ? 1 : 0;
+            CommonFunc.Config.WordWrap = mnuItemWordWrap.Checked ? 1 : 0;
         }
 
         // 主菜单"做书签"
@@ -454,9 +449,9 @@ namespace GPSoft.Tools.ReaderMe.Forms
         {
             if (new FormSetting().ShowDialog() == DialogResult.OK)
             {
-                this.Opacity = (double)CommonFunc.config.Opacity / 100;
-                CommonFunc.Timer.Interval = CommonFunc.config.NormalAutoScrollInterval * 1000;
-                this.rtbText.BackColor = Color.FromArgb(CommonFunc.config.BackColor);
+                this.Opacity = (double)CommonFunc.Config.Opacity / 100;
+                CommonFunc.Timer.Interval = CommonFunc.Config.NormalAutoScrollInterval * 1000;
+                this.rtbText.BackColor = Color.FromArgb(CommonFunc.Config.BackColor);
             }
         }
 
@@ -543,31 +538,24 @@ namespace GPSoft.Tools.ReaderMe.Forms
         {
             if (null != CommonFunc.ActiveFile)
             {
-                rtbText.Text = File.ReadAllText(CommonFunc.ActiveFile.Path, Encoding.GetEncoding(CommonFunc.ActiveFile.Encode));
-                rtbText.SelectionStart = (0 == CommonFunc.ActiveFile.BookMark) ? 0 : CommonFunc.ActiveFile.BookMark - 2;
-                rtbText.ScrollToCaret();
-                rtbText.Font = new Font(CommonFunc.config.FontName, CommonFunc.config.FontSize);
-                ShowStatusText();
+                this.richTextBoxController.ShowFileText();
+                ShowStatusBarText();
             }
         }
 
         /// <summary>
         /// 显示状态信息
         /// </summary>
-        private void ShowStatusText()
+        private void ShowStatusBarText()
         {
             if (null != CommonFunc.ActiveFile)
             {
-                tsslEncoding.Text = CommonFunc.ActiveFile.Encode;
-                tsslInfo.Text = Path.GetFileNameWithoutExtension(CommonFunc.ActiveFile.Path);
-                this.Text = tsslInfo.Text + " - ReaderMe";
-                SetWordCountText();
+                this.Text = Path.GetFileNameWithoutExtension(CommonFunc.ActiveFile.Path) + " - ReaderMe";
+                tsslWordCount.Text = this.richTextBoxController.WordCountText;
                 CheckedMenuItemByName(CommonFunc.ActiveFile.Encode);
             }
             else
             {
-                tsslEncoding.Text = "未知";
-                tsslInfo.Text = string.Empty;
                 this.Text = "ReaderMe";
                 tsslWordCount.Text = "0";
                 CheckedMenuItemByName(string.Empty);
@@ -607,13 +595,12 @@ namespace GPSoft.Tools.ReaderMe.Forms
                 }
                 else
                 {
-                    CommonFunc.ActiveFile = new FileInformation(CommonFunc.ActiveFile);
                     CommonFunc.ActiveFile.Path = saveFileDialog1.FileName;
                     SaveFile();
                 }
-                CommonFunc.config.AddFile(CommonFunc.ActiveFile);
+                CommonFunc.Config.AddFile(CommonFunc.ActiveFile);
                 SetMenuOpenHistory();
-                ShowStatusText();
+                ShowStatusBarText();
             }
         }
 
@@ -650,85 +637,8 @@ namespace GPSoft.Tools.ReaderMe.Forms
         /// <param name="filePath">文件完整路径</param>
         private void OpenFile(string filePath)
         {
-            try
-            {
-                FileInformation newFile = new FileInformation(filePath);
-                // 获得历史记录中所有与当前文件路径相同的记录集
-                List<FileInformation> existFiles = CommonFunc.config.GetFileOnlyWithPath(newFile);
-                // 获得已经获得的记录集中与当前文件MD5相同的记录
-                FileInformation existFile = CommonFunc.CheckFileMD5(newFile, existFiles);
-                if (existFiles.Count > 0)
-                {
-                    if (null == existFile)
-                    {
-                        DialogResult dr = MessageBox.Show("发现文件已改变，是覆盖当前ReaderMe中的记录？\n" +
-                            "此操作将覆盖当前ReaderMe中的记录。\n" +
-                                "如果选择“否”，将生成一条新纪录。\n" +
-                                "如果选择“取消”，将停止打开文件。", "发现文件已改变",
-                                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                        if (dr == DialogResult.Yes)
-                        {
-                            for (int i = 0; i < existFiles.Count; i++)
-                            {
-                                existFiles[i].MD5 = newFile.MD5;
-                            }
-                            CommonFunc.ActiveFile = existFiles[0];
-                            CommonFunc.ActiveFile.UpdateTime = newFile.UpdateTime;
-                        }
-                        else if (dr == DialogResult.No)
-                        {
-                            CommonFunc.ActiveFile = newFile;
-                        }
-                        else
-                        {
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        CommonFunc.ActiveFile = existFile;
-                    }
-                }
-                else // 新的文件
-                {
-                    if (CommonFunc.ActiveFile != null
-                        && !string.IsNullOrEmpty(filePath)
-                        && MessageBox.Show("是否将当前显示内容作为最新书签位置？", "当前阅读",
-                                MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
-                    {
-                        CommonFunc.ActiveFile.BookMark = rtbText.GetCharIndexFromPosition(rtbText.PointToClient(Cursor.Position));
-                        SaveStatus();
-                    }
-                    CommonFunc.ActiveFile = newFile;
-                }
-                CommonFunc.config.AddFile(CommonFunc.ActiveFile);
-
-                SetMenuOpenHistory();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("发生了错误：\n" + ex.Message, "异常", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        /// <summary>
-        /// 保存当前状态
-        /// </summary>
-        private void SaveStatus()
-        {
-            if (CommonFunc.ActiveFile != null)
-            {
-                CommonFunc.ActiveFile.UpdateTime = DateTime.Now.ToString(Constants.FORMAT_FILEINFO_UPDATETIME);
-                //CommonFunc.ActiveFile.BookMark = rtbText.SelectionStart;
-                CommonFunc.config.AddFile(CommonFunc.ActiveFile);
-            }
-            CommonFunc.config.Width = this.Width;
-            CommonFunc.config.Height = this.Height;
-            CommonFunc.config.Top = this.Top;
-            CommonFunc.config.Left = this.Left;
-            CommonFunc.config.FontName = rtbText.Font.Name;
-            CommonFunc.config.FontSize = (int)rtbText.Font.Size;
-            CommonFunc.config.WordWrap = mnuItemWordWrap.Checked ? 1 : 0;
+            this.richTextBoxController.OpenFile(filePath);
+            SetMenuOpenHistory();
         }
 
         private Point rtbLocation;
@@ -796,16 +706,16 @@ namespace GPSoft.Tools.ReaderMe.Forms
                     FileInformation newFile = new FileInformation(CommonFunc.ActiveFile.Path);
                     newFile.Encode = CommonFunc.ActiveFile.Encode;
                     // 获得历史记录中所有与当前文件路径相同的记录集
-                    List<FileInformation> existFiles = CommonFunc.config.GetFileOnlyWithPath(newFile);
+                    List<FileInformation> existFiles = CommonFunc.Config.GetFileOnlyWithPath(newFile);
                     for (int i = 0; i < existFiles.Count; i++)
                     {
-                        CommonFunc.config.RemoveFile(existFiles[i]);
+                        CommonFunc.Config.RemoveFile(existFiles[i]);
                         //existFiles[i].MD5 = newFile.MD5;
                     }
                     //CommonFunc.ActiveFile = existFiles[0];
                     //CommonFunc.ActiveFile.UpdateTime = newFile.UpdateTime;
                     CommonFunc.ActiveFile = newFile;
-                    CommonFunc.config.AddFile(CommonFunc.ActiveFile);
+                    CommonFunc.Config.AddFile(CommonFunc.ActiveFile);
 
                     //OpenFile(CommonFunc.ActiveFile.Path);
                     ShowFileText();
@@ -820,7 +730,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
         private void mnuItemReadOnly_Click(object sender, EventArgs e)
         {
             rtbText.ReadOnly = mnuItemReadOnly.Checked;
-            CommonFunc.config.ReadOnly = mnuItemReadOnly.Checked;
+            CommonFunc.Config.ReadOnly = mnuItemReadOnly.Checked;
         }
     }
 }
