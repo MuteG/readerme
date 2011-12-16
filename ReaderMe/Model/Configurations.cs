@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using GPSoft.Tools.ReaderMe.Common;
 using GPSoft.Tools.ReaderMe.Helper;
+using System.Windows.Forms;
 
 namespace GPSoft.Tools.ReaderMe.Model
 {
@@ -341,8 +342,9 @@ namespace GPSoft.Tools.ReaderMe.Model
             }
             ReadWindowSize(out m_Width, "Width", 166);
             ReadWindowSize(out m_Height, "Height", 166);
-            ReadWindowSize(out m_Top, "Top", 0);
-            ReadWindowSize(out m_Left, "Left", 0);
+            Rectangle screenArea = Screen.PrimaryScreen.WorkingArea;
+            ReadWindowSize(out m_Top, "Top", (screenArea.Height - m_Height) / 2);
+            ReadWindowSize(out m_Left, "Left", (screenArea.Width - m_Width) / 2);
             ReadWindowSize(out m_MiniWidth, "MiniWidth", 150);
             ReadWindowSize(out m_MiniTop, "MiniTop", 0);
             ReadWindowSize(out m_MiniLeft, "MiniLeft", 0);

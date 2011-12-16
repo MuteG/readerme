@@ -136,5 +136,63 @@ namespace GPSoft.Tools.ReaderMe.Controller
                 this.rtbCurrent.Font = new Font(CommonFunc.Config.FontName, CommonFunc.Config.FontSize);
             }
         }
+
+        /// <summary>
+        /// 保存文本
+        /// </summary>
+        public void SaveFile()
+        {
+            if (null != CommonFunc.ActiveFile)
+            {
+                StreamWriter sr = new StreamWriter(CommonFunc.ActiveFile.Path, false, Encoding.GetEncoding(CommonFunc.ActiveFile.Encode));
+                sr.Write(this.rtbCurrent.Text);
+                sr.Close();
+            }
+            else
+            {
+                SaveAsFile();
+            }
+        }
+
+        /// <summary>
+        /// 另存为文本
+        /// </summary>
+        public void SaveAsFile()
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.DefaultExt = "txt";
+                saveFileDialog.Filter = "文本文件|*.txt|所有文件|*.*";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (null == CommonFunc.ActiveFile)
+                    {
+                        CommonFunc.ActiveFile = new FileInformation();
+                        CommonFunc.ActiveFile.Path = saveFileDialog.FileName;
+                        SaveFile();
+                        CommonFunc.ActiveFile = new FileInformation(saveFileDialog.FileName);
+                    }
+                    else
+                    {
+                        CommonFunc.ActiveFile.Path = saveFileDialog.FileName;
+                        SaveFile();
+                    }
+                    CommonFunc.Config.AddFile(CommonFunc.ActiveFile);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 跳转到书签位置
+        /// </summary>
+        public void JumpToBookMark()
+        {
+            if (null != CommonFunc.ActiveFile)
+            {
+                this.rtbCurrent.SelectionStart = CommonFunc.ActiveFile.BookMark;
+                this.rtbCurrent.SelectionLength = 0;
+                this.rtbCurrent.ScrollToCaret();
+            }
+        }
     }
 }
