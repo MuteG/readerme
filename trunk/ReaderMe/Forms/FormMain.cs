@@ -32,9 +32,9 @@ namespace GPSoft.Tools.ReaderMe.Forms
             CommonFunc.RichTextBox = rtbText;
             CommonFunc.Init();
             // 窗体属性设置
-            formStateController.LoadState();
+            this.formStateController.LoadState();
             // 富文本框属性设置
-            richTextBoxController.LoadState();
+            this.richTextBoxController.LoadState();
 
             rtbText.DragDrop += new DragEventHandler(FormMain_DragDrop);
             rtbText.DragEnter += new DragEventHandler(FormMain_DragEnter);
@@ -171,7 +171,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
                         }
                     case Keys.S:
                         {
-                            SaveFile();
+                            richTextBoxController.SaveFile();
                             break;
                         }
                     case Keys.V:
@@ -274,7 +274,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
         // 主菜单“保存”
         private void mnuItemSave_Click(object sender, EventArgs e)
         {
-            SaveFile();
+            richTextBoxController.SaveFile();
         }
 
         // 主菜单“另存为”
@@ -286,7 +286,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
         // 主菜单“关闭当前文件”
         private void mnuItemCloseActiveFile_Click(object sender, EventArgs e)
         {
-            SaveFile();
+            richTextBoxController.SaveFile();
             CommonFunc.ActiveFile = null;
             rtbText.Clear();
             ShowStatusBarText();
@@ -363,7 +363,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
         // 主菜单“移至书签”
         private void mnuItemJumpToBookMark_Click(object sender, EventArgs e)
         {
-            JumpToBookMark();
+            this.richTextBoxController.JumpToBookMark();
         }
 
         // “编码”菜单下的文件列表中的项的点击事件
@@ -507,7 +507,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
         // 右键菜单“移至书签”
         private void mnuItemPopJumpToBookMark_Click(object sender, EventArgs e)
         {
-            JumpToBookMark();
+            this.richTextBoxController.JumpToBookMark();
         }
 
         // 右键菜单“做书签”
@@ -562,46 +562,15 @@ namespace GPSoft.Tools.ReaderMe.Forms
             }
         }
 
-        /// <summary>
-        /// 保存文本
-        /// </summary>
-        private void SaveFile()
-        {
-            if (null != CommonFunc.ActiveFile)
-            {
-                StreamWriter sr = new StreamWriter(CommonFunc.ActiveFile.Path, false, Encoding.GetEncoding(CommonFunc.ActiveFile.Encode));
-                sr.Write(rtbText.Text);
-                sr.Close();
-            }
-            else
-            {
-                SaveAsFile();
-            }
-        }
 
         /// <summary>
         /// 另存为文本
         /// </summary>
         private void SaveAsFile()
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                if (null == CommonFunc.ActiveFile)
-                {
-                    CommonFunc.ActiveFile = new FileInformation();
-                    CommonFunc.ActiveFile.Path = saveFileDialog1.FileName;
-                    SaveFile();
-                    CommonFunc.ActiveFile = new FileInformation(saveFileDialog1.FileName);
-                }
-                else
-                {
-                    CommonFunc.ActiveFile.Path = saveFileDialog1.FileName;
-                    SaveFile();
-                }
-                CommonFunc.Config.AddFile(CommonFunc.ActiveFile);
-                SetMenuOpenHistory();
-                ShowStatusBarText();
-            }
+            this.richTextBoxController.SaveAsFile();
+            SetMenuOpenHistory();
+            ShowStatusBarText();
         }
 
         /// <summary>
@@ -615,19 +584,6 @@ namespace GPSoft.Tools.ReaderMe.Forms
                 FormFind form = FormFind.GetInstance();
                 form.Show();
                 form.FormFind_Load(this, new EventArgs());
-            }
-        }
-
-        /// <summary>
-        /// 跳转到书签位置
-        /// </summary>
-        private void JumpToBookMark()
-        {
-            if (null != CommonFunc.ActiveFile)
-            {
-                rtbText.SelectionStart = CommonFunc.ActiveFile.BookMark;
-                rtbText.SelectionLength = 0;
-                rtbText.ScrollToCaret();
             }
         }
 
