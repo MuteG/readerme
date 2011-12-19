@@ -78,6 +78,7 @@
     <Compile Include="Controller\FormStateController.cs" />
     <Compile Include="Common\TimeWatcher.cs" />
     <Compile Include="Controller\RichTextBoxController.cs" />
+    <Compile Include="Helper\Dice.cs" />
     <Compile Include="Model\Configurations.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\GDI32.cs" />
