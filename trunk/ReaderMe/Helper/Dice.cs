@@ -49,16 +49,16 @@ namespace GPSoft.Tools.ReaderMe.Helper
         public static int Throw(int count, int number)
         {
             int result = 0;
-            Random random = new Random();
             List<int> valueList = new List<int>();
             for (int i = 0; i < count; i++)
             {
-                valueList.Add(random.Next(1, number));
+                Random random = new Random(Guid.NewGuid().GetHashCode());
+                valueList.Add(random.Next(1, number + 1));
             }
             valueList.Sort();
-            for (int i = ExceptMinCount; i <= valueList.Count - ExceptMaxCount - ExceptMinCount; i++)
+            for (int i = 0; i < valueList.Count - ExceptMaxCount - ExceptMinCount; i++)
             {
-                result += valueList[i];
+                result += valueList[i + ExceptMinCount];
             }
             result += Bonus;
             result -= Penalty;

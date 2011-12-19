@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReaderMe.exe" size="99840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReaderMe.exe" size="100864">
       <assemblyIdentity name="ReaderMe" version="1.1.0.12" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>S3Ai264keUanIwmsmezfTR6KWs8=</dsig:DigestValue>
+        <dsig:DigestValue>tv3860Sc4uxxCgvoznnTBctl9Us=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
