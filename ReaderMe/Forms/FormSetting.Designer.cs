@@ -39,16 +39,16 @@
             this.lblBackColor = new System.Windows.Forms.Label();
             this.pbxBackColor = new System.Windows.Forms.PictureBox();
             this.gbxNormalScroll = new System.Windows.Forms.GroupBox();
-            this.gbxMiniScroll = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tpgDisplay = new System.Windows.Forms.TabPage();
-            this.tpgAutoScroll = new System.Windows.Forms.TabPage();
             this.lblNormalScrollRows = new System.Windows.Forms.Label();
             this.tbxNormalScrollRows = new System.Windows.Forms.TextBox();
+            this.gbxMiniScroll = new System.Windows.Forms.GroupBox();
             this.lblMiniScrollRows = new System.Windows.Forms.Label();
             this.tbxMiniScrollRows = new System.Windows.Forms.TextBox();
             this.lblMiniScrollInterval = new System.Windows.Forms.Label();
             this.tbxMiniScrollInterval = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpgDisplay = new System.Windows.Forms.TabPage();
+            this.tpgAutoScroll = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.numOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBackColor)).BeginInit();
             this.gbxNormalScroll.SuspendLayout();
@@ -114,16 +114,16 @@
             this.lblNormalScrollInterval.AutoSize = true;
             this.lblNormalScrollInterval.Location = new System.Drawing.Point(6, 24);
             this.lblNormalScrollInterval.Name = "lblNormalScrollInterval";
-            this.lblNormalScrollInterval.Size = new System.Drawing.Size(103, 14);
+            this.lblNormalScrollInterval.Size = new System.Drawing.Size(115, 14);
             this.lblNormalScrollInterval.TabIndex = 5;
             this.lblNormalScrollInterval.Text = "自动滚动间隔（秒）";
             // 
             // tbxNormalScrollInterval
             // 
-            this.tbxNormalScrollInterval.Location = new System.Drawing.Point(115, 21);
+            this.tbxNormalScrollInterval.Location = new System.Drawing.Point(127, 21);
             this.tbxNormalScrollInterval.MaxLength = 2;
             this.tbxNormalScrollInterval.Name = "tbxNormalScrollInterval";
-            this.tbxNormalScrollInterval.Size = new System.Drawing.Size(48, 22);
+            this.tbxNormalScrollInterval.Size = new System.Drawing.Size(36, 22);
             this.tbxNormalScrollInterval.TabIndex = 1;
             this.tbxNormalScrollInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -142,6 +142,7 @@
             // 
             // pbxBackColor
             // 
+            this.pbxBackColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbxBackColor.Location = new System.Drawing.Point(103, 36);
             this.pbxBackColor.Name = "pbxBackColor";
             this.pbxBackColor.Size = new System.Drawing.Size(42, 30);
@@ -162,6 +163,24 @@
             this.gbxNormalScroll.TabStop = false;
             this.gbxNormalScroll.Text = "通常状态";
             // 
+            // lblNormalScrollRows
+            // 
+            this.lblNormalScrollRows.AutoSize = true;
+            this.lblNormalScrollRows.Location = new System.Drawing.Point(6, 52);
+            this.lblNormalScrollRows.Name = "lblNormalScrollRows";
+            this.lblNormalScrollRows.Size = new System.Drawing.Size(115, 14);
+            this.lblNormalScrollRows.TabIndex = 8;
+            this.lblNormalScrollRows.Text = "自动滚动距离（行）";
+            // 
+            // tbxNormalScrollRows
+            // 
+            this.tbxNormalScrollRows.Location = new System.Drawing.Point(127, 49);
+            this.tbxNormalScrollRows.MaxLength = 2;
+            this.tbxNormalScrollRows.Name = "tbxNormalScrollRows";
+            this.tbxNormalScrollRows.Size = new System.Drawing.Size(36, 22);
+            this.tbxNormalScrollRows.TabIndex = 7;
+            this.tbxNormalScrollRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // gbxMiniScroll
             // 
             this.gbxMiniScroll.Controls.Add(this.lblMiniScrollRows);
@@ -175,11 +194,49 @@
             this.gbxMiniScroll.TabStop = false;
             this.gbxMiniScroll.Text = "迷你状态";
             // 
+            // lblMiniScrollRows
+            // 
+            this.lblMiniScrollRows.AutoSize = true;
+            this.lblMiniScrollRows.Location = new System.Drawing.Point(6, 52);
+            this.lblMiniScrollRows.Name = "lblMiniScrollRows";
+            this.lblMiniScrollRows.Size = new System.Drawing.Size(115, 14);
+            this.lblMiniScrollRows.TabIndex = 12;
+            this.lblMiniScrollRows.Text = "自动滚动距离（行）";
+            // 
+            // tbxMiniScrollRows
+            // 
+            this.tbxMiniScrollRows.Enabled = false;
+            this.tbxMiniScrollRows.Location = new System.Drawing.Point(127, 49);
+            this.tbxMiniScrollRows.MaxLength = 2;
+            this.tbxMiniScrollRows.Name = "tbxMiniScrollRows";
+            this.tbxMiniScrollRows.Size = new System.Drawing.Size(36, 22);
+            this.tbxMiniScrollRows.TabIndex = 11;
+            this.tbxMiniScrollRows.Text = "1";
+            this.tbxMiniScrollRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // lblMiniScrollInterval
+            // 
+            this.lblMiniScrollInterval.AutoSize = true;
+            this.lblMiniScrollInterval.Location = new System.Drawing.Point(6, 24);
+            this.lblMiniScrollInterval.Name = "lblMiniScrollInterval";
+            this.lblMiniScrollInterval.Size = new System.Drawing.Size(115, 14);
+            this.lblMiniScrollInterval.TabIndex = 10;
+            this.lblMiniScrollInterval.Text = "自动滚动间隔（秒）";
+            // 
+            // tbxMiniScrollInterval
+            // 
+            this.tbxMiniScrollInterval.Location = new System.Drawing.Point(127, 21);
+            this.tbxMiniScrollInterval.MaxLength = 2;
+            this.tbxMiniScrollInterval.Name = "tbxMiniScrollInterval";
+            this.tbxMiniScrollInterval.Size = new System.Drawing.Size(36, 22);
+            this.tbxMiniScrollInterval.TabIndex = 9;
+            this.tbxMiniScrollInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tpgDisplay);
             this.tabControl1.Controls.Add(this.tpgAutoScroll);
             this.tabControl1.Location = new System.Drawing.Point(2, 3);
@@ -216,66 +273,9 @@
             this.tpgAutoScroll.Text = "自动翻页";
             this.tpgAutoScroll.UseVisualStyleBackColor = true;
             // 
-            // lblNormalScrollRows
-            // 
-            this.lblNormalScrollRows.AutoSize = true;
-            this.lblNormalScrollRows.Location = new System.Drawing.Point(6, 52);
-            this.lblNormalScrollRows.Name = "lblNormalScrollRows";
-            this.lblNormalScrollRows.Size = new System.Drawing.Size(103, 14);
-            this.lblNormalScrollRows.TabIndex = 8;
-            this.lblNormalScrollRows.Text = "自动滚动距离（行）";
-            // 
-            // tbxNormalScrollRows
-            // 
-            this.tbxNormalScrollRows.Location = new System.Drawing.Point(115, 49);
-            this.tbxNormalScrollRows.MaxLength = 2;
-            this.tbxNormalScrollRows.Name = "tbxNormalScrollRows";
-            this.tbxNormalScrollRows.Size = new System.Drawing.Size(48, 22);
-            this.tbxNormalScrollRows.TabIndex = 7;
-            this.tbxNormalScrollRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            // 
-            // lblMiniScrollRows
-            // 
-            this.lblMiniScrollRows.AutoSize = true;
-            this.lblMiniScrollRows.Location = new System.Drawing.Point(6, 52);
-            this.lblMiniScrollRows.Name = "lblMiniScrollRows";
-            this.lblMiniScrollRows.Size = new System.Drawing.Size(103, 14);
-            this.lblMiniScrollRows.TabIndex = 12;
-            this.lblMiniScrollRows.Text = "自动滚动距离（行）";
-            // 
-            // tbxMiniScrollRows
-            // 
-            this.tbxMiniScrollRows.Enabled = false;
-            this.tbxMiniScrollRows.Location = new System.Drawing.Point(115, 49);
-            this.tbxMiniScrollRows.MaxLength = 2;
-            this.tbxMiniScrollRows.Name = "tbxMiniScrollRows";
-            this.tbxMiniScrollRows.Size = new System.Drawing.Size(48, 22);
-            this.tbxMiniScrollRows.TabIndex = 11;
-            this.tbxMiniScrollRows.Text = "1";
-            this.tbxMiniScrollRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            // 
-            // lblMiniScrollInterval
-            // 
-            this.lblMiniScrollInterval.AutoSize = true;
-            this.lblMiniScrollInterval.Location = new System.Drawing.Point(6, 24);
-            this.lblMiniScrollInterval.Name = "lblMiniScrollInterval";
-            this.lblMiniScrollInterval.Size = new System.Drawing.Size(103, 14);
-            this.lblMiniScrollInterval.TabIndex = 10;
-            this.lblMiniScrollInterval.Text = "自动滚动间隔（秒）";
-            // 
-            // tbxMiniScrollInterval
-            // 
-            this.tbxMiniScrollInterval.Location = new System.Drawing.Point(115, 21);
-            this.tbxMiniScrollInterval.MaxLength = 2;
-            this.tbxMiniScrollInterval.Name = "tbxMiniScrollInterval";
-            this.tbxMiniScrollInterval.Size = new System.Drawing.Size(48, 22);
-            this.tbxMiniScrollInterval.TabIndex = 9;
-            this.tbxMiniScrollInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            // 
             // FormSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(197, 258);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnClose);
