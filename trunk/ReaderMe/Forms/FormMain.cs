@@ -689,5 +689,11 @@ namespace GPSoft.Tools.ReaderMe.Forms
             rtbText.ReadOnly = mnuItemReadOnly.Checked;
             CommonFunc.Config.ReadOnly = mnuItemReadOnly.Checked;
         }
+
+        private void menuItemTopMost_Click(object sender, EventArgs e)
+        {
+            menuItemTopMost.Checked = !menuItemTopMost.Checked;
+            this.TopMost = menuItemTopMost.Checked;
+        }
     }
 }

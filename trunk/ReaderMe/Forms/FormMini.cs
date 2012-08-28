@@ -58,7 +58,8 @@ namespace GPSoft.Tools.ReaderMe.Forms
 
         private void mnuItemTop_Click(object sender, EventArgs e)
         {
-            this.TopMost = true;
+            mnuItemTop.Checked = !mnuItemTop.Checked;
+            this.TopMost = mnuItemTop.Checked;
         }
 
         private void FormMini_Load(object sender, EventArgs e)
@@ -93,7 +94,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
                 lblText.ForeColor = System.Drawing.Color.White;
                 lblText.Refresh();
                 System.Threading.Thread.Sleep(200);
-                lblText.BackColor = System.Drawing.Color.White;
+                lblText.BackColor = System.Drawing.Color.Transparent;
                 lblText.ForeColor = System.Drawing.Color.Black;
                 lblText.Refresh();
             }
