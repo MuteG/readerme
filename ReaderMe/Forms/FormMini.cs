@@ -58,7 +58,7 @@ namespace GPSoft.Tools.ReaderMe.Forms
 
         private void mnuItemTop_Click(object sender, EventArgs e)
         {
-            mnuItemTop.Checked = !mnuItemTop.Checked;
+            //mnuItemTop.Checked = !mnuItemTop.Checked;
             this.TopMost = mnuItemTop.Checked;
         }
 
