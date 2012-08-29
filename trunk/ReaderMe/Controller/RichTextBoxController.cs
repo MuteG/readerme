@@ -67,6 +67,10 @@ namespace GPSoft.Tools.ReaderMe.Controller
         {
             try
             {
+                //System.IO.StreamReader reader = new System.IO.StreamReader(filePath);
+                //TODO 提高读取和显示的效率，考虑两种办法：1、使用流；2、将整个txt缓存起来，通过指针遍历
+                //TODO 有必要的话，考虑限制可以打开txt的最大大小
+                //TODO 提供大文件分割功能
                 FileInformation newFile = new FileInformation(filePath);
                 // 获得历史记录中所有与当前文件路径相同的记录集
                 List<FileInformation> existFiles = CommonFunc.Config.GetFileOnlyWithPath(newFile);
