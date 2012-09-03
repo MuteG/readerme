@@ -75,10 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CommonFunc.cs" />
+    <Compile Include="Common\ErrorCode.cs" />
+    <Compile Include="Common\ErrorManager.cs" />
     <Compile Include="Controller\FormStateController.cs" />
     <Compile Include="Common\TimeWatcher.cs" />
     <Compile Include="Controller\RichTextBoxController.cs" />
     <Compile Include="Helper\Dice.cs" />
+    <Compile Include="Model\AbstractFile.cs" />
+    <Compile Include="Model\Bookshelf.cs" />
     <Compile Include="Model\Configurations.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\GDI32.cs" />
@@ -95,6 +99,7 @@
     <Compile Include="Forms\FormReleaseHistory.Designer.cs">
       <DependentUpon>FormReleaseHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\FileErrorEventArgs.cs" />
     <Compile Include="Model\FileInformation.cs" />
     <Compile Include="Forms\FormFind.cs">
       <SubType>Form</SubType>
@@ -142,6 +147,15 @@
     <Compile Include="Helper\HotKey.cs" />
     <Compile Include="Helper\XMLHelper.cs" />
     <Compile Include="Model\FindStatus.cs" />
+    <Compile Include="Model\IFile.cs" />
+    <Compile Include="Model\MyRichTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\MyRichTextBox.Designer.cs">
+      <DependentUpon>MyRichTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Reader.cs" />
+    <Compile Include="Model\TextFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AboutBox.resx">
@@ -176,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormReleaseHistory.resx">
       <DependentUpon>FormReleaseHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\MyRichTextBox.resx">
+      <DependentUpon>MyRichTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -227,7 +244,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) D:\workspace\ReaderMe\release\$(TargetFileName)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

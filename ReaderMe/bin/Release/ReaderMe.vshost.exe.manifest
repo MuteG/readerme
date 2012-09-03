@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Clipboard2.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="ReaderMe" version="1.1.0.12" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="ReaderMe" version="2.0.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="ReaderMe.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReaderMe.exe" size="100864">
-      <assemblyIdentity name="ReaderMe" version="1.1.0.12" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReaderMe.exe" size="107008">
+      <assemblyIdentity name="ReaderMe" version="2.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>tv3860Sc4uxxCgvoznnTBctl9Us=</dsig:DigestValue>
+        <dsig:DigestValue>9NXpoqbzMdzigfks5o7+e0/vPdk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

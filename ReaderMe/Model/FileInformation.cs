@@ -114,6 +114,17 @@ namespace GPSoft.Tools.ReaderMe.Model
             this.Encode = CommonFunc.GetEncoding(filePath).WebName;
             this.UpdateTime = DateTime.Now.ToString(Constants.FORMAT_FILEINFO_UPDATETIME);
         }
+
+        public override int GetHashCode()
+        {
+            return this.MD5.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is FileInformation &&
+                0 == string.Compare((obj as FileInformation).MD5, this.MD5, true);
+        }
     }
         
 }

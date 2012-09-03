@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("G.P.Studio")]
 [assembly: AssemblyProduct("ReaderMe文本阅读器")]
-[assembly: AssemblyCopyright("Copyright © G.P.Studio 2008 - 2011")]
+[assembly: AssemblyCopyright("Copyright © G.P.Studio 2008 - 2012")]
 [assembly: AssemblyTrademark("G.P.")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“内部版本号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.0.13")]
-[assembly: AssemblyFileVersion("1.1.0.13")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
