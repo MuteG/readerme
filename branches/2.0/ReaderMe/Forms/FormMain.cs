@@ -477,6 +477,60 @@ namespace GPSoft.Tools.ReaderMe.Forms
         {
             ChangeSimpleMode();
         }
+
+        private Point formLocation;
+        private Point textLocation;
+        private Size formSize;
+        private Size textSize;
+
+        /// <summary>
+        /// 切换精简模式
+        /// </summary>
+        private void ChangeSimpleMode()
+        {
+            this.Hide();
+            if (this.FormBorderStyle == FormBorderStyle.Sizable)
+            {
+                this.rtbText.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+
+                this.formLocation = this.Location;
+                this.textLocation = this.rtbText.Location;
+                this.formSize = this.Size;
+                this.textSize = this.rtbText.Size;
+
+                Point location = this.PointToScreen(textLocation);
+                Size size = this.rtbText.Size;
+
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.statusStrip1.Hide();
+                this.menuStrip1.Hide();
+
+                this.Size = size;
+                this.Location = location;
+                this.rtbText.Location = new Point(0, 0);
+
+                mnuItemPopSimpleMode.Checked = true;
+                this.ShowInTaskbar = false;
+
+                this.rtbText.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
+            }
+            else
+            {
+                this.FormBorderStyle = FormBorderStyle.Sizable;
+                this.statusStrip1.Show();
+                this.menuStrip1.Show();
+
+                this.Size = formSize;
+                this.Location = formLocation;
+                this.rtbText.Location = this.textLocation;
+                this.rtbText.Size = this.textSize;
+
+                mnuItemPopSimpleMode.Checked = false;
+                this.ShowInTaskbar = true;
+            }
+            CommonFunc.ReRegisterHotKey();
+            this.Show();
+        }
         
         #endregion
 
@@ -595,43 +649,12 @@ namespace GPSoft.Tools.ReaderMe.Forms
         private void OpenFile(string filePath)
         {
             this.richTextBoxController.OpenFile(filePath);
+            this.myRichTextBox1.File = new TextFile() { Path = filePath, Encoding = Encoding.GetEncoding(CommonFunc.ActiveFile.Encode) };
+            this.myRichTextBox1.File.Load();
             SetMenuOpenHistory();
         }
 
-        private Point rtbLocation;
-        private Size rtbSize;
-        /// <summary>
-        /// 切换精简模式
-        /// </summary>
-        private void ChangeSimpleMode()
-        {
-            this.Hide();
-            if (this.FormBorderStyle == FormBorderStyle.Sizable)
-            {
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.statusStrip1.Hide();
-                this.menuStrip1.Hide();
-                this.rtbLocation = this.rtbText.Location;
-                this.rtbSize = this.rtbText.Size;
-                this.rtbText.Dock = DockStyle.Fill;
-                mnuItemPopSimpleMode.Checked = true;
-                this.ShowInTaskbar = false;
-            }
-            else
-            {
-                this.FormBorderStyle = FormBorderStyle.Sizable;
-                this.rtbText.Size = this.rtbSize;
-                this.rtbText.Location = this.rtbLocation;
-                this.rtbText.Dock = DockStyle.None;
-                this.rtbText.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
-                mnuItemPopSimpleMode.Checked = false;
-                this.ShowInTaskbar = true;
-                this.statusStrip1.Show();
-                this.menuStrip1.Show();
-            }
-            CommonFunc.ReRegisterHotKey();
-            this.Show();
-        }
+        
         
         #endregion
 
