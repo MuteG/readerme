@@ -494,7 +494,6 @@
             // 
             // myRichTextBox1
             // 
-            this.myRichTextBox1.File = null;
             this.myRichTextBox1.Location = new System.Drawing.Point(12, 27);
             this.myRichTextBox1.Name = "myRichTextBox1";
             this.myRichTextBox1.Size = new System.Drawing.Size(240, 186);
