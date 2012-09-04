@@ -649,8 +649,12 @@ namespace GPSoft.Tools.ReaderMe.Forms
         private void OpenFile(string filePath)
         {
             this.richTextBoxController.OpenFile(filePath);
-            this.myRichTextBox1.File = new TextFile() { Path = filePath, Encoding = Encoding.GetEncoding(CommonFunc.ActiveFile.Encode) };
-            this.myRichTextBox1.File.Load();
+            this.myRichTextBox1.File = new TextFile()
+            {
+                Path = filePath,
+                Encoding = Encoding.GetEncoding(CommonFunc.ActiveFile.Encode),
+                BlockLength = 20
+            };
             SetMenuOpenHistory();
         }
 
