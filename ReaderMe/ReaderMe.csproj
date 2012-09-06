@@ -77,13 +77,16 @@
     <Compile Include="Common\CommonFunc.cs" />
     <Compile Include="Common\ErrorCode.cs" />
     <Compile Include="Common\ErrorManager.cs" />
+    <Compile Include="Common\ObjectXMLSerializer.cs" />
     <Compile Include="Controller\FormStateController.cs" />
     <Compile Include="Common\TimeWatcher.cs" />
     <Compile Include="Controller\RichTextBoxController.cs" />
     <Compile Include="Helper\Dice.cs" />
     <Compile Include="Model\AbstractFile.cs" />
-    <Compile Include="Model\Bookshelf.cs" />
-    <Compile Include="Model\Configurations.cs" />
+    <Compile Include="Model\Book.cs" />
+    <Compile Include="Model\Bookmark.cs" />
+    <Compile Include="Model\BookStore.cs" />
+    <Compile Include="Model\Configuration.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\GDI32.cs" />
     <Compile Include="Common\User32.cs" />
@@ -147,7 +150,7 @@
     <Compile Include="Helper\HotKey.cs" />
     <Compile Include="Helper\XMLHelper.cs" />
     <Compile Include="Model\FindStatus.cs" />
-    <Compile Include="Model\IFile.cs" />
+    <Compile Include="Model\IReadable.cs" />
     <Compile Include="Model\MyRichTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>

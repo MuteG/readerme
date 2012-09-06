@@ -6,8 +6,9 @@
     using System.Text;
     using GPSoft.Tools.ReaderMe.Common;
     using GPSoft.Tools.ReaderMe.Helper;
+    using System.Drawing;
 
-    public class AbstractFile : IFile
+    public class AbstractFile : IReadable
     {
         /// <summary>
         /// 获取当前文件的MD5值
@@ -25,9 +26,9 @@
         public Encoding Encoding { get; set; }
 
         /// <summary>
-        /// 获取当前文件的最后阅读时间
+        /// 获取或设置当前文件的字体
         /// </summary>
-        public DateTime LastReadTime { get; set; }
+        public Font Font { get; set; }
 
         protected string _Text = string.Empty;
 
@@ -37,11 +38,11 @@
         public string Text { get; private set; }
 
         /// <summary>
-        /// 获取当前文件的总长度
+        /// 获取当前图书的总字数
         /// </summary>
         public int Length
         {
-            get { return this._Text.Length; }
+            get { return _Text.Length; }
         }
 
         private int _Position = 0;

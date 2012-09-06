@@ -1,92 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
-  <Class Name="GPSoft.Tools.ReaderMe.Model.FileInformation">
-    <Position X="0.5" Y="0.5" Width="2.25" />
+  <Class Name="GPSoft.Tools.ReaderMe.Model.Reader">
+    <Position X="0.5" Y="2" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAAQoEAAAAAgAAgAAABAAAAAAAAAIEAAA=</HashCode>
-      <FileName>Model\FileInformation.cs</FileName>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Model\Reader.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GPSoft.Tools.ReaderMe.Forms.FormFind" Collapsed="true">
-    <Position X="9.25" Y="2" Width="1.5" />
+  <Class Name="GPSoft.Tools.ReaderMe.Model.Book">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>wAAAAAAAACAAgFGCAACAAAACBAAA7AAEAIABAgRAAAA=</HashCode>
-      <FileName>Forms\FormFind.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Book.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GPSoft.Tools.ReaderMe.Forms.FormHelp">
-    <Position X="0.5" Y="4" Width="2.25" />
+  <Class Name="GPSoft.Tools.ReaderMe.Model.Bookmark">
+    <Position X="2.25" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAwAAAAAAAAAAAIAAAAA=</HashCode>
-      <FileName>Forms\FormHelp.cs</FileName>
+      <HashCode>AAAACAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Bookmark.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GPSoft.Tools.ReaderMe.Forms.FormInputDialog" Collapsed="true">
-    <Position X="9.5" Y="5.75" Width="1.5" />
+  <Class Name="GPSoft.Tools.ReaderMe.Model.BookStore">
+    <Position X="4.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>kAAAAAAAACAEAAEAAAiAAEACAAEAAAIAAAAAAAEAAAA=</HashCode>
-      <FileName>Forms\FormInputDialog.cs</FileName>
+      <HashCode>AEIAAEAAAAAAAAAACAAABAAAAAAIAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Model\BookStore.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GPSoft.Tools.ReaderMe.Forms.FormMain" Collapsed="true">
-    <Position X="3" Y="5.25" Width="1.5" />
+  <Class Name="GPSoft.Tools.ReaderMe.Model.Configurations" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>B2FQQhmEgLEBzIEuINyBdEZahAQcBMgWlwQgAAAIGRM=</HashCode>
-      <FileName>Forms\FormMain.cs</FileName>
+      <HashCode>AghAEYBgBEBAcAOTAAAgAlQQDABJAICRCABMAAyBqQI=</HashCode>
+      <FileName>Model\Configurations.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GPSoft.Tools.ReaderMe.Helper.FileHelper" Collapsed="true">
-    <Position X="3" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAIAAAAAAAAIAgAAABAAQAgAABAAAEAAAkAAgAQA=</HashCode>
-      <FileName>Helper\FileHelper.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GPSoft.Tools.ReaderMe.Helper.XMLHelper" Collapsed="true">
-    <Position X="9" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EoAAAAABAABAoAFgAgEAAA4gAAAAAUAAAAIABBgAAAA=</HashCode>
-      <FileName>Helper\XMLHelper.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GPSoft.Tools.ReaderMe.Helper.Hotkey" BaseTypeListCollapsed="true">
-    <Position X="5.5" Y="0.5" Width="3" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Enum Name="GPSoft.Tools.ReaderMe.Helper.Hotkey.KeyFlags">
-        <TypeIdentifier>
-          <NewMemberFileName>Helper\HotKey.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAIAAAAAAICAAACAAAAAAAQAECAQACAA=</HashCode>
-      <FileName>Helper\HotKey.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="GPSoft.Tools.ReaderMe.Model.FindStatus">
-    <Position X="3" Y="0.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>QAAACAAAAAAAAEAIAAACCAAACCAAQIAAAAgCAAAAEAQ=</HashCode>
-      <FileName>Model\FindStatus.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="GPSoft.Tools.ReaderMe.Program" Collapsed="true">
-    <Position X="3" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Delegate Name="GPSoft.Tools.ReaderMe.Helper.HotkeyEventHandler" Collapsed="true">
-    <Position X="8" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Helper\HotKey.cs</FileName>
-    </TypeIdentifier>
-  </Delegate>
   <Font Name="MS UI Gothic" Size="9" />
 </ClassDiagram>
