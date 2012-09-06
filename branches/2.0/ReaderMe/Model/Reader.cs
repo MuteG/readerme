@@ -1,15 +1,7 @@
-﻿/* *************************************************************************
- * Copyright (c)2012 NTT DATA BEEN (China) Information Technology Co.,Ltd.
- * 作成者  ：gaoyunpeng
- * 機能概要：
- * 改訂履歴：
- * 2012/9/3 16:16:25 新規 gaoyunpeng
- * *************************************************************************/
-namespace GPSoft.Tools.ReaderMe.Model
+﻿namespace GPSoft.Tools.ReaderMe.Model
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// 读者
@@ -17,13 +9,21 @@ namespace GPSoft.Tools.ReaderMe.Model
     public class Reader
     {
         /// <summary>
-        /// 获取读者的私人书架
-        /// </summary>
-        public Bookshelf Bookshelf { get; private set; }
-
-        /// <summary>
         /// 获取或设置读者的用户名
         /// </summary>
+        [XmlAttribute("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// 获取所有私人书签
+        /// </summary>
+        [XmlArray("bookmarks"), XmlArrayItem("mark")]
+        public List<Bookmark> Marks { get; set; }
+
+        public Reader()
+        {
+            this.Name = "ReaderMe";
+            this.Marks = new List<Bookmark>();
+        }
     }
 }

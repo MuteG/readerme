@@ -1,11 +1,4 @@
-﻿/* *************************************************************************
- * Copyright (c)2012 NTT DATA BEEN (China) Information Technology Co.,Ltd.
- * 作成者  ：gaoyunpeng
- * 機能概要：
- * 改訂履歴：
- * 2012/9/3 16:01:15 新規 gaoyunpeng
- * *************************************************************************/
-namespace GPSoft.Tools.ReaderMe.Model
+﻿namespace GPSoft.Tools.ReaderMe.Model
 {
     using System;
     using System.Globalization;

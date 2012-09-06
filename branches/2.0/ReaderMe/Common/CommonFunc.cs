@@ -13,7 +13,7 @@ namespace GPSoft.Tools.ReaderMe.Common
     {
         #region 公有变量
 
-        public static Configurations Config = Configurations.GetInstance();
+        public static Configuration Config = Configuration.GetInstance();
 
         #endregion
 
