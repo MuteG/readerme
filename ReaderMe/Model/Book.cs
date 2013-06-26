@@ -39,7 +39,7 @@ using System.Drawing;
                 }
             }
         }
-
+        
         public Book(IReadable file)
         {
             this._File = file;

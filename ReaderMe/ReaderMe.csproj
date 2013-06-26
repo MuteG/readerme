@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CommonFunc.cs" />
+    <Compile Include="Common\ConfigLoader.cs" />
     <Compile Include="Common\ErrorCode.cs" />
     <Compile Include="Common\ErrorManager.cs" />
     <Compile Include="Common\ObjectXMLSerializer.cs" />
@@ -102,6 +103,12 @@
     <Compile Include="Forms\FormReleaseHistory.Designer.cs">
       <DependentUpon>FormReleaseHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\config\Config.cs" />
+    <Compile Include="Model\config\FileInfo.cs" />
+    <Compile Include="Model\config\GeneralConfig.cs" />
+    <Compile Include="Model\config\WindowConfig.cs" />
+    <Compile Include="Model\error\ExceptionMessageManager.cs" />
+    <Compile Include="Model\error\ReaderMeException.cs" />
     <Compile Include="Model\FileErrorEventArgs.cs" />
     <Compile Include="Model\FileInformation.cs" />
     <Compile Include="Forms\FormFind.cs">
@@ -208,7 +215,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -245,6 +251,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
