@@ -1,6 +1,7 @@
 ﻿namespace GPSoft.Tools.ReaderMe.Common
 {
     using System.IO;
+    using System.Xml;
     using System.Xml.Serialization;
     
     /// <summary>
@@ -17,10 +18,13 @@
         {
             if (File.Exists(path))
             {
-                using (StreamReader stream = new StreamReader(path))
+                XmlSerializer xs = new XmlSerializer(typeof(T));
+                using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(T));
-                    serializableObject = serializer.Deserialize(stream) as T;
+                    using (XmlReader reader = XmlReader.Create(stream))
+                    {
+                        serializableObject = xs.Deserialize(reader) as T;
+                    }
                 }
             }
         }
@@ -32,10 +36,17 @@
         /// <param name="path"></param>
         public static void Save(object serializableObject, string path)
         {
-            using (StreamWriter textWriter = new StreamWriter(path, false))
+           XmlSerializer xs = new XmlSerializer(typeof(T));
+           using (FileStream stream = new FileStream(path, FileMode.Truncate))
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(serializableObject.GetType());
-                xmlSerializer.Serialize(textWriter, serializableObject);
+                XmlWriterSettings settings = new XmlWriterSettings()
+                {
+                    Indent = true
+                };
+                using (XmlWriter writer = XmlWriter.Create(stream, settings))
+                {
+                    xs.Serialize(writer, serializableObject);
+                }
             }
         }
     }
