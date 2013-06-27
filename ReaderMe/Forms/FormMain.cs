@@ -4,9 +4,9 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.common;
 using GPSoft.Tools.ReaderMe.Controller;
-using GPSoft.Tools.ReaderMe.Model;
+using GPSoft.Tools.ReaderMe.module;
 using GPSoft.Tools.ReaderMe.Helper;
 
 namespace GPSoft.Tools.ReaderMe.Forms

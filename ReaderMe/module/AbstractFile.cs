@@ -1,10 +1,10 @@
-﻿namespace GPSoft.Tools.ReaderMe.Model
+﻿namespace GPSoft.Tools.ReaderMe.module
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-    using GPSoft.Tools.ReaderMe.Common;
+    using GPSoft.Tools.ReaderMe.common;
     using GPSoft.Tools.ReaderMe.Helper;
     using System.Drawing;
 

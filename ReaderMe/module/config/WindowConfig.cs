@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Xml.Serialization;
 
-namespace GPSoft.Tools.ReaderMe.Model.config
+namespace GPSoft.Tools.ReaderMe.module.config
 {
     [Serializable]
     public sealed class WindowConfig
     {
+        /// <summary>
+        /// 获取或设置窗体模式
+        /// </summary>
+        [XmlAttribute("mode")]
+        public WindowMode Mode { get; set; }
         /// <summary>
         /// 获取或者设置主窗体左上角Y坐标
         /// </summary>

@@ -74,23 +74,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CommonFunc.cs" />
-    <Compile Include="Common\ConfigLoader.cs" />
-    <Compile Include="Common\ErrorCode.cs" />
-    <Compile Include="Common\ErrorManager.cs" />
-    <Compile Include="Common\ObjectXMLSerializer.cs" />
+    <Compile Include="common\CommonFunc.cs" />
+    <Compile Include="module\config\ConfigLoader.cs" />
+    <Compile Include="common\ErrorCode.cs" />
+    <Compile Include="common\ErrorManager.cs" />
+    <Compile Include="common\ObjectXMLSerializer.cs" />
     <Compile Include="Controller\FormStateController.cs" />
-    <Compile Include="Common\TimeWatcher.cs" />
+    <Compile Include="common\TimeWatcher.cs" />
     <Compile Include="Controller\RichTextBoxController.cs" />
     <Compile Include="Helper\Dice.cs" />
-    <Compile Include="Model\AbstractFile.cs" />
-    <Compile Include="Model\Book.cs" />
-    <Compile Include="Model\Bookmark.cs" />
-    <Compile Include="Model\BookStore.cs" />
-    <Compile Include="Model\Configuration.cs" />
-    <Compile Include="Common\Constants.cs" />
-    <Compile Include="Common\GDI32.cs" />
-    <Compile Include="Common\User32.cs" />
+    <Compile Include="module\AbstractFile.cs" />
+    <Compile Include="module\Book.cs" />
+    <Compile Include="module\Bookmark.cs" />
+    <Compile Include="module\BookStore.cs" />
+    <Compile Include="module\Configuration.cs" />
+    <Compile Include="common\Constants.cs" />
+    <Compile Include="common\GDI32.cs" />
+    <Compile Include="common\User32.cs" />
     <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,14 +103,17 @@
     <Compile Include="Forms\FormReleaseHistory.Designer.cs">
       <DependentUpon>FormReleaseHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\config\Config.cs" />
-    <Compile Include="Model\config\FileInfo.cs" />
-    <Compile Include="Model\config\GeneralConfig.cs" />
-    <Compile Include="Model\config\WindowConfig.cs" />
-    <Compile Include="Model\error\ExceptionMessageManager.cs" />
-    <Compile Include="Model\error\ReaderMeException.cs" />
-    <Compile Include="Model\FileErrorEventArgs.cs" />
-    <Compile Include="Model\FileInformation.cs" />
+    <Compile Include="module\config\Config.cs" />
+    <Compile Include="module\config\ConfigManager.cs" />
+    <Compile Include="module\config\ConfigWriter.cs" />
+    <Compile Include="module\config\FileConfig.cs" />
+    <Compile Include="module\config\GeneralConfig.cs" />
+    <Compile Include="module\config\WindowConfig.cs" />
+    <Compile Include="module\config\WindowMode.cs" />
+    <Compile Include="module\error\ExceptionMessageManager.cs" />
+    <Compile Include="module\error\ReaderMeException.cs" />
+    <Compile Include="module\FileErrorEventArgs.cs" />
+    <Compile Include="module\FileInformation.cs" />
     <Compile Include="Forms\FormFind.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,16 +159,16 @@
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\HotKey.cs" />
     <Compile Include="Helper\XMLHelper.cs" />
-    <Compile Include="Model\FindStatus.cs" />
-    <Compile Include="Model\IReadable.cs" />
-    <Compile Include="Model\MyRichTextBox.cs">
+    <Compile Include="module\FindStatus.cs" />
+    <Compile Include="module\IReadable.cs" />
+    <Compile Include="module\MyRichTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Model\MyRichTextBox.Designer.cs">
+    <Compile Include="module\MyRichTextBox.Designer.cs">
       <DependentUpon>MyRichTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Reader.cs" />
-    <Compile Include="Model\TextFile.cs" />
+    <Compile Include="module\Reader.cs" />
+    <Compile Include="module\TextFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AboutBox.resx">
@@ -201,7 +204,7 @@
     <EmbeddedResource Include="Forms\FormReleaseHistory.resx">
       <DependentUpon>FormReleaseHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Model\MyRichTextBox.resx">
+    <EmbeddedResource Include="module\MyRichTextBox.resx">
       <DependentUpon>MyRichTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

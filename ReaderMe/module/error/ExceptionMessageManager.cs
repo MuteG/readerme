@@ -1,6 +1,6 @@
 ﻿using System.Collections.Specialized;
 
-namespace GPSoft.Tools.ReaderMe.Model.error
+namespace GPSoft.Tools.ReaderMe.module.error
 {
     public static class ExceptionMessageManager
     {

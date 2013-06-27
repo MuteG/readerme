@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 
-namespace GPSoft.Tools.ReaderMe.Model.config
+namespace GPSoft.Tools.ReaderMe.module.config
 {
+    /// <summary>
+    /// 软件设定
+    /// </summary>
     [Serializable]
     public sealed class Config
     {
@@ -17,13 +19,13 @@ namespace GPSoft.Tools.ReaderMe.Model.config
         /// 获取或者设置文本文件信息记录列表
         /// </summary>
         [XmlArray("Files"), XmlArrayItem("File")]
-        public List<FileInfo> FileInfoList { get; set; }
+        public List<FileConfig> Files { get; set; }
 
         /// <summary>
         /// 获取或设置窗体设置列表
         /// <para>每种窗体模式一套设置</para>
         /// </summary>
         [XmlArray("Windows"), XmlArrayItem("Window")]
-        public List<WindowConfig> WindowConfigList { get; set; }
+        public List<WindowConfig> Windows { get; set; }
     }
 }
