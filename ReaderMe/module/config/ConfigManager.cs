@@ -1,5 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
+using GPSoft.Tools.ReaderMe.common;
+using GPSoft.Tools.ReaderMe.module.reader;
 
 namespace GPSoft.Tools.ReaderMe.module.config
 {
@@ -8,38 +10,51 @@ namespace GPSoft.Tools.ReaderMe.module.config
     /// </summary>
     public static class ConfigManager
     {
-        private static Config singleInstanceConfig = null;
-        private static readonly string CONFIG_FILE;
+        private static Dictionary<Reader, Config> configDict;
 
         static ConfigManager()
         {
-            string dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            dir = Path.Combine(dir, "ReaderMe");
-            CONFIG_FILE = Path.Combine(dir, "config.xml");
+            configDict = new Dictionary<Reader, Config>();
         }
 
         /// <summary>
-        /// 获取设定
+        /// 获取当前读者的设定
         /// </summary>
         /// <returns></returns>
         public static Config GetConfig()
         {
-            if (null == singleInstanceConfig)
+            Config config;
+            Reader reader = ReaderManager.CurrentReader;
+            if (configDict.ContainsKey(reader))
+            {
+                config = configDict[reader];
+            }
+            else
             {
                 ConfigLoader loader = new ConfigLoader();
-                singleInstanceConfig = loader.LoadFromXml(CONFIG_FILE);
+                string file = GetConfigFile();
+                config = loader.LoadFromXml(file);
+                configDict.Add(reader, config);
             }
-            return singleInstanceConfig;
+            return config;
+        }
+
+        private static string GetConfigFile()
+        {
+            Reader reader = ReaderManager.CurrentReader;
+            string readerFolder = Path.Combine(Const.PATH_ROOT_FOLDER, reader.Name);
+            return Path.Combine(readerFolder, "config.xml");
         }
 
         /// <summary>
-        /// 保存设定
+        /// 保存当前读者的设定
         /// </summary>
         public static void SaveConfig()
         {
             Config config = GetConfig();
             ConfigWriter writer = new ConfigWriter(config);
-            writer.SaveToXml(CONFIG_FILE);
+            string file = GetConfigFile();
+            writer.SaveToXml(file);
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿namespace GPSoft.Tools.ReaderMe.module
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
+namespace GPSoft.Tools.ReaderMe.module.config
+{
     /// <summary>
     /// 书签
     /// </summary>
@@ -11,10 +10,10 @@
     public class Bookmark
     {
         /// <summary>
-        /// 获取或设置书籍标识
+        /// 获取或设置书签摘要
         /// </summary>
-        [XmlAttribute("bookid")]
-        public string BookID { get; set; }
+        [XmlAttribute("summary")]
+        public string Summary { get; set; }
 
         /// <summary>
         /// 获取或设置书签位置

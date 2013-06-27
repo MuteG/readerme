@@ -75,6 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common\CommonFunc.cs" />
+    <Compile Include="common\Const.cs" />
+    <Compile Include="module\book\Book.cs" />
     <Compile Include="module\config\ConfigLoader.cs" />
     <Compile Include="common\ErrorCode.cs" />
     <Compile Include="common\ErrorManager.cs" />
@@ -85,7 +87,7 @@
     <Compile Include="Helper\Dice.cs" />
     <Compile Include="module\AbstractFile.cs" />
     <Compile Include="module\Book.cs" />
-    <Compile Include="module\Bookmark.cs" />
+    <Compile Include="module\config\Bookmark.cs" />
     <Compile Include="module\BookStore.cs" />
     <Compile Include="module\Configuration.cs" />
     <Compile Include="common\Constants.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="module\config\GeneralConfig.cs" />
     <Compile Include="module\config\WindowConfig.cs" />
     <Compile Include="module\config\WindowMode.cs" />
+    <Compile Include="module\engine\ReaderMeEngine.cs" />
     <Compile Include="module\error\ExceptionMessageManager.cs" />
     <Compile Include="module\error\ReaderMeException.cs" />
     <Compile Include="module\FileErrorEventArgs.cs" />
@@ -167,7 +170,8 @@
     <Compile Include="module\MyRichTextBox.Designer.cs">
       <DependentUpon>MyRichTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="module\Reader.cs" />
+    <Compile Include="module\reader\Reader.cs" />
+    <Compile Include="module\reader\ReaderManager.cs" />
     <Compile Include="module\TextFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,9 +258,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="module\book\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
