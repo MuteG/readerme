@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace GPSoft.Tools.ReaderMe.module.config
 {
@@ -9,9 +11,14 @@ namespace GPSoft.Tools.ReaderMe.module.config
     public sealed class FileConfig
     {
         /// <summary>
+        /// 获取或设置书名
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
         /// 获取或设置书签
         /// </summary>
-        public int BookMark { get; set; }
+        [XmlArray("Bookmarks"), XmlArrayItem("Bookmark")]
+        public List<Bookmark> Bookmarks { get; set; }
 
         /// <summary>
         /// 获取或设置文件编码信息
