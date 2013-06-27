@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.common;
 using GPSoft.Tools.ReaderMe.Helper;
 using System.Windows.Forms;
 
-namespace GPSoft.Tools.ReaderMe.Model
+namespace GPSoft.Tools.ReaderMe.module
 {
     public class Configuration
     {

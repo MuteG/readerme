@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GPSoft.Tools.ReaderMe.Model.config
+namespace GPSoft.Tools.ReaderMe.module.config
 {
     [Serializable]
     public sealed class GeneralConfig
@@ -22,12 +22,13 @@ namespace GPSoft.Tools.ReaderMe.Model.config
 
         /// <summary>
         /// 获取或者设置透明度
+        /// <para>范围：0～100。0为不透明，100为完全透明。</para>
         /// </summary>
         public int Opacity { get; set; }
 
         /// <summary>
         /// 获取或者设置是否自动换行
         /// </summary>
-        public int WordWrap { get; set; }
+        public bool WordWrap { get; set; }
     }
 }

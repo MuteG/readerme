@@ -1,4 +1,4 @@
-﻿namespace GPSoft.Tools.ReaderMe.Model
+﻿namespace GPSoft.Tools.ReaderMe.module
 {
     partial class MyRichTextBox
     {

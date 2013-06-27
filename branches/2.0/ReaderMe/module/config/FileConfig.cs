@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace GPSoft.Tools.ReaderMe.Model.config
+namespace GPSoft.Tools.ReaderMe.module.config
 {
     /// <summary>
     /// 文件信息
     /// </summary>
     [Serializable]
-    public sealed class FileInfo
+    public sealed class FileConfig
     {
         /// <summary>
         /// 获取或设置书签

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.common;
 
 namespace GPSoft.Tools.ReaderMe.Forms
 {

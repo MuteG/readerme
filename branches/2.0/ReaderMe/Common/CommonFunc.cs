@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using GPSoft.Tools.ReaderMe.Helper;
-using GPSoft.Tools.ReaderMe.Model;
+using GPSoft.Tools.ReaderMe.module;
 
-namespace GPSoft.Tools.ReaderMe.Common
+namespace GPSoft.Tools.ReaderMe.common
 {
     public class CommonFunc
     {

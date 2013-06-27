@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.common;
 
 namespace GPSoft.Tools.ReaderMe.Forms
 {

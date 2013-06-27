@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using GPSoft.Tools.ReaderMe.Common;
+using GPSoft.Tools.ReaderMe.common;
 using GPSoft.Tools.ReaderMe.Helper;
-using GPSoft.Tools.ReaderMe.Model;
+using GPSoft.Tools.ReaderMe.module;
 
 namespace GPSoft.Tools.ReaderMe.Forms
 {
