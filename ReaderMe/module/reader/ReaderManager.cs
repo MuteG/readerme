@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using GPSoft.Tools.ReaderMe.common;
+using GPStudio.Tools.ReaderMe.common;
 
-namespace GPSoft.Tools.ReaderMe.module.reader
+namespace GPStudio.Tools.ReaderMe.module.reader
 {
     public static class ReaderManager
     {

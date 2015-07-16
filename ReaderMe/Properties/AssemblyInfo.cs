@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("G.P.Studio")]
 [assembly: AssemblyProduct("ReaderMe文本阅读器")]
-[assembly: AssemblyCopyright("Copyright © G.P.Studio 2008 - 2013")]
+[assembly: AssemblyCopyright("Copyright © G.P.Studio 2008 - 2015")]
 [assembly: AssemblyTrademark("G.P.")]
 [assembly: AssemblyCulture("")]
 

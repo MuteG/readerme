@@ -1,11 +1,11 @@
-﻿namespace GPSoft.Tools.ReaderMe.module
+﻿namespace GPStudio.Tools.ReaderMe.module
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-    using GPSoft.Tools.ReaderMe.common;
-    using GPSoft.Tools.ReaderMe.Helper;
+    using GPStudio.Tools.ReaderMe.common;
+    using GPStudio.Tools.ReaderMe.Helper;
     using System.Drawing;
 
     public class AbstractFile : IReadable

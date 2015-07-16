@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
-using GPSoft.Tools.ReaderMe.common;
-using GPSoft.Tools.ReaderMe.Helper;
+using GPStudio.Tools.ReaderMe.common;
+using GPStudio.Tools.ReaderMe.Helper;
 
-namespace GPSoft.Tools.ReaderMe.module
+namespace GPStudio.Tools.ReaderMe.module
 {
     public class FileInformation
     {

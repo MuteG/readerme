@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace GPSoft.Tools.ReaderMe.common
+namespace GPStudio.Tools.ReaderMe.common
 {
     /// <summary>
     /// 代码执行时间计时辅助类

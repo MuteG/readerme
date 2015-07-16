@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-namespace GPSoft.Tools.ReaderMe.Helper
+namespace GPStudio.Tools.ReaderMe.Helper
 {
     /// <summary>
     /// XML文档操作类

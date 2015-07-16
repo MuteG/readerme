@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace GPSoft.Tools.ReaderMe.common
+namespace GPStudio.Tools.ReaderMe.common
 {
     public static class Const
     {

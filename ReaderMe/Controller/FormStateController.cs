@@ -4,9 +4,9 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using GPSoft.Tools.ReaderMe.common;
+using GPStudio.Tools.ReaderMe.common;
 
-namespace GPSoft.Tools.ReaderMe.Controller
+namespace GPStudio.Tools.ReaderMe.Controller
 {
     public sealed class FormStateController
     {

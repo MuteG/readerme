@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using GPSoft.Tools.ReaderMe.common;
+using GPStudio.Tools.ReaderMe.common;
 
-namespace GPSoft.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.module.config
 {
     public class ConfigLoader
     {

@@ -1,4 +1,4 @@
-﻿namespace GPSoft.Tools.ReaderMe.Forms
+﻿namespace GPStudio.Tools.ReaderMe.Forms
 {
     partial class FormMain
     {
@@ -82,7 +82,7 @@
             this.mnuItemIntroduction = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.myRichTextBox1 = new GPSoft.Tools.ReaderMe.module.MyRichTextBox();
+            this.myRichTextBox1 = new GPStudio.Tools.ReaderMe.module.MyRichTextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();

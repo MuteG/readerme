@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace GPSoft.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.module.config
 {
     /// <summary>
     /// 书签

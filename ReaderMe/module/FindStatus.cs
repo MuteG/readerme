@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GPSoft.Tools.ReaderMe.module
+namespace GPStudio.Tools.ReaderMe.module
 {
     public class FindStatus
     {

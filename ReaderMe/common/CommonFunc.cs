@@ -4,10 +4,10 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using GPSoft.Tools.ReaderMe.Helper;
-using GPSoft.Tools.ReaderMe.module;
+using GPStudio.Tools.ReaderMe.Helper;
+using GPStudio.Tools.ReaderMe.module;
 
-namespace GPSoft.Tools.ReaderMe.common
+namespace GPStudio.Tools.ReaderMe.common
 {
     public class CommonFunc
     {

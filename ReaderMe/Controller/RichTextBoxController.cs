@@ -5,10 +5,10 @@ using System.IO;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
-using GPSoft.Tools.ReaderMe.common;
-using GPSoft.Tools.ReaderMe.module;
+using GPStudio.Tools.ReaderMe.common;
+using GPStudio.Tools.ReaderMe.module;
 
-namespace GPSoft.Tools.ReaderMe.Controller
+namespace GPStudio.Tools.ReaderMe.Controller
 {
     public sealed class RichTextBoxController
     {

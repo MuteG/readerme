@@ -13,7 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GPSoft.Tools.ReaderMe.Helper
+namespace GPStudio.Tools.ReaderMe.Helper
 {
     /// <summary>
     /// 骰子

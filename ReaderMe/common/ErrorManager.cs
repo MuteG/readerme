@@ -5,7 +5,7 @@
  * 改訂履歴：
  * 2012/9/3 17:23:18 新規 gaoyunpeng
  * *************************************************************************/
-namespace GPSoft.Tools.ReaderMe.common
+namespace GPStudio.Tools.ReaderMe.common
 {
     using System;
     using System.Collections.Generic;

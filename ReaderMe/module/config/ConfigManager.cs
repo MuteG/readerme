@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using GPSoft.Tools.ReaderMe.common;
-using GPSoft.Tools.ReaderMe.module.reader;
+using GPStudio.Tools.ReaderMe.common;
+using GPStudio.Tools.ReaderMe.module.reader;
 
-namespace GPSoft.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.module.config
 {
     /// <summary>
     /// 设定管理器

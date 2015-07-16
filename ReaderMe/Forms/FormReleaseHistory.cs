@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace GPSoft.Tools.ReaderMe.Forms
+namespace GPStudio.Tools.ReaderMe.Forms
 {
     public partial class FormReleaseHistory : Form
     {

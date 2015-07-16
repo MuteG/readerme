@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GPSoft.Tools.ReaderMe.module.config;
+using GPStudio.Tools.ReaderMe.module.config;
 
-namespace GPSoft.Tools.ReaderMe.module.book
+namespace GPStudio.Tools.ReaderMe.module.book
 {
     /// <summary>
     /// 书籍

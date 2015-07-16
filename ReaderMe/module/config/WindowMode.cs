@@ -1,4 +1,4 @@
-﻿namespace GPSoft.Tools.ReaderMe.module.config
+﻿namespace GPStudio.Tools.ReaderMe.module.config
 {
     /// <summary>
     /// 窗体显示模式

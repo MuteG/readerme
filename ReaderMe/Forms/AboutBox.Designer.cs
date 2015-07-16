@@ -1,4 +1,4 @@
-﻿namespace GPSoft.Tools.ReaderMe.Forms
+﻿namespace GPStudio.Tools.ReaderMe.Forms
 {
     partial class AboutBox
     {

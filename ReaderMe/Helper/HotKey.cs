@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace GPSoft.Tools.ReaderMe.Helper
+namespace GPStudio.Tools.ReaderMe.Helper
 {
     public delegate void HotkeyEventHandler(int HotKeyID);
 

@@ -1,4 +1,4 @@
-﻿namespace GPSoft.Tools.ReaderMe.common
+﻿namespace GPStudio.Tools.ReaderMe.common
 {
     using System.IO;
     using System.Xml;

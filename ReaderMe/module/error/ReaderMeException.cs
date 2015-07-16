@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GPSoft.Tools.ReaderMe.module.error
+namespace GPStudio.Tools.ReaderMe.module.error
 {
     [Serializable]
     public class ReaderMeException : Exception

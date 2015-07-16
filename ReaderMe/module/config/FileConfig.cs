@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace GPSoft.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.module.config
 {
     /// <summary>
     /// 文件信息
