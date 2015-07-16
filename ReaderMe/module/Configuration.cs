@@ -6,7 +6,7 @@ using GPStudio.Tools.ReaderMe.common;
 using GPStudio.Tools.ReaderMe.Helper;
 using System.Windows.Forms;
 
-namespace GPStudio.Tools.ReaderMe.module
+namespace GPStudio.Tools.ReaderMe.Module
 {
     public class Configuration
     {

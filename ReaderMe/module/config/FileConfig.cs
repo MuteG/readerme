@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace GPStudio.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.Module.Config
 {
     /// <summary>
-    /// 文件信息
+    /// 文件配置
     /// </summary>
     [Serializable]
     public sealed class FileConfig
@@ -14,6 +14,7 @@ namespace GPStudio.Tools.ReaderMe.module.config
         /// 获取或设置书名
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// 获取或设置书签
         /// </summary>

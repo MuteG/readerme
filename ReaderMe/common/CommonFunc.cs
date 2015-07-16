@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using GPStudio.Tools.ReaderMe.Helper;
-using GPStudio.Tools.ReaderMe.module;
+using GPStudio.Tools.ReaderMe.Module;
 
 namespace GPStudio.Tools.ReaderMe.common
 {
@@ -156,7 +156,7 @@ namespace GPStudio.Tools.ReaderMe.common
             //else
             //{
             //    int currentLine = RichTextBox.GetLineFromCharIndex(RichTextBox.GetCharIndexFromPosition(new System.Drawing.Point(0, 0)));
-            //    int autoScrollRows = IsMiniStatus ? config.MiniAutoScrollRows : config.NormalAutoScrollRows;
+            //    int autoScrollRows = IsMiniStatus ? Config.MiniAutoScrollRows : Config.NormalAutoScrollRows;
             //    int targetIndex = Math.Min(RichTextBox.GetFirstCharIndexFromLine(currentLine + autoScrollRows),
             //                               RichTextBox.GetFirstCharIndexFromLine(RichTextBox.Lines.Length - 1));
             //    RichTextBox.SelectionStart = targetIndex;

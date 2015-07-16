@@ -8,7 +8,7 @@
     <ProjectGuid>{7D32BA14-F39E-4218-8B4D-9806E56B557D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GPSoft.Tools.ReaderMe</RootNamespace>
+    <RootNamespace>GPStudio.Tools.ReaderMe</RootNamespace>
     <AssemblyName>ReaderMe</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -74,25 +74,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="common\CommonFunc.cs" />
-    <Compile Include="common\Const.cs" />
-    <Compile Include="module\book\Book.cs" />
-    <Compile Include="module\config\ConfigLoader.cs" />
-    <Compile Include="common\ErrorCode.cs" />
-    <Compile Include="common\ErrorManager.cs" />
-    <Compile Include="common\ObjectXMLSerializer.cs" />
+    <Compile Include="Common\CommonFunc.cs" />
+    <Compile Include="Common\Const.cs" />
+    <Compile Include="Module\Entity\Book.cs" />
+    <Compile Include="Module\Config\ConfigLoader.cs" />
+    <Compile Include="Common\ErrorCode.cs" />
+    <Compile Include="Common\ErrorManager.cs" />
+    <Compile Include="Common\ObjectXMLSerializer.cs" />
     <Compile Include="Controller\FormStateController.cs" />
-    <Compile Include="common\TimeWatcher.cs" />
+    <Compile Include="Common\TimeWatcher.cs" />
     <Compile Include="Controller\RichTextBoxController.cs" />
     <Compile Include="Helper\Dice.cs" />
-    <Compile Include="module\AbstractFile.cs" />
-    <Compile Include="module\Book.cs" />
-    <Compile Include="module\config\Bookmark.cs" />
-    <Compile Include="module\BookStore.cs" />
-    <Compile Include="module\Configuration.cs" />
-    <Compile Include="common\Constants.cs" />
-    <Compile Include="common\GDI32.cs" />
-    <Compile Include="common\User32.cs" />
+    <Compile Include="Module\AbstractFile.cs" />
+    <Compile Include="Module\Book.cs" />
+    <Compile Include="Module\Entity\Bookmark.cs" />
+    <Compile Include="Module\BookStore.cs" />
+    <Compile Include="Module\Configuration.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\GDI32.cs" />
+    <Compile Include="Common\User32.cs" />
     <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,18 +105,18 @@
     <Compile Include="Forms\FormReleaseHistory.Designer.cs">
       <DependentUpon>FormReleaseHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="module\config\Config.cs" />
-    <Compile Include="module\config\ConfigManager.cs" />
-    <Compile Include="module\config\ConfigWriter.cs" />
-    <Compile Include="module\config\FileConfig.cs" />
-    <Compile Include="module\config\GeneralConfig.cs" />
-    <Compile Include="module\config\WindowConfig.cs" />
-    <Compile Include="module\config\WindowMode.cs" />
-    <Compile Include="module\engine\ReaderMeEngine.cs" />
-    <Compile Include="module\error\ExceptionMessageManager.cs" />
-    <Compile Include="module\error\ReaderMeException.cs" />
-    <Compile Include="module\FileErrorEventArgs.cs" />
-    <Compile Include="module\FileInformation.cs" />
+    <Compile Include="Module\Config\Config.cs" />
+    <Compile Include="Module\Config\ConfigManager.cs" />
+    <Compile Include="Module\Config\ConfigWriter.cs" />
+    <Compile Include="Module\Config\FileConfig.cs" />
+    <Compile Include="Module\Config\GeneralConfig.cs" />
+    <Compile Include="Module\Config\WindowConfig.cs" />
+    <Compile Include="Module\Config\WindowMode.cs" />
+    <Compile Include="Module\engine\ReaderMeEngine.cs" />
+    <Compile Include="Module\error\ExceptionMessageManager.cs" />
+    <Compile Include="Module\error\ReaderMeException.cs" />
+    <Compile Include="Module\FileErrorEventArgs.cs" />
+    <Compile Include="Module\FileInformation.cs" />
     <Compile Include="Forms\FormFind.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,17 +162,17 @@
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\HotKey.cs" />
     <Compile Include="Helper\XMLHelper.cs" />
-    <Compile Include="module\FindStatus.cs" />
-    <Compile Include="module\IReadable.cs" />
-    <Compile Include="module\MyRichTextBox.cs">
+    <Compile Include="Module\FindStatus.cs" />
+    <Compile Include="Module\IReadable.cs" />
+    <Compile Include="Module\MyRichTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="module\MyRichTextBox.Designer.cs">
+    <Compile Include="Module\MyRichTextBox.Designer.cs">
       <DependentUpon>MyRichTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="module\reader\Reader.cs" />
-    <Compile Include="module\reader\ReaderManager.cs" />
-    <Compile Include="module\TextFile.cs" />
+    <Compile Include="Module\Reader\Reader.cs" />
+    <Compile Include="Module\Reader\ReaderManager.cs" />
+    <Compile Include="Module\TextFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AboutBox.resx">
@@ -208,7 +208,7 @@
     <EmbeddedResource Include="Forms\FormReleaseHistory.resx">
       <DependentUpon>FormReleaseHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="module\MyRichTextBox.resx">
+    <EmbeddedResource Include="Module\MyRichTextBox.resx">
       <DependentUpon>MyRichTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

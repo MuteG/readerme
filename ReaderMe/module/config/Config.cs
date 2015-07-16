@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace GPStudio.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.Module.Config
 {
     /// <summary>
-    /// 软件设定
+    /// ReaderMe配置
     /// </summary>
     [Serializable]
     public sealed class Config
     {
         /// <summary>
-        /// 获取或设置全局设置
+        /// 获取或设置全局配置
         /// </summary>
         public GeneralConfig General { get; set; }
 
         /// <summary>
-        /// 获取或者设置文本文件信息记录列表
+        /// 获取或者设置文件配置列表
         /// </summary>
         [XmlArray("Files"), XmlArrayItem("File")]
         public List<FileConfig> Files { get; set; }

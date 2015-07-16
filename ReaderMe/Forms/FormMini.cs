@@ -68,8 +68,8 @@ namespace GPStudio.Tools.ReaderMe.Forms
             CommonFunc.RichTextBox = richTextBox1;
             richTextBox1.Font = new Font(CommonFunc.Config.FontName, CommonFunc.Config.FontSize);
             lblText.Font = new Font(CommonFunc.Config.FontName, CommonFunc.Config.FontSize);
-            this.Height = (int)this.CreateGraphics().MeasureString("例", richTextBox1.Font).Height;// CommonFunc.config.FontSize + 6;
-            //richTextBox1.Height = CommonFunc.config.FontSize;
+            this.Height = (int)this.CreateGraphics().MeasureString("例", richTextBox1.Font).Height;// CommonFunc.Config.FontSize + 6;
+            //richTextBox1.Height = CommonFunc.Config.FontSize;
 
             richTextBox1.MouseWheel += new MouseEventHandler(richTextBox1_MouseWheel);
             CommonFunc.HotKey.OnHotkey += new HotkeyEventHandler(HotKey_OnHotkey);

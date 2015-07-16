@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using GPStudio.Tools.ReaderMe.common;
-using GPStudio.Tools.ReaderMe.module.reader;
+using GPStudio.Tools.ReaderMe.Module.reader;
 
-namespace GPStudio.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.Module.Config
 {
     /// <summary>
     /// 设定管理器
     /// </summary>
     public static class ConfigManager
     {
-        private static Dictionary<Reader, Config> configDict;
+        private static Dictionary<Reader, Config> ConfigDict;
 
         static ConfigManager()
         {
-            configDict = new Dictionary<Reader, Config>();
+            ConfigDict = new Dictionary<Reader, Config>();
         }
 
         /// <summary>
@@ -23,27 +23,27 @@ namespace GPStudio.Tools.ReaderMe.module.config
         /// <returns></returns>
         public static Config GetConfig()
         {
-            Config config;
+            Config Config;
             Reader reader = ReaderManager.CurrentReader;
-            if (configDict.ContainsKey(reader))
+            if (ConfigDict.ContainsKey(reader))
             {
-                config = configDict[reader];
+                Config = ConfigDict[reader];
             }
             else
             {
                 ConfigLoader loader = new ConfigLoader();
                 string file = GetConfigFile();
-                config = loader.LoadFromXml(file);
-                configDict.Add(reader, config);
+                Config = loader.LoadFromXml(file);
+                ConfigDict.Add(reader, Config);
             }
-            return config;
+            return Config;
         }
 
         private static string GetConfigFile()
         {
             Reader reader = ReaderManager.CurrentReader;
             string readerFolder = Path.Combine(Const.PATH_ROOT_FOLDER, reader.Name);
-            return Path.Combine(readerFolder, "config.xml");
+            return Path.Combine(readerFolder, "Config.xml");
         }
 
         /// <summary>
@@ -51,8 +51,8 @@ namespace GPStudio.Tools.ReaderMe.module.config
         /// </summary>
         public static void SaveConfig()
         {
-            Config config = GetConfig();
-            ConfigWriter writer = new ConfigWriter(config);
+            Config Config = GetConfig();
+            ConfigWriter writer = new ConfigWriter(Config);
             string file = GetConfigFile();
             writer.SaveToXml(file);
         }

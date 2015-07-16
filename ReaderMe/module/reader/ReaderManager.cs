@@ -2,7 +2,7 @@
 using System.IO;
 using GPStudio.Tools.ReaderMe.common;
 
-namespace GPStudio.Tools.ReaderMe.module.reader
+namespace GPStudio.Tools.ReaderMe.Module.reader
 {
     public static class ReaderManager
     {

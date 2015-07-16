@@ -20,7 +20,7 @@ namespace GPStudio.Tools.ReaderMe
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                //CommonFunc.config = Configurations.GetInstance();
+                //CommonFunc.Config = Configurations.GetInstance();
                 Application.Run(new FormMain());
                 m.ReleaseMutex();    //必须
             }

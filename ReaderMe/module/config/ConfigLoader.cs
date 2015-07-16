@@ -2,27 +2,27 @@
 using System.Drawing;
 using GPStudio.Tools.ReaderMe.common;
 
-namespace GPStudio.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.Module.Config
 {
     public class ConfigLoader
     {
         public Config LoadFromXml(string file)
         {
-            Config config = new Config();
+            Config Config = new Config();
             try
             {
-                ObjectXMLSerializer<Config>.Load(ref config, file);
+                ObjectXMLSerializer<Config>.Load(ref Config, file);
             }
             catch
             {
-                SetDefaultValue(ref config);
+                SetDefaultValue(ref Config);
             }
-            return config;
+            return Config;
         }
 
-        private void SetDefaultValue(ref Config config)
+        private void SetDefaultValue(ref Config Config)
         {
-            config.General = new GeneralConfig
+            Config.General = new GeneralConfig
             {
                 BackColor = Color.White.ToArgb(),
                 FontName = "NSimSun",
@@ -30,7 +30,7 @@ namespace GPStudio.Tools.ReaderMe.module.config
                 Opacity = 0,
                 WordWrap = true
             };
-            config.Windows = new List<WindowConfig>
+            Config.Windows = new List<WindowConfig>
             {
                 new WindowConfig
                 {
@@ -53,7 +53,7 @@ namespace GPStudio.Tools.ReaderMe.module.config
                     Top = 0
                 }
             };
-            config.Files = new List<FileConfig>();
+            Config.Files = new List<FileConfig>();
         }
     }
 }

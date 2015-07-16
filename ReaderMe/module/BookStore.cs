@@ -1,4 +1,4 @@
-﻿namespace GPStudio.Tools.ReaderMe.module
+﻿namespace GPStudio.Tools.ReaderMe.Module
 {
     using System.Collections;
     using System.Collections.Generic;

@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace GPStudio.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.Module.Config
 {
+    /// <summary>
+    /// 窗体配置
+    /// </summary>
     [Serializable]
     public sealed class WindowConfig
     {
         /// <summary>
-        /// 获取或设置窗体模式
+        /// 获取或设置窗体显示模式
         /// </summary>
         [XmlAttribute("mode")]
         public WindowMode Mode { get; set; }
+
         /// <summary>
         /// 获取或者设置主窗体左上角Y坐标
         /// </summary>

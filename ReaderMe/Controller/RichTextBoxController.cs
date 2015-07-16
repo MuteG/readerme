@@ -6,7 +6,7 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 using GPStudio.Tools.ReaderMe.common;
-using GPStudio.Tools.ReaderMe.module;
+using GPStudio.Tools.ReaderMe.Module;
 
 namespace GPStudio.Tools.ReaderMe.Controller
 {

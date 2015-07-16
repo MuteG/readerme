@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GPStudio.Tools.ReaderMe.module.config
+namespace GPStudio.Tools.ReaderMe.Module.Config
 {
     [Serializable]
     public sealed class GeneralConfig

@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using GPStudio.Tools.ReaderMe.common;
 using GPStudio.Tools.ReaderMe.Controller;
-using GPStudio.Tools.ReaderMe.module;
+using GPStudio.Tools.ReaderMe.Module;
 using GPStudio.Tools.ReaderMe.Helper;
 
 namespace GPStudio.Tools.ReaderMe.Forms
@@ -434,8 +434,8 @@ namespace GPStudio.Tools.ReaderMe.Forms
             //this.statusStrip1.Hide();
             //this.rtbText.Dock = DockStyle.Fill;
             //this.FormBorderStyle = FormBorderStyle.None;
-            //this.MinimumSize = new Size(80, CommonFunc.config.FontSize + 2);
-            //this.Height = CommonFunc.config.FontSize + 2;
+            //this.MinimumSize = new Size(80, CommonFunc.Config.FontSize + 2);
+            //this.Height = CommonFunc.Config.FontSize + 2;
         }
 
         // 主菜单“管理打开历史”

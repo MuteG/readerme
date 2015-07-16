@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using GPStudio.Tools.ReaderMe.common;
 using GPStudio.Tools.ReaderMe.Helper;
-using GPStudio.Tools.ReaderMe.module;
+using GPStudio.Tools.ReaderMe.Module;
 
 namespace GPStudio.Tools.ReaderMe.Forms
 {

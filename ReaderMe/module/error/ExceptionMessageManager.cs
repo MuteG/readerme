@@ -1,6 +1,6 @@
 ﻿using System.Collections.Specialized;
 
-namespace GPStudio.Tools.ReaderMe.module.error
+namespace GPStudio.Tools.ReaderMe.Module.error
 {
     public static class ExceptionMessageManager
     {

@@ -3,7 +3,7 @@ using System.Text;
 using GPStudio.Tools.ReaderMe.common;
 using GPStudio.Tools.ReaderMe.Helper;
 
-namespace GPStudio.Tools.ReaderMe.module
+namespace GPStudio.Tools.ReaderMe.Module
 {
     public class FileInformation
     {

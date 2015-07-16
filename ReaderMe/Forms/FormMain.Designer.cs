@@ -82,7 +82,7 @@
             this.mnuItemIntroduction = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.myRichTextBox1 = new GPStudio.Tools.ReaderMe.module.MyRichTextBox();
+            this.myRichTextBox1 = new GPStudio.Tools.ReaderMe.Module.MyRichTextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -587,7 +587,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem menuItemTopMost;
-        private module.MyRichTextBox myRichTextBox1;
+        private Module.MyRichTextBox myRichTextBox1;
     }
 }
 
