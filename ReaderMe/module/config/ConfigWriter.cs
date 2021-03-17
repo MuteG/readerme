@@ -1,15 +1,15 @@
 ﻿using System.IO;
-using GPStudio.Tools.ReaderMe.common;
+using ReaderMe.Common;
 
-namespace GPStudio.Tools.ReaderMe.Module.Config
+namespace ReaderMe.Module.Config
 {
     public class ConfigWriter
     {
-        private Config Config;
+        private readonly Config _config;
 
-        public ConfigWriter(Config Config)
+        public ConfigWriter(Config config)
         {
-            this.Config = Config;
+            _config = config;
         }
 
         public void SaveToXml(string file)
@@ -21,7 +21,7 @@ namespace GPStudio.Tools.ReaderMe.Module.Config
             }
             try
             {
-                ObjectXMLSerializer<Config>.Save(this.Config, file);
+                ObjectXmlSerializer<Config>.Save(_config, file);
             }
             catch
             {

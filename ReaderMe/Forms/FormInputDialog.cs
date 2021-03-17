@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace GPStudio.Tools.ReaderMe.Forms
+namespace ReaderMe.Forms
 {
     public partial class FormInputDialog : Form
     {

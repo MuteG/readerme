@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GPStudio.Tools.ReaderMe.Module
+namespace ReaderMe.Module
 {
     public class FindStatus
     {

@@ -1,59 +1,63 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using GPStudio.Tools.ReaderMe.common;
+using ReaderMe.Common;
 
-namespace GPStudio.Tools.ReaderMe.Module.Config
+namespace ReaderMe.Module.Config
 {
     public class ConfigLoader
     {
         public Config LoadFromXml(string file)
         {
-            Config Config = new Config();
+            Config config = new Config();
             try
             {
-                ObjectXMLSerializer<Config>.Load(ref Config, file);
+                ObjectXmlSerializer<Config>.Load(ref config, file);
             }
             catch
             {
-                SetDefaultValue(ref Config);
+                SetDefaultValue(ref config);
             }
-            return Config;
+            return config;
         }
 
-        private void SetDefaultValue(ref Config Config)
+        private void SetDefaultValue(ref Config config)
         {
-            Config.General = new GeneralConfig
-            {
-                BackColor = Color.White.ToArgb(),
-                FontName = "NSimSun",
-                FontSize = 9,
-                Opacity = 0,
-                WordWrap = true
-            };
-            Config.Windows = new List<WindowConfig>
-            {
-                new WindowConfig
-                {
-                    Mode = WindowMode.Normal,
-                    AutoScrollInterval = 3,
-                    AutoScrollRows = 3,
-                    Height = 300,
-                    Width = 300,
-                    Left = 0,
-                    Top = 0
-                },
-                new WindowConfig
-                {
-                    Mode = WindowMode.Mini,
-                    AutoScrollInterval = 2,
-                    AutoScrollRows = 1,
-                    Height = 12,
-                    Width = 300,
-                    Left = 0,
-                    Top = 0
-                }
-            };
-            Config.Files = new List<FileConfig>();
+            config.General = new GeneralConfig();
+            config.General.BackColor = Color.White.ToArgb();
+            config.General.FontName = "NSimSun";
+            config.General.FontSize = 9;
+            config.General.Opacity = 0;
+            config.General.WordWrap = true;
+            config.Windows = new List<WindowConfig>();
+            config.Windows.Add(CreateNormalWindowConfig());
+            config.Windows.Add(CreateMiniWindowConfig());
+            config.Files = new List<FileConfig>();
+        }
+
+        private WindowConfig CreateNormalWindowConfig()
+        {
+            WindowConfig config = new WindowConfig();
+            config.Mode = WindowMode.Normal;
+            config.AutoScrollInterval = 3;
+            config.AutoScrollRows = 3;
+            config.Height = 300;
+            config.Width = 300;
+            config.Left = 0;
+            config.Top = 0;
+            return config;
+        }
+
+        private WindowConfig CreateMiniWindowConfig()
+        {
+            WindowConfig config = new WindowConfig();
+            config.Mode = WindowMode.Mini;
+            config.AutoScrollInterval = 2;
+            config.AutoScrollRows = 1;
+            config.Height = 12;
+            config.Width = 300;
+            config.Left = 0;
+            config.Top = 0;
+            return config;
         }
     }
 }

@@ -8,10 +8,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ReaderMe")]
 [assembly: AssemblyDescription("ReaderMe文本阅读器")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("G.P.Studio")]
+[assembly: AssemblyCompany("MuteG")]
 [assembly: AssemblyProduct("ReaderMe文本阅读器")]
-[assembly: AssemblyCopyright("Copyright © G.P.Studio 2008 - 2015")]
-[assembly: AssemblyTrademark("G.P.")]
+[assembly: AssemblyCopyright("Copyright © MuteG 2008 - 2021")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型

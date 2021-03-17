@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace GPStudio.Tools.ReaderMe.common
+namespace ReaderMe.Common
 {
     class GDI32
     {

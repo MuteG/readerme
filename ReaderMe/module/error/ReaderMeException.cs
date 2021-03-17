@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace GPStudio.Tools.ReaderMe.Module.error
+namespace ReaderMe.Module.error
 {
     [Serializable]
     public class ReaderMeException : Exception

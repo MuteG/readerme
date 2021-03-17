@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
-using System.Drawing;
 using System.Windows.Forms;
-using GPStudio.Tools.ReaderMe.common;
-using GPStudio.Tools.ReaderMe.Module;
+using ReaderMe.Common;
+using ReaderMe.Module;
 
-namespace GPStudio.Tools.ReaderMe.Controller
+namespace ReaderMe.Controller
 {
     public sealed class RichTextBoxController
     {

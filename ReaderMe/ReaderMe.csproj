@@ -8,32 +8,17 @@
     <ProjectGuid>{7D32BA14-F39E-4218-8B4D-9806E56B557D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GPStudio.Tools.ReaderMe</RootNamespace>
+    <RootNamespace>ReaderMe</RootNamespace>
     <AssemblyName>ReaderMe</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ManifestCertificateThumbprint>C3C7DD35357D2FE84899091EDB0BB87C533735EE</ManifestCertificateThumbprint>
     <ManifestKeyFile>ReaderMe_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
     <TargetZone>LocalIntranet</TargetZone>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <SignManifests>false</SignManifests>
     <ApplicationIcon>Clipboard2.ico</ApplicationIcon>
-    <PublishUrl>C:\GYP\Tools\ReaderMe\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -47,6 +32,20 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
+    <PublishUrl>C:\GYP\Tools\ReaderMe\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,6 +64,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -80,11 +81,10 @@
     <Compile Include="Module\Config\ConfigLoader.cs" />
     <Compile Include="Common\ErrorCode.cs" />
     <Compile Include="Common\ErrorManager.cs" />
-    <Compile Include="Common\ObjectXMLSerializer.cs" />
+    <Compile Include="Common\ObjectXmlSerializer.cs" />
     <Compile Include="Controller\FormStateController.cs" />
     <Compile Include="Common\TimeWatcher.cs" />
     <Compile Include="Controller\RichTextBoxController.cs" />
-    <Compile Include="Helper\Dice.cs" />
     <Compile Include="Module\AbstractFile.cs" />
     <Compile Include="Module\Book.cs" />
     <Compile Include="Module\Entity\Bookmark.cs" />
@@ -164,12 +164,6 @@
     <Compile Include="Helper\XMLHelper.cs" />
     <Compile Include="Module\FindStatus.cs" />
     <Compile Include="Module\IReadable.cs" />
-    <Compile Include="Module\MyRichTextBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Module\MyRichTextBox.Designer.cs">
-      <DependentUpon>MyRichTextBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Module\Reader\Reader.cs" />
     <Compile Include="Module\Reader\ReaderManager.cs" />
     <Compile Include="Module\TextFile.cs" />
@@ -207,9 +201,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormReleaseHistory.resx">
       <DependentUpon>FormReleaseHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Module\MyRichTextBox.resx">
-      <DependentUpon>MyRichTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -255,6 +246,11 @@
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>

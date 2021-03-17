@@ -5,12 +5,9 @@
  * 改訂履歴：
  * 2012/9/3 17:23:18 新規 gaoyunpeng
  * *************************************************************************/
-namespace GPStudio.Tools.ReaderMe.common
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
 
+namespace ReaderMe.Common
+{
     public class ErrorManager
     {
         public static string GetMessage(string errorCode)

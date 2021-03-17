@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GPStudio.Tools.ReaderMe.Forms
+namespace ReaderMe.Forms
 {
     public partial class FormHelp : Form
     {

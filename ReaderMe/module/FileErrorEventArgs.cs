@@ -1,8 +1,8 @@
-﻿namespace GPStudio.Tools.ReaderMe.Module
-{
-    using System;
-    using System.Globalization;
+﻿using System;
+using System.Globalization;
 
+namespace ReaderMe.Module
+{
     /// <summary>
     /// 包含错误事件的数据
     /// </summary>

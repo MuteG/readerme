@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using GPStudio.Tools.ReaderMe.common;
-using GPStudio.Tools.ReaderMe.Module.reader;
+using ReaderMe.Common;
+using ReaderMe.Module.Reader;
 
-namespace GPStudio.Tools.ReaderMe.Module.Config
+namespace ReaderMe.Module.Config
 {
     /// <summary>
     /// 设定管理器
     /// </summary>
     public static class ConfigManager
     {
-        private static Dictionary<Reader, Config> ConfigDict;
+        private static Dictionary<Reader.Reader, Config> ConfigDict;
 
         static ConfigManager()
         {
-            ConfigDict = new Dictionary<Reader, Config>();
+            ConfigDict = new Dictionary<Reader.Reader, Config>();
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace GPStudio.Tools.ReaderMe.Module.Config
         public static Config GetConfig()
         {
             Config Config;
-            Reader reader = ReaderManager.CurrentReader;
+            Reader.Reader reader = ReaderManager.CurrentReader;
             if (ConfigDict.ContainsKey(reader))
             {
                 Config = ConfigDict[reader];
@@ -41,7 +41,7 @@ namespace GPStudio.Tools.ReaderMe.Module.Config
 
         private static string GetConfigFile()
         {
-            Reader reader = ReaderManager.CurrentReader;
+            Reader.Reader reader = ReaderManager.CurrentReader;
             string readerFolder = Path.Combine(Const.PATH_ROOT_FOLDER, reader.Name);
             return Path.Combine(readerFolder, "Config.xml");
         }

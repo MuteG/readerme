@@ -1,10 +1,7 @@
-﻿namespace GPStudio.Tools.ReaderMe.Module
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-using System.Drawing;
+﻿using System;
 
+namespace ReaderMe.Module
+{
     public class Book
     {
         private IReadable _File;

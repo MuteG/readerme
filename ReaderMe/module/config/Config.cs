@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace GPStudio.Tools.ReaderMe.Module.Config
+namespace ReaderMe.Module.Config
 {
     /// <summary>
     /// ReaderMe配置

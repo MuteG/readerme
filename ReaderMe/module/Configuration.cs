@@ -2,52 +2,62 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using GPStudio.Tools.ReaderMe.common;
-using GPStudio.Tools.ReaderMe.Helper;
 using System.Windows.Forms;
+using ReaderMe.Common;
 
-namespace GPStudio.Tools.ReaderMe.Module
+namespace ReaderMe.Module
 {
     public class Configuration
     {
-        private static Configuration _ConfigInstance = null;
+        private static Configuration _instance;
 
-        public Configuration()
+        private Configuration()
         {
-        }
-
-        private Configuration(string filePath)
-        {
-            m_Xml = new XMLHelper(filePath);
-            ReadConig();
+            _fileInfoList = new List<FileInformation>();
+            _readOnly = true;
+            _backColor = Color.White.ToArgb();
+            _width = 166;
+            _height = 166;
+            Rectangle screenArea = Screen.PrimaryScreen.WorkingArea;
+            _top = (screenArea.Height - _height) / 2;
+            _left = (screenArea.Width - _width) / 2;
+            _miniWidth = 150;
+            _miniTop = 0;
+            _miniLeft = 0;
+            _opacity = 20;
+            _normalAutoScrollInterval = Constants.DEFAULT_AUTOSCROLL_INTERVAL;
+            _normalAutoScrollRows = Constants.DEFAULT_AUTOSCROLL_ROWS;
+            _miniAutoScrollInterval = Constants.DEFAULT_AUTOSCROLL_INTERVAL;
+            _miniAutoScrollRows = 1;
+            _wordWrap = 1;
+            _fontName = "NSimSun";
+            _fontSize = 12;
         }
 
         public static Configuration GetInstance()
         {
-            if (null == _ConfigInstance)
+            if (null == _instance)
             {
-                _ConfigInstance = new Configuration();
-                _ConfigInstance.Reload();
+                _instance = new Configuration();
+                _instance.Reload();
             }
-            return _ConfigInstance;
+
+            return _instance;
         }
 
         #region 变量声明
-
-        private XMLHelper m_Xml;
-        private List<FileInformation> m_FileInfoList;
-
-        private string m_LogPath = string.Empty;
-        private string m_FontName;
-
-        private int m_Width, m_Height, m_Top, m_Left, m_opacity;
-        private int m_MiniWidth, m_MiniTop, m_MiniLeft;
-        private int m_IsDebug;
-        private int m_FontSize;
-        private int m_WordWrap;
-        private int m_NormalAutoScrollInterval;
-        private int m_BackColor;
-
+        private readonly List<FileInformation> _fileInfoList;
+        private bool _readOnly;
+        private int _backColor;
+        private int _width, _height, _top, _left, _opacity;
+        private int _miniWidth, _miniTop, _miniLeft;
+        private int _normalAutoScrollInterval;
+        private int _normalAutoScrollRows;
+        private int _miniAutoScrollInterval;
+        private int _miniAutoScrollRows;
+        private int _wordWrap;
+        private int _fontSize;
+        private string _fontName;
         #endregion
 
         #region 属性
@@ -57,45 +67,32 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public List<FileInformation> FileInfoList
         {
-            get { return m_FileInfoList; }
-            set
-            {
-                m_FileInfoList = value;
-                m_Xml.SetAllNodeValues(Constants.XPATH, value, "MD5");
-            }
+            get { return _fileInfoList; }
         }
 
-        private int m_ReadOnly = 1;
         /// <summary>
         /// 获取或者设置文件是否只读
         /// </summary>
         public bool ReadOnly
         {
-            get { return m_ReadOnly == 1; }
+            get { return _readOnly; }
             set
             {
-                m_ReadOnly = value ? 1 : 0;
-                m_Xml.WriteInteger("ReadOnly", m_ReadOnly);
+                _readOnly = value;
+                Save();
             }
         }
 
-        /// <summary>
-        /// 获取日志路径
-        /// </summary>
-        public string LogPath
-        {
-            get { return m_LogPath; }
-        }
         /// <summary>
         /// 获取或者设置阅读窗口背景色
         /// </summary>
         public int BackColor
         {
-            get { return m_BackColor; }
+            get { return _backColor; }
             set
             {
-                m_BackColor = value;
-                m_Xml.WriteInteger("BackColor", value);
+                _backColor = value;
+                Save();
             }
         }
 
@@ -104,11 +101,11 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int Width
         {
-            get { return m_Width; }
+            get { return _width; }
             set
             {
-                m_Width = value;
-                m_Xml.WriteInteger("Width", value);
+                _width = value;
+                Save();
             }
         }
 
@@ -117,11 +114,11 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int Height
         {
-            get { return m_Height; }
+            get { return _height; }
             set
             {
-                m_Height = value;
-                m_Xml.WriteInteger("Height", value);
+                _height = value;
+                Save();
             }
         }
 
@@ -130,11 +127,11 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int Top
         {
-            get { return m_Top; }
+            get { return _top; }
             set
             {
-                m_Top = value;
-                m_Xml.WriteInteger("Top", value);
+                _top = value;
+                Save();
             }
         }
 
@@ -143,11 +140,11 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int Left
         {
-            get { return m_Left; }
+            get { return _left; }
             set
             {
-                m_Left = value;
-                m_Xml.WriteInteger("Left", value);
+                _left = value;
+                Save();
             }
         }
 
@@ -156,11 +153,11 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int MiniWidth
         {
-            get { return m_MiniWidth; }
+            get { return _miniWidth; }
             set
             {
-                m_MiniWidth = value;
-                m_Xml.WriteInteger("MiniWidth", value);
+                _miniWidth = value;
+                Save();
             }
         }
 
@@ -169,11 +166,11 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int MiniTop
         {
-            get { return m_MiniTop; }
+            get { return _miniTop; }
             set
             {
-                m_MiniTop = value;
-                m_Xml.WriteInteger("MiniTop", value);
+                _miniTop = value;
+                Save();
             }
         }
 
@@ -182,11 +179,11 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int MiniLeft
         {
-            get { return m_MiniLeft; }
+            get { return _miniLeft; }
             set
             {
-                m_MiniLeft = value;
-                m_Xml.WriteInteger("MiniLeft", value);
+                _miniLeft = value;
+                Save();
             }
         }
 
@@ -195,28 +192,21 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int Opacity
         {
-            get { return m_opacity; }
+            get { return _opacity; }
             set
             {
-                m_opacity = value;
-                if (m_opacity > 100)
+                _opacity = value;
+                if (_opacity > 100)
                 {
-                    m_opacity = 100;
+                    _opacity = 100;
                 }
-                else if (m_opacity < 0)
+                else if (_opacity <= 0)
                 {
-                    m_opacity = 0;
+                    _opacity = 20;
                 }
-                m_Xml.WriteInteger("Opacity", m_opacity);
-            }
-        }
 
-        /// <summary>
-        /// 获取是否是调试状态
-        /// </summary>
-        public int IsDebug
-        {
-            get { return m_IsDebug; }
+                Save();
+            }
         }
 
         /// <summary>
@@ -224,53 +214,50 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int NormalAutoScrollInterval
         {
-            get { return m_NormalAutoScrollInterval; }
+            get { return _normalAutoScrollInterval; }
             set
             {
-                m_NormalAutoScrollInterval = value;
-                m_Xml.WriteInteger("NormalAutoScrollInterval", m_NormalAutoScrollInterval);
+                _normalAutoScrollInterval = value;
+                Save();
             }
         }
 
-        private int m_NormalAutoScrollRows;
         /// <summary>
         /// 获取或者设置通常模式下自动滚动的距离（行数）
         /// </summary>
         public int NormalAutoScrollRows
         {
-            get { return m_NormalAutoScrollRows; }
+            get { return _normalAutoScrollRows; }
             set
             {
-                m_NormalAutoScrollRows = value;
-                m_Xml.WriteInteger("NormalAutoScrollRows", m_NormalAutoScrollRows);
+                _normalAutoScrollRows = value;
+                Save();
             }
         }
 
-        private int m_MiniAutoScrollInterval;
         /// <summary>
         /// 获取或者设置迷你模式下自动滚动的时间间隔（秒）
         /// </summary>
         public int MiniAutoScrollInterval
         {
-            get { return m_MiniAutoScrollInterval; }
+            get { return _miniAutoScrollInterval; }
             set
             {
-                m_MiniAutoScrollInterval = value;
-                m_Xml.WriteInteger("MiniAutoScrollInterval", m_MiniAutoScrollInterval);
+                _miniAutoScrollInterval = value;
+                Save();
             }
         }
 
-        private int m_MiniAutoScrollRows = 1;
         /// <summary>
         /// 获取或者设置迷你模式下自动滚动的距离（行数）
         /// </summary>
         public int MiniAutoScrollRows
         {
-            get { return m_MiniAutoScrollRows; }
+            get { return _miniAutoScrollRows; }
             set
             {
-                m_MiniAutoScrollRows = value;
-                m_Xml.WriteInteger("MiniAutoScrollRows", m_MiniAutoScrollRows);
+                _miniAutoScrollRows = value;
+                Save();
             }
         }
 
@@ -279,11 +266,11 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int WordWrap
         {
-            get { return m_WordWrap; }
+            get { return _wordWrap; }
             set
             {
-                m_WordWrap = value;
-                m_Xml.WriteInteger("WordWrap", m_WordWrap);
+                _wordWrap = value;
+                Save();
             }
         }
 
@@ -292,11 +279,11 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public int FontSize
         {
-            get { return m_FontSize; }
+            get { return _fontSize; }
             set
             {
-                m_FontSize = value;
-                m_Xml.WriteInteger("FontSize", m_FontSize);
+                _fontSize = value;
+                Save();
             }
         }
 
@@ -305,122 +292,37 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// </summary>
         public string FontName
         {
-            get { return m_FontName; }
+            get { return _fontName; }
             set
             {
-                m_FontName = value;
-                m_Xml.WriteString("FontName", m_FontName);
+                _fontName = value;
+                Save();
+            }
+        }
+
+        private string ConfigFile
+        {
+            get
+            {
+                string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                return Path.Combine(folder, @"ReaderMe\Config.xml");
             }
         }
 
         #endregion
 
         #region 功能函数
-
-        /// <summary>
-        /// 读取窗体大小、位置值
-        /// </summary>
-        /// <param name="param">记载数值的变量</param>
-        /// <param name="nodeName">节点名</param>
-        /// <param name="defaultValue">默认值</param>
-        private void ReadWindowSize(out int param, string nodeName, int defaultValue)
-        {
-            param = m_Xml.ReadInteger(nodeName, 0);
-            if (0 == param)
-            {
-                param = defaultValue;
-                m_Xml.WriteInteger(nodeName, param);
-            }
-        }
-
-        /// <summary>
-        /// 从配置文件中读取配置信息
-        /// </summary>
-        private void ReadConig() //从文件中读取设置信息
-        {
-            //日志路径
-            m_LogPath = m_Xml.ReadString("LogPath", "");
-            if (m_LogPath.Equals(""))
-            {
-                m_LogPath = Directory.GetCurrentDirectory() + "\\LOG";
-                m_Xml.WriteString("LogPath", m_LogPath);
-            }
-            ReadWindowSize(out m_Width, "Width", 166);
-            ReadWindowSize(out m_Height, "Height", 166);
-            Rectangle screenArea = Screen.PrimaryScreen.WorkingArea;
-            ReadWindowSize(out m_Top, "Top", (screenArea.Height - m_Height) / 2);
-            ReadWindowSize(out m_Left, "Left", (screenArea.Width - m_Width) / 2);
-            ReadWindowSize(out m_MiniWidth, "MiniWidth", 150);
-            ReadWindowSize(out m_MiniTop, "MiniTop", 0);
-            ReadWindowSize(out m_MiniLeft, "MiniLeft", 0);
-
-            m_opacity = m_Xml.ReadInteger("Opacity", 0);
-            if (0 >= m_opacity)
-            {
-                m_opacity = 20;
-                m_Xml.WriteInteger("Opacity", m_opacity);
-            }
-            else if(m_opacity > 100)
-            {
-                m_opacity = 100;
-                m_Xml.WriteInteger("Opacity", m_opacity);
-            }
-            m_IsDebug = m_Xml.ReadInteger("IsDebug", 0);
-            if ((m_IsDebug != 0) && (m_IsDebug != 1))
-            {
-                m_IsDebug = 1;
-                m_Xml.WriteInteger("IsDebug", m_IsDebug);
-            }
-            m_WordWrap = m_Xml.ReadInteger("WordWrap", 0);
-            if ((m_WordWrap != 0) && (m_WordWrap != 1))
-            {
-                m_WordWrap = 0;
-                m_Xml.WriteInteger("WordWrap", m_WordWrap);
-            }
-            m_NormalAutoScrollInterval = m_Xml.ReadInteger("NormalAutoScrollInterval", Constants.DEFAULT_AUTOSCROLL_INTERVAL);
-            m_NormalAutoScrollRows = m_Xml.ReadInteger("NormalAutoScrollRows", Constants.DEFAULT_AUTOSCROLL_ROWS);
-            m_MiniAutoScrollInterval = m_Xml.ReadInteger("MiniAutoScrollInterval", Constants.DEFAULT_AUTOSCROLL_INTERVAL);
-            m_MiniAutoScrollRows = m_Xml.ReadInteger("MiniAutoScrollRows", Constants.DEFAULT_AUTOSCROLL_ROWS);
-            m_FontName = m_Xml.ReadString("FontName", "NSimSun");
-            m_FontSize = m_Xml.ReadInteger("FontSize", 12);
-            m_ReadOnly = m_Xml.ReadInteger("ReadOnly", 1);
-            m_BackColor = m_Xml.ReadInteger("BackColor", Color.White.ToArgb());
-            m_FileInfoList =  m_Xml.GetAllNodeValues<FileInformation>(Constants.XPATH);
-        }
-
         /// <summary>
         /// 从文件中重新读取设置的值
         /// </summary>
-        public void Reload()
+        private void Reload()
         {
-            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string file = Path.Combine(folder, "ReaderMe.xml");
-            ObjectXMLSerializer<Configuration>.Load(ref _ConfigInstance, file);
+            ObjectXmlSerializer<Configuration>.Load(ref _instance, ConfigFile);
         }
 
-        /// <summary>
-        /// 配置文件中是否存在当前文本文件的信息
-        /// </summary>
-        /// <param name="filePath">文件路径</param>
-        /// <returns>如果存在返回true，否则返回false</returns>
-        public bool ExistFile(string filePath)
+        private void Save()
         {
-            bool result = false;
-            FileInformation file = new FileInformation(filePath);
-            result = ExistFile(file);
-            return result;
-        }
-
-        /// <summary>
-        /// 配置文件中是否存在当前文本文件的信息
-        /// </summary>
-        /// <param name="file">文件信息对象</param>
-        /// <returns>如果存在返回true，否则返回false</returns>
-        public bool ExistFile(FileInformation file)
-        {
-            bool result = false;
-            result = (null != GetFile(file));
-            return result;
+            ObjectXmlSerializer<Configuration>.Save(_instance, ConfigFile);
         }
 
         /// <summary>
@@ -431,14 +333,15 @@ namespace GPStudio.Tools.ReaderMe.Module
         public FileInformation GetFile(FileInformation file)
         {
             FileInformation result = null;
-            for (int i = 0; i < m_FileInfoList.Count; i++)
+            for (int i = 0; i < _fileInfoList.Count; i++)
             {
-                if (file.Path.Equals(m_FileInfoList[i].Path) && file.MD5.Equals(m_FileInfoList[i].MD5))
+                if (file.Path.Equals(_fileInfoList[i].Path) && file.MD5.Equals(_fileInfoList[i].MD5))
                 {
-                    result = m_FileInfoList[i];
+                    result = _fileInfoList[i];
                     break;
                 }
             }
+
             return result;
         }
 
@@ -450,13 +353,14 @@ namespace GPStudio.Tools.ReaderMe.Module
         public List<FileInformation> GetFileOnlyWithPath(FileInformation file)
         {
             List<FileInformation> result = new List<FileInformation>();
-            for (int i = 0; i < m_FileInfoList.Count; i++)
+            for (int i = 0; i < _fileInfoList.Count; i++)
             {
-                if (file.Path.Equals(m_FileInfoList[i].Path))
+                if (file.Path.Equals(_fileInfoList[i].Path))
                 {
                     result.Add(FileInfoList[i]);
                 }
             }
+
             return result;
         }
 
@@ -473,9 +377,10 @@ namespace GPStudio.Tools.ReaderMe.Module
             }
             else
             {
-                this.m_FileInfoList.Add(file);
+                _fileInfoList.Add(file);
             }
-            m_Xml.SetAllNodeValues(Constants.XPATH, m_FileInfoList, "MD5");
+
+            Save();
         }
 
         /// <summary>
@@ -484,22 +389,19 @@ namespace GPStudio.Tools.ReaderMe.Module
         /// <param name="file">要删除的文件信息记录</param>
         public void RemoveFile(FileInformation file)
         {
-            this.m_FileInfoList.Remove(file);
-            m_Xml.RemoveNode(Constants.XPATH, file, "MD5");
+            _fileInfoList.Remove(file);
+            Save();
         }
-        
+
         /// <summary>
         /// 删除指定索引的文件信息对象（索引从0开始）
         /// </summary>
         /// <param name="index">索引值（索引从0开始）</param>
         public void RemoveFile(int index)
         {
-            FileInformation file = new FileInformation(m_FileInfoList[index]);
-            this.m_FileInfoList.RemoveAt(index);
-            m_Xml.RemoveNode(Constants.XPATH, file, "MD5");
+            _fileInfoList.RemoveAt(index);
+            Save();
         }
-
- 
-	#endregion
+        #endregion
     }
 }

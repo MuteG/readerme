@@ -1,13 +1,12 @@
-﻿namespace GPStudio.Tools.ReaderMe.Module
-{
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
-    using GPStudio.Tools.ReaderMe.common;
-    using GPStudio.Tools.ReaderMe.Helper;
-    using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.IO;
+using System.Text;
+using ReaderMe.Common;
+using ReaderMe.Helper;
 
+namespace ReaderMe.Module
+{
     public class AbstractFile : IReadable
     {
         /// <summary>

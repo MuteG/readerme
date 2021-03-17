@@ -1,9 +1,5 @@
-﻿namespace GPStudio.Tools.ReaderMe.Module
+﻿namespace ReaderMe.Module
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     public class TextFile : AbstractFile
     {
     }

@@ -1,4 +1,4 @@
-﻿namespace GPStudio.Tools.ReaderMe.Forms
+﻿namespace ReaderMe.Forms
 {
     partial class FormOpenHistory
     {

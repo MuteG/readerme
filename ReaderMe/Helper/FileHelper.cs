@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Data;
 using System.IO;
 using System.Security.Cryptography;
-using System.Windows.Forms;
 
-namespace GPStudio.Tools.ReaderMe.Helper
+namespace ReaderMe.Helper
 {
     class FileHelper
     {

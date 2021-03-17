@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace GPStudio.Tools.ReaderMe.Forms
+namespace ReaderMe.Forms
 {
     partial class AboutBox : Form
     {

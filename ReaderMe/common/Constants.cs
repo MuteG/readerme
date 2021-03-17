@@ -1,4 +1,4 @@
-﻿namespace GPStudio.Tools.ReaderMe.common
+﻿namespace ReaderMe.Common
 {
     public static class Constants
     {

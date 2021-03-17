@@ -1,4 +1,4 @@
-﻿namespace GPStudio.Tools.ReaderMe.common
+﻿namespace ReaderMe.Common
 {
     /***************************************
      * 错误编号规则

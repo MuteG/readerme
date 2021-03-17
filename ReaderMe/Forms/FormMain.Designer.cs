@@ -1,4 +1,6 @@
-﻿namespace GPStudio.Tools.ReaderMe.Forms
+﻿using ReaderMe.Module;
+
+namespace ReaderMe.Forms
 {
     partial class FormMain
     {
@@ -82,7 +84,6 @@
             this.mnuItemIntroduction = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.myRichTextBox1 = new GPStudio.Tools.ReaderMe.Module.MyRichTextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -224,7 +225,7 @@
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(61, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(67, 17);
             this.toolStripStatusLabel3.Text = "文章字数：";
             // 
             // tsslWordCount
@@ -492,13 +493,6 @@
             this.mnuItemInfo.Text = "关于";
             this.mnuItemInfo.Click += new System.EventHandler(this.mnuItemInfo_Click);
             // 
-            // myRichTextBox1
-            // 
-            this.myRichTextBox1.Location = new System.Drawing.Point(12, 27);
-            this.myRichTextBox1.Name = "myRichTextBox1";
-            this.myRichTextBox1.Size = new System.Drawing.Size(240, 186);
-            this.myRichTextBox1.TabIndex = 10;
-            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -506,7 +500,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(277, 246);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.myRichTextBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.rtbText);
             this.DoubleBuffered = true;
@@ -587,7 +580,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem menuItemTopMost;
-        private Module.MyRichTextBox myRichTextBox1;
     }
 }
 

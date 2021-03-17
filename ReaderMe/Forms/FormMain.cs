@@ -4,12 +4,11 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using GPStudio.Tools.ReaderMe.common;
-using GPStudio.Tools.ReaderMe.Controller;
-using GPStudio.Tools.ReaderMe.Module;
-using GPStudio.Tools.ReaderMe.Helper;
+using ReaderMe.Common;
+using ReaderMe.Controller;
+using ReaderMe.Module;
 
-namespace GPStudio.Tools.ReaderMe.Forms
+namespace ReaderMe.Forms
 {
     public partial class FormMain : Form
     {
@@ -617,7 +616,6 @@ namespace GPStudio.Tools.ReaderMe.Forms
             }
         }
 
-
         /// <summary>
         /// 另存为文本
         /// </summary>
@@ -649,16 +647,8 @@ namespace GPStudio.Tools.ReaderMe.Forms
         private void OpenFile(string filePath)
         {
             this.richTextBoxController.OpenFile(filePath);
-            this.myRichTextBox1.File = new TextFile()
-            {
-                Path = filePath,
-                Encoding = Encoding.GetEncoding(CommonFunc.ActiveFile.Encode),
-                BlockLength = 20
-            };
             SetMenuOpenHistory();
         }
-
-        
         
         #endregion
 

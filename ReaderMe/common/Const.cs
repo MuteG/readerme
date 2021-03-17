@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
-namespace GPStudio.Tools.ReaderMe.common
+namespace ReaderMe.Common
 {
     public static class Const
     {

@@ -1,8 +1,8 @@
-﻿namespace GPStudio.Tools.ReaderMe.Module
-{
-    using System.Collections;
-    using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
+namespace ReaderMe.Module
+{
     /// <summary>
     /// 书架
     /// </summary>

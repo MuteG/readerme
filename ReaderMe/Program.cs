@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
-using GPStudio.Tools.ReaderMe.Forms;
+using ReaderMe.Forms;
 
-namespace GPStudio.Tools.ReaderMe
+namespace ReaderMe
 {
     static class Program
     {

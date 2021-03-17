@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
-using GPStudio.Tools.ReaderMe.common;
+using ReaderMe.Common;
 
-namespace GPStudio.Tools.ReaderMe.Controller
+namespace ReaderMe.Controller
 {
     public sealed class FormStateController
     {

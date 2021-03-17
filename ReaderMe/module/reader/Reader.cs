@@ -1,4 +1,4 @@
-﻿namespace GPStudio.Tools.ReaderMe.Module
+﻿namespace ReaderMe.Module.Reader
 {
     /// <summary>
     /// 读者

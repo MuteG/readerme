@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using GPStudio.Tools.ReaderMe.common;
+using ReaderMe.Common;
 
-namespace GPStudio.Tools.ReaderMe.Forms
+namespace ReaderMe.Forms
 {
     public partial class FormFind : Form
     {

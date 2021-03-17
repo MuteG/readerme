@@ -1,13 +1,13 @@
-﻿namespace GPStudio.Tools.ReaderMe.common
+﻿using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace ReaderMe.Common
 {
-    using System.IO;
-    using System.Xml;
-    using System.Xml.Serialization;
-    
     /// <summary>
     /// 提供XML序列化/反序列化的基本操作方法
     /// </summary>
-    public static class ObjectXMLSerializer<T> where T : class
+    public static class ObjectXmlSerializer<T> where T : class
     {
         /// <summary>
         /// 反序列化一个对象
@@ -36,16 +36,23 @@
         /// <param name="path"></param>
         public static void Save(object serializableObject, string path)
         {
-           XmlSerializer xs = new XmlSerializer(typeof(T));
-           using (FileStream stream = new FileStream(path, FileMode.Truncate))
+            string folder = Path.GetDirectoryName(path);
+            if (folder != null)
             {
-                XmlWriterSettings settings = new XmlWriterSettings()
+                if (!Directory.Exists(folder))
                 {
-                    Indent = true
-                };
-                using (XmlWriter writer = XmlWriter.Create(stream, settings))
+                    Directory.CreateDirectory(folder);
+                }
+
+                XmlSerializer xs = new XmlSerializer(typeof(T));
+                using (FileStream stream = new FileStream(path, FileMode.Create))
                 {
-                    xs.Serialize(writer, serializableObject);
+                    XmlWriterSettings settings = new XmlWriterSettings();
+                    settings.Indent = true;
+                    using (XmlWriter writer = XmlWriter.Create(stream, settings))
+                    {
+                        xs.Serialize(writer, serializableObject);
+                    }
                 }
             }
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GPStudio.Tools.ReaderMe.Module.engine
+﻿namespace ReaderMe.Module.engine
 {
     /// <summary>
     /// 阅读引擎
